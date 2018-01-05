@@ -83,8 +83,8 @@ class Login extends Component {
       <div>
         {!this.state.user ?
           <div>
-            <button onClick={this.googleLogin}>Log In with Google</button>
-            <button onClick={this.facebookLogin}>Log In with Facebook</button>
+            <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
+            <button className="loginBtn loginBtn--facebook" onClick={this.facebookLogin}>Log In with Facebook</button>
           </div>
           :
           <div>

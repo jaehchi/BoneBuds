@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import Markers from './Markers'
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -35,12 +36,11 @@ export class MapContainer extends Component {
           lat: 33.976796,
           lng: -118.392161
         }}>
-        <Marker
-          title={'The marker`s title will appear as a tooltip.'}
-          name={'HRLA eeeeeeeeee yeeeeee son!!!'}
-          position={{lat: 33.976796, lng: -118.392161}}
-          onClick={this.onMarkerClick}
-          />
+
+        <Markers
+          markerClick={this.onMarkerClick}
+        />
+
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>

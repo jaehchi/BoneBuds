@@ -12,14 +12,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div class="container">
+        <div className="container">
         Hello from React!
         <Nav/>
         <Login/>
-        <div class="container">
+        <div className="container">
           <MapContainer />
         </div>
-        <div class="container">
+        <div className="container">
           <Events/>
         </div>
         </div>

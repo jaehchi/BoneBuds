@@ -7,29 +7,36 @@ export class Markers extends Component {
     this.state = {
       title: 'The marker`s title will appear as a tooltip.',
       name: 'HRLA eeeeeeeeee yeeeeee son!!!',
-      LAT: 'lat: 33.976796',
-      LNG:  'lng: -118.392161',
+      position: {lat: 33.976796, lng: -118.392161},
     }
     this.setMarkerValues = this.setMarkerValues.bind(this)
   }
 
-  setMarkerValues(title, name, LAT, LNG) {
+  setMarkerValues(title, name, position) {
     this.setState({
       title,
       name,
-      LAT,
-      LNG,
+      position,
     })
   }
 
   render() {
     return (
       <Marker
-        title={this.state.title}
-        name={this.state.name}
-        position={this.state.position}
-        onClick={this.props.markerClick}
+        title={'The marker`s title will appear as a tooltip.'}
+        name={'SOMA'}
+        position={{lat: 33.99996, lng: -118.492161}}
       />
     )
   }
 }
+
+// <Marker
+//   title={this.state.title}
+//   name={this.state.name}
+//   position={this.state.position}
+//   onClick={this.props.markerClick}
+// />
+
+
+// Might Not Need This After All

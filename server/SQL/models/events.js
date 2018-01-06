@@ -7,12 +7,15 @@ const events = db.define('events', {
     autoIncrement: true,
     primaryKey: true
   },
-  eventName: Sequelize.STRING(255),
-  eventOwner: Sequelize.STRING(255),
-  latitude : Sequelize.STRING(255),
-  longitude: Sequelize.STRING(255),
-  description : Sequelize.STRING(255),
-  eventImage: Sequelize.STRING(255)
+  eventTitle: Sequelize.STRING,
+  eventDate: Sequelize.STRING,
+  eventTime: Sequelize.STRING,
+  eventOwner: Sequelize.STRING,
+  latitude : Sequelize.STRING,
+  longitude: Sequelize.STRING,
+  description : Sequelize.STRING,
+  tag: Sequelize.STRING,
+  eventImage: Sequelize.STRING,
 });
 
 module.exports = events;

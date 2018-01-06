@@ -73,8 +73,8 @@ class App extends Component {
           <LoginLanding handleUserToken={this.handleUserToken} handleLogin={this.handleLogin} />
           :
           <div>
-            <Nav />
-            <button onClick={this.logout}>Logout</button>
+            <Nav logout={this.logout}/>
+            <h3>Welcome, {this.state.user.displayName}</h3>
             <div className="container" style={style}>
               <div className="row">
                 <div className="col s3" >

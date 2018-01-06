@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MapContainer from './MapContainer'
-import Nav from './Nav';
-import Events from './Events';
-import Login from './Login';
+import MapContainer from './Content/MapContainer'
+import Nav from './Authentication/Nav';
+import Events from './Events/Events';
+import Login from './Authentication/Login';
 
 class App extends Component {
   constructor(props) {

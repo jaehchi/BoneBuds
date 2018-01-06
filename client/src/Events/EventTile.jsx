@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-
 class EventTile extends Component {
   constructor () {
     super();
-    
+
   }
 
   render () {

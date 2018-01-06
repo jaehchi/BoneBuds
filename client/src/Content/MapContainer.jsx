@@ -66,12 +66,15 @@ export class MapContainer extends Component {
 
         {
           this.state.earthquakeData.map((info, i) => {
-            console.log(info.geometry.coordinates[0], info.geometry.coordinates[1], info.geometry.type)
+            console.log(Number(JSON.stringify(info.geometry.coordinates[0]).slice(0,6)), Number(JSON.stringify(info.geometry.coordinates[1]).slice(0,6)), info.geometry.type)
             return <Marker
               key={i}
               title={'The marker`s title will appear as a tooltip.'}
               name={info.geometry.type}
-              position={{lat: info.geometry.coordinates[0], lng: info.geometry.coordinates[1]}}
+              position={{
+                lat: Number(JSON.stringify(info.geometry.coordinates[1])),
+                lng: Number(JSON.stringify(info.geometry.coordinates[0])),
+              }}
               onClick={this.onMarkerClick}
             />
           })
@@ -80,7 +83,7 @@ export class MapContainer extends Component {
         <Marker
           title={'The marker`s title will appear as a tooltip.'}
           name={'Water'}
-          position={{lat: 170.73675416, lng: -43.074350291}}
+          position={{lat: 78.73, lng: -43.07}}
           onClick={this.onMarkerClick}
         />
 

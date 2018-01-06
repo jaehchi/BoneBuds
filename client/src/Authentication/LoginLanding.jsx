@@ -33,11 +33,17 @@ class LoginLanding extends Component {
               userName: user.email,
               email: user.email
             }
-            axios.post('/users/createUser', dbUser)
+            const payload = {
+              userName: user.email,
+              email: user.email,
+              userId: user.uid
+            }
+            // below is sending post to server/db to check if user exists
+            // if it doesn't, creates new user on sqlite
+            axios.post('/users/createUser', payload)
               .then(() => {
                 usersRef.child(user.uid).set(dbUser)
                 this.props.handleUserToken();
-                console.log('user created successfully');
               })
               .catch(() => {
                 console.error('error signing up user');
@@ -71,11 +77,17 @@ class LoginLanding extends Component {
           userName: user.displayName,
           email: user.email
         }
-        axios.post('/users/createUser', dbUser)
+        const payload = {
+          userName: user.email,
+          email: user.email,
+          userId: user.uid
+        }
+        // below is sending post to server/db to check if user exists
+        // if it doesn't, creates new user on sqlite
+        axios.post('/users/createUser', payload)
           .then(() => {
             usersRef.child(user.uid).set(dbUser)
             this.props.handleUserToken();
-            console.log('user created successfully');
           })
           .catch(() => {
             console.error('error signing up user');

@@ -19,7 +19,6 @@ class Login extends Component {
       let users = snapshot.val();
       let newState = [];
       for (let user in users) {
-        console.log(user);
         newState.push({
           id: users[user].uid,
           email: users[user].email,

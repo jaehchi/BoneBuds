@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class Nav extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
   }
   render () {
     return (
@@ -16,6 +16,7 @@ class Nav extends Component {
                 <li><a href="#!"><i className="material-icons">view_module</i></a></li>
                 <li><a href="#!"><i className="material-icons">refresh</i></a></li>
                 <li><a href="#!"><i className="material-icons">more_vert</i></a></li>
+                <li><a href="#!" onClick={this.props.logout}>Logout</a></li>
               </ul>
             </div>
           </nav>

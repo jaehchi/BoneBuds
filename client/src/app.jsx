@@ -59,7 +59,6 @@ class App extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
         {!this.state.user ?
           <LoginLanding handleUserToken={this.handleUserToken} handleLogin={this.handleLogin} />
           :
@@ -72,23 +71,9 @@ class App extends Component {
                   <Events />
                 </div>
                 <div className="col s9">
-                  <MapContainer />
+                  <ContentContainer />
                 </div>
               </div>
-=======
-        <Nav />
-        <Login />
-
-        <div className="container">
-          <div className="row">
-
-            <div className="col s3" >
-              <Events/>
-            </div>
-
-            <div className="col s9">
-              <ContentContainer />
->>>>>>> [ update ] - styling
             </div>
 
           </div>

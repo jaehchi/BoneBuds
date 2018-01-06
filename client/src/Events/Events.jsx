@@ -8,10 +8,7 @@ class Events extends Component {
 
   render () {
     return (
-      <div>
-        <EventTile/>
-        <EventTile/>
-        <EventTile/>
+      <div className="col s3">
         <EventTile/>
         <EventTile/>
         <EventTile/>

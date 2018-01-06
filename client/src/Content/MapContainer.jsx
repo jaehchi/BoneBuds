@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import Popup from './Popup'
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -48,14 +49,14 @@ export class MapContainer extends Component {
 
   render() {
     const style = {
-      width:'1000px',
+      width:'100%',
       height: '500px',
     }
 
     return (
       <Map
         google={this.props.google}
-        zoom={1}
+        zoom={3}
         style={style}
         initialCenter={{
           lat: 33.976796,
@@ -66,14 +67,13 @@ export class MapContainer extends Component {
 
         {
           this.state.earthquakeData.map((info, i) => {
-            console.log(Number(JSON.stringify(info.geometry.coordinates[0]).slice(0,6)), Number(JSON.stringify(info.geometry.coordinates[1]).slice(0,6)), info.geometry.type)
             return <Marker
               key={i}
               title={'The marker`s title will appear as a tooltip.'}
               name={info.geometry.type}
               position={{
-                lat: Number(JSON.stringify(info.geometry.coordinates[1])),
-                lng: Number(JSON.stringify(info.geometry.coordinates[0])),
+                lat: info.geometry.coordinates[1],
+                lng: info.geometry.coordinates[0],
               }}
               onClick={this.onMarkerClick}
             />
@@ -103,6 +103,7 @@ export class MapContainer extends Component {
 
         <Marker
           name={'SF somwhere'}
+
           position={{lat: 37.762391, lng: -122.439192}}
           onClick={this.onMarkerClick}
         />

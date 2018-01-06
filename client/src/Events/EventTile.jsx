@@ -3,27 +3,33 @@ import React, { Component } from 'react';
 class EventTile extends Component {
   constructor () {
     super();
-
   }
 
   render () {
     return (
-      <div>
-        <div className="col s12">
-          <div className="card card-panel hoverable sticky-action">
-            <div className="card-image">
-              <img className="activator" src="https://www.banfflakelouise.com/sites/default/files/moraine-lake-photographer-banff-alberta_0.jpeg"/>
-            </div>
-            <div className="card-content">
-              <span className="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-              <a href="#">This is a link</a>
-            </div>
-            <div className="card-reveal">
-              <span className="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-          </div>
+      <div className="card card-panel hoverable sticky-action">
+        <div className="card-image waves-effect waves-block waves-light">
+          <img className="activator" src="https://www.banfflakelouise.com/sites/default/files/moraine-lake-photographer-banff-alberta_0.jpeg"/>
+        </div>
+
+        <div className="card-content">
+          <span className="card-title activator grey-text text-darken-4">Outdoor Photograph Lessons<i className="material-icons right">more_vert</i></span>
+        </div>
+
+        <div className="card-reveal">
+          <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
+          <p>90's letterpress stumptown, cliche chicharrones cold-pressed cloud bread skateboard tumeric helvetica woke post-ironic next level pok pok. Knausgaard biodiesel polaroid ethical, brooklyn gentrify cronut migas. Art party letterpress taiyaki try-hard, gentrify retro tumblr heirloom narwhal. Twee enamel pin cloud bread, activated charcoal messenger bag fashion axe fixie typewriter flexitarian fam art party.
+          <br /><br />
+          Vape master cleanse air plant echo park brunch, sartorial XOXO crucifix. Everyday carry distillery butcher you probably haven't heard of them fam leggings pok pok forage migas paleo PBR&B hot chicken 90's. Chicharrones yr sriracha readymade slow-carb meh jianbing.
+          <br /><br />
+          Oh. You need a little dummy text for your mockup? How quaint.
+          <br /><br />
+          I bet you’re still using Bootstrap too…</p>
+        </div>
+
+        <div className="card-action">
+          <a href="#">Share</a>
+          <a href="#">Attend</a>
         </div>
 
         {/* <div className="card">

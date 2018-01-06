@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import FirebaseAPI from '../../config';
+import FirebaseAPI from '../../../config';
 // put firebase api key in from .env
 
 var config = {

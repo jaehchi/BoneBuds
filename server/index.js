@@ -4,7 +4,7 @@ const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
 const router = require('./routes');
-const db = require('./SQL/models')
+const db = require('./SQL/db')
 
 const app = express();
 

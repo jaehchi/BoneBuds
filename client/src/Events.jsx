@@ -11,16 +11,15 @@ class Events extends Component {
 
     return (
       <div>
-        <div className="row">
+
           <EventTile/>
           <EventTile/>
           <EventTile/>
-        </div>
-        <div className="row">
+
           <EventTile/>
           <EventTile/>
           <EventTile/>
-        </div>
+
       </div>
     )
   }

@@ -64,7 +64,7 @@ class App extends Component {
           :
           <div>
             <Nav logout={this.logout}/>
-            <h3>Welcome, {this.state.user.displayName}</h3>
+            <h3>Welcome, {this.state.user.displayName || this.state.user.email}</h3>
             <div className="container">
               <div className="row">
                 <div className="col s3" >

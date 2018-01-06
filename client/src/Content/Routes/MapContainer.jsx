@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import Popup from './Popup'
+
 
 export class MapContainer extends Component {
   constructor(props) {

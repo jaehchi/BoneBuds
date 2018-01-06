@@ -1,13 +1,13 @@
 const users = require('./users');
 const events = require('./events');
 
-users.hasMany(events, {
+users.belongsToMany(events, {
   as: 'users',
   through: 'users_events',
   foreignKey: 'userID'
 })
 
-events.hasMany(users, {
+events.belongsToMany(users, {
   as: 'events',
   through: 'users_events',
   foreignKey: 'eventID'

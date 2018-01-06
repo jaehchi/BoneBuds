@@ -3,6 +3,7 @@ const PORT = process.env.PORT;
 const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
+const db = require('./SQL/db')
 
 const app = express();
 

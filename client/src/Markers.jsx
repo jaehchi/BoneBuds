@@ -7,16 +7,18 @@ export class Markers extends Component {
     this.state = {
       title: 'The marker`s title will appear as a tooltip.',
       name: 'HRLA eeeeeeeeee yeeeeee son!!!',
-      position: 'lat: 33.976796, lng: -118.392161}',
+      LAT: 'lat: 33.976796',
+      LNG:  'lng: -118.392161',
     }
     this.setMarkerValues = this.setMarkerValues.bind(this)
   }
 
-  setMarkerValues(title, name, position) {
+  setMarkerValues(title, name, LAT, LNG) {
     this.setState({
       title,
       name,
-      position,
+      LAT,
+      LNG,
     })
   }
 

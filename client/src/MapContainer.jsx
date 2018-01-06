@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import Markers from './Markers';
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -70,6 +69,7 @@ export class MapContainer extends Component {
             console.log(info.geometry.coordinates[0], info.geometry.coordinates[1], info.geometry.type)
             return <Marker
               key={i}
+              title={'The marker`s title will appear as a tooltip.'}
               name={info.geometry.type}
               position={{lat: info.geometry.coordinates[0], lng: info.geometry.coordinates[1]}}
               onClick={this.onMarkerClick}
@@ -80,7 +80,7 @@ export class MapContainer extends Component {
         <Marker
           title={'The marker`s title will appear as a tooltip.'}
           name={'Water'}
-          position={{lat: 33.99996, lng: -118.492161}}
+          position={{lat: 170.73675416, lng: -43.074350291}}
           onClick={this.onMarkerClick}
         />
 
@@ -99,13 +99,9 @@ export class MapContainer extends Component {
         />
 
         <Marker
-          name={'Your position'}
+          name={'SF somwhere'}
           position={{lat: 37.762391, lng: -122.439192}}
-          icon={{
-            url: "/path/to/custom_icon.png",
-            anchor: new google.maps.Point(32,32),
-            scaledSize: new google.maps.Size(64,64)
-          }}
+          onClick={this.onMarkerClick}
         />
 
         <InfoWindow

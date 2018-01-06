@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MapContainer from './MapContainer'
-import Nav from './Nav';
-import Events from './Events';
-import Login from './Login';
+import MapContainer from './Content/MapContainer'
+import Nav from './Authentication/Nav';
+import Events from './Events/Events';
+import Login from './Authentication/Login';
 
 class App extends Component {
   constructor(props) {
     super(props)
   }
   render() {
+    const style = {
+      padding: 0,
+      margin: 0,
+    }
     return (
       <div>
-        <div className="container">
-        Hello from React!
-        <Nav/>
-        <Login/>
-        <div className="container">
-          <MapContainer />
-        </div>
-        <div className="container">
-          <Events/>
-        </div>
+        <Nav />
+        <Login />
+
+        <div className="container" style={style}>
+          <div className="row">
+            <div className="col s3" >
+              <Events/>
+            </div>
+            <div className="col s9">
+              <MapContainer />
+            </div>
+          </div>
         </div>
       </div>
     )

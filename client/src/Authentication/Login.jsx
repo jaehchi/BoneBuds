@@ -17,7 +17,6 @@ class Login extends Component {
     const usersRef = firebase.database().ref('users');
     usersRef.on('value', (snapshot) => {
       let users = snapshot.val();
-      console.log(users);
       let newState = [];
       for (let user in users) {
         console.log(user);
@@ -41,7 +40,6 @@ class Login extends Component {
     auth.signInWithPopup(googleProvider)
       .then((result) => {
         const usersRef = firebase.database().ref('users');
-        console.log(result.user.uid)
         const user = result.user;
         this.setState({
           user
@@ -57,7 +55,6 @@ class Login extends Component {
     auth.signInWithPopup(facebookProvider)
       .then((result) => {
         const usersRef = firebase.database().ref('users');
-        console.log(result.user.uid)
         const user = result.user;
         this.setState({
           user
@@ -83,8 +80,8 @@ class Login extends Component {
       <div>
         {!this.state.user ?
           <div>
-            <button onClick={this.googleLogin}>Log In with Google</button>
-            <button onClick={this.facebookLogin}>Log In with Facebook</button>
+            <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
+            <button className="loginBtn loginBtn--facebook" onClick={this.facebookLogin}>Log In with Facebook</button>
           </div>
           :
           <div>

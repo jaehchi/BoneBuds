@@ -1,10 +1,9 @@
 import firebase from 'firebase';
+import FirebaseAPI from '../../../config';
 // put firebase api key in from .env
 
-
-
 var config = {
-  apiKey: '${FirebaseAPI}',
+  apiKey: `${FirebaseAPI}`,
   authDomain: "bonebuds-6ba21.firebaseapp.com",
   databaseURL: "https://bonebuds-6ba21.firebaseio.com",
   projectId: "bonebuds-6ba21",

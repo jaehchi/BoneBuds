@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import MapContainer from './Content/MapContainer'
+import ContentContainer from './Content/ContentContainer'
 import Nav from './Authentication/Nav';
 import Events from './Events/Events';
 import Login from './Authentication/Login';
@@ -57,12 +57,9 @@ class App extends Component {
       });
   }
   render() {
-    const style = {
-      padding: 0,
-      margin: 0,
-    }
     return (
       <div>
+<<<<<<< HEAD
         {!this.state.user ?
           <LoginLanding handleUserToken={this.handleUserToken} handleLogin={this.handleLogin} />
           :
@@ -78,7 +75,22 @@ class App extends Component {
                   <MapContainer />
                 </div>
               </div>
+=======
+        <Nav />
+        <Login />
+
+        <div className="container">
+          <div className="row">
+
+            <div className="col s3" >
+              <Events/>
             </div>
+
+            <div className="col s9">
+              <ContentContainer />
+>>>>>>> [ update ] - styling
+            </div>
+
           </div>
         }
       </div>

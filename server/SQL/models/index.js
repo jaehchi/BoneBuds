@@ -1,6 +1,18 @@
 const users = require('./users');
 const events = require('./events');
 
+users.hasMany(events, {
+  as: 'users',
+  through: 'users_events',
+  foreignKey: 'userID'
+})
+
+events.hasMany(users, {
+  as: 'events',
+  through: 'users_events',
+  foreignKey: 'eventID'
+})
+
 users.sync()
   .then( () => {
     console.log('Users tables has been synced succesfully');

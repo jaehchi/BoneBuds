@@ -65,7 +65,7 @@ class App extends Component {
           <div>
             <Nav logout={this.logout}/>
             <h3>Welcome, {this.state.user.displayName}</h3>
-            <div className="container" style={style}>
+            <div className="container">
               <div className="row">
                 <div className="col s3" >
                   <Events />

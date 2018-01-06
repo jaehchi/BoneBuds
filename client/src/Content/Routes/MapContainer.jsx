@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import axios from 'axios';
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -15,6 +16,16 @@ export class MapContainer extends Component {
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
+  }
+
+  componentWillMount() {
+    axios.get('users/popups')
+      .then((response) => {
+        console.log(response, 'Component Will Mount; Getting LatLong Info')
+      })
+      .catch((e) => {
+        console.log(e, 'Was Not Able to GET latLong info from db');
+      })
   }
 
   componentDidMount() {
@@ -81,7 +92,7 @@ export class MapContainer extends Component {
         }
 
         <Marker
-          title={'The marker`s title will appear as a tooltip.'}
+          title={'Why won\'t ya click and find out?'}
           name={'Hack Reactor LA ya bish!'}
           position={{lat: 33.976796, lng: -118.392161}}
           onClick={this.onMarkerClick}

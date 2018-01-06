@@ -1,5 +1,5 @@
-const users = require('./users');
-const events = require('./events');
+const users = require('./users.js');
+const events = require('./events.js');
 
 users.belongsToMany(events, {
   as: 'users',
@@ -30,4 +30,4 @@ users.sync()
     console.log('Unable to sync Users table', error);
   })
 
-modules.exports = { users, events }
+module.exports = { users, events }

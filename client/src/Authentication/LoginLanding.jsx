@@ -24,20 +24,30 @@ class LoginLanding extends Component {
     const email = this.state.email;
     const password = this.state.password;
     firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            console.log(user);
+            const usersRef = firebase.database().ref('users');
+            const dbUser = {
+              userName: user.email,
+              email: user.email
+            }
+            axios.post('/users/createUser', dbUser)
+              .then(() => {
+                usersRef.child(user.uid).set(dbUser)
+                this.props.handleUserToken();
+                console.log('user created successfully');
+              })
+              .catch(() => {
+                console.error('error signing up user');
+              })
+          }
+        })
+      })
       .catch(() => {
         console.error('error creating user');
       })
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        const usersRef = firebase.database().ref('users');
-        const dbUser = {
-          userName: user.email,
-          email: user.email
-        }
-        usersRef.child(user.uid).set(dbUser)
-        this.props.handleUserToken();
-      }
-    })
   }
   emailLogin() {
     const email = this.state.email;
@@ -61,8 +71,15 @@ class LoginLanding extends Component {
           userName: user.displayName,
           email: user.email
         }
-        usersRef.child(user.uid).set(dbUser)
-        this.props.handleUserToken();
+        axios.post('/users/createUser', dbUser)
+          .then(() => {
+            usersRef.child(user.uid).set(dbUser)
+            this.props.handleUserToken();
+            console.log('user created successfully');
+          })
+          .catch(() => {
+            console.error('error signing up user');
+          })
       });
   }
   facebookLogin() {
@@ -74,8 +91,15 @@ class LoginLanding extends Component {
           userName: user.displayName,
           email: user.email
         }
-        usersRef.child(user.uid).set(dbUser)
-        this.props.handleUserToken();
+        axios.post('/users/createUser', dbUser)
+          .then(() => {
+            usersRef.child(user.uid).set(dbUser)
+            this.props.handleUserToken();
+            console.log('user created successfully');
+          })
+          .catch(() => {
+            console.error('error signing up user');
+          })
       });
   }
   render() {

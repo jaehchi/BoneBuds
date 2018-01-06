@@ -15,7 +15,6 @@ class App extends Component {
       users: [],
       user: null
     }
-    this.handleLogin = this.handleLogin.bind(this);
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
   }
@@ -47,11 +46,6 @@ class App extends Component {
         this.setState({ user });
       }
     });
-  }
-  handleLogin() {
-    this.setState({
-      isLoggedIn: !this.state.isLoggedIn
-    })
   }
   logout() {
     auth.signOut()

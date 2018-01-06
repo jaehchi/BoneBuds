@@ -3386,9 +3386,8 @@ nav ul a span.badge {
 }
 
 .container .row {
-  margin-left: 0;
-  margin-right: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
 }
 
 .section {
@@ -3409,8 +3408,9 @@ nav ul a span.badge {
 }
 
 .row {
-  margin: 0;
-  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-bottom: 20px; */
 }
 
 .row:after {
@@ -3423,6 +3423,7 @@ nav ul a span.badge {
   float: left;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  padding: 0.5rem 0.5rem;
   min-height: 1px;
 }
 
@@ -3446,7 +3447,7 @@ nav ul a span.badge {
 
 .row .col.s3 {
   width: 25%;
-  margin-left: auto;
+  margin: 0;
   left: auto;
   right: auto;
 }
@@ -3490,8 +3491,6 @@ nav ul a span.badge {
   width: 75%;
   margin: 0;
   padding: 0;
-  left: auto;
-  right: auto;
 }
 
 .row .col.s10 {

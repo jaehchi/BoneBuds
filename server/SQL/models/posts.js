@@ -7,6 +7,7 @@ const posts = db.define('posts', {
     autoIncrement: true,
     primaryKey: true
   },
+  username: Sequezeli.STRING,
   text: Sequelize.TEXT,
 })
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import Markers from '../Markers';
 
 
 export class MapContainer extends Component {
@@ -10,6 +11,7 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      latLong: [],
       earthquakeData: [],
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -56,14 +58,13 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        zoom={10}
+        zoom={3}
         style={style}
         initialCenter={{
           lat: 33.976796,
           lng: -118.392161
         }}
-        onClick={this.onMapClicked}
-        >
+        onClick={this.onMapClicked}>
 
         {
           this.state.earthquakeData.map((info, i) => {
@@ -82,29 +83,8 @@ export class MapContainer extends Component {
 
         <Marker
           title={'The marker`s title will appear as a tooltip.'}
-          name={'Water'}
-          position={{lat: 78.73, lng: -43.07}}
-          onClick={this.onMarkerClick}
-        />
-
-        <Marker
-          title={'The marker`s title will appear as a tooltip.'}
-          name={'Hack Reactor LA is for bishes'}
+          name={'Hack Reactor LA ya bish!'}
           position={{lat: 33.976796, lng: -118.392161}}
-          onClick={this.onMarkerClick}
-        />
-
-        <Marker
-          title={'The marker`s title will appear as a tooltip.'}
-          name={'Home Depot'}
-          position={{lat: 33.988796, lng: -118.362161}}
-          onClick={this.onMarkerClick}
-        />
-
-        <Marker
-          name={'SF somwhere'}
-
-          position={{lat: 37.762391, lng: -122.439192}}
           onClick={this.onMarkerClick}
         />
 
@@ -119,6 +99,8 @@ export class MapContainer extends Component {
     );
   }
 }
+
+
 
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyDh9Qs7nl5RKXwaDmCeo8bt0YG4cb0xnh8')

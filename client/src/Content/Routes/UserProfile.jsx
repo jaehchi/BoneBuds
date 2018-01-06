@@ -9,7 +9,6 @@ class UserProfile extends Component{
   }
 
   render() {
-    console.log('user profile page clicked')
     return (
       <div id="userProfile">
         <h3>User Profile Page</h3>

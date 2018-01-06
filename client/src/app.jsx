@@ -10,24 +10,25 @@ class App extends Component {
     super(props)
   }
   render() {
+    const style = {
+      padding: 0,
+      margin: 0,
+    }
     return (
       <div>
-        <div className="navigation">
-          <Nav />
-        </div>
+        <Nav />
+        <Login />
 
-        <div className="login">
-          <Login />
+        <div className="container" style={style}>
+          <div className="row">
+            <div className="col s3" >
+              <Events/>
+            </div>
+            <div className="col s9">
+              <MapContainer />
+            </div>
+          </div>
         </div>
-
-        <div className="col s3">
-          <Events />
-        </div>
-
-        <div className="ContentContainer">
-          <MapContainer />
-        </div>
-
       </div>
     )
   }

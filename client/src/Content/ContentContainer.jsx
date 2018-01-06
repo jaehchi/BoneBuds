@@ -1,11 +1,15 @@
-import React, { Compononent } from 'react';
+import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import MapContainer from './routes/MapContainer';
+import MapContainer from './Routes/MapContainer';
+import UserProfile from './Routes/UserProfile';
 
-const ContentContainer = () => {
-  <ContentContainer>
+const ContentContainer = () => (
+  <main>
     <Switch>
-      <Route exact path='/' component={MapContainer}/>
+      <Route exact path='/' component={MapContainer} />
+      <Route path='/userprofile' component={UserProfile} />
     </Switch>
-  </ContentContainer>
-}
+  </main>
+)
+
+export default ContentContainer;

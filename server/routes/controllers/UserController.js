@@ -1,9 +1,22 @@
-const { users, events, posts, comments } = require('../../sql/models');
+const { users } = require('../../SQL/models');
 
 const UserController = {
   checkIfUserExists: (req, res) => {
-    console.log('getting to user controller', req.body);
-    res.sendStatus(200);
+    users.create({
+      userID: `${req.body.userId}`,
+      username: `${req.body.username}`,
+      description: null,
+      email: `${req.body.email}`,
+      profileUrl: null
+    })
+      .then(() => {
+        console.log('sqlite user created');
+        res.sendStatus(201);
+      })
+      .catch(() => {
+        console.error('error creating sqlite user');
+        res.sendStatus(500);
+      })
   }
 }
 

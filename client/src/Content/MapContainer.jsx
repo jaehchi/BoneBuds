@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import Markers from './Markers';
+import Popup from './Popup'
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export class MapContainer extends Component {
       earthquakeData: [],
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
-
+    this.onMapClicked = this.onMapClicked.bind(this);
   }
 
   componentDidMount() {
@@ -38,26 +38,52 @@ export class MapContainer extends Component {
     });
   }
 
+  onMapClicked() {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  }
+
   render() {
     const style = {
-      width:'1000px',
+      width:'100%',
       height: '500px',
     }
 
     return (
       <Map
         google={this.props.google}
-        zoom={11}
+        zoom={3}
         style={style}
         initialCenter={{
           lat: 33.976796,
           lng: -118.392161
-        }}>
+        }}
+        onClick={this.onMapClicked}
+        >
+
+        {
+          this.state.earthquakeData.map((info, i) => {
+            return <Marker
+              key={i}
+              title={'The marker`s title will appear as a tooltip.'}
+              name={info.geometry.type}
+              position={{
+                lat: info.geometry.coordinates[1],
+                lng: info.geometry.coordinates[0],
+              }}
+              onClick={this.onMarkerClick}
+            />
+          })
+        }
 
         <Marker
           title={'The marker`s title will appear as a tooltip.'}
           name={'Water'}
-          position={{lat: 33.99996, lng: -118.492161}}
+          position={{lat: 78.73, lng: -43.07}}
           onClick={this.onMarkerClick}
         />
 
@@ -75,6 +101,20 @@ export class MapContainer extends Component {
           onClick={this.onMarkerClick}
         />
 
+        <Marker
+          name={'SF somwhere'}
+
+          position={{lat: 37.762391, lng: -122.439192}}
+          onClick={this.onMarkerClick}
+        />
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
       </Map>
     );
   }

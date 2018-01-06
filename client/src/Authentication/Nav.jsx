@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
-
 class Nav extends Component {
   constructor () {
     super();
-    
   }
-
   render () {
     return (
-      <div>
+      <div id="nav">
         <div className="row">
           <nav>
             <div className="nav-wrapper blue darken-1">

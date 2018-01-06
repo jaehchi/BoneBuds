@@ -11,17 +11,19 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="container">
+      <div className="container">
         Hello from React!
         <Nav/>
         <Login/>
         <div className="container">
-          <MapContainer />
-        </div>
-        <div className="container">
-          <Events/>
-        </div>
+          <div className="row">
+            <div className="col s12 m4 l3">
+              <Events/>
+            </div>
+            <div className="col s12 m8 l9">
+            <MapContainer />
+            </div>
+          </div>
         </div>
       </div>
     )

@@ -10,7 +10,7 @@ class EventTile extends Component {
   render () {
     return (
       <div>
-        <div className="col m4">
+        <div className="col 4">
           <div className="card card-panel hoverable sticky-action">
             <div className="card-image">
               <img className="activator" src="https://www.banfflakelouise.com/sites/default/files/moraine-lake-photographer-banff-alberta_0.jpeg"/>

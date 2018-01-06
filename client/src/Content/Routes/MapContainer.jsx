@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import Markers from '../Markers';
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -100,8 +99,6 @@ export class MapContainer extends Component {
     );
   }
 }
-
-
 
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyDh9Qs7nl5RKXwaDmCeo8bt0YG4cb0xnh8')

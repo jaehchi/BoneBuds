@@ -18,9 +18,7 @@ class EventTile extends Component {
 
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-          <p>90's letterpress stumptown, cliche chicharrones cold-pressed cloud bread skateboard tumeric helvetica woke post-ironic next level pok pok. Knausgaard biodiesel polaroid ethical, brooklyn gentrify cronut migas. Art party letterpress taiyaki try-hard, gentrify retro tumblr heirloom narwhal. Twee enamel pin cloud bread, activated charcoal messenger bag fashion axe fixie typewriter flexitarian fam art party.
-          <br /><br />
-          Vape master cleanse air plant echo park brunch, sartorial XOXO crucifix. Everyday carry distillery butcher you probably haven't heard of them fam leggings pok pok forage migas paleo PBR&B hot chicken 90's. Chicharrones yr sriracha readymade slow-carb meh jianbing.
+          <p>90's letterpress stumptown, cliche chicharrones cold-pressed cloud bread skateboard tumeric helvetica woke post-ironic next level pok pok. Knausgaard biodiesel polaroid ethical, brooklyn gentrify cronut migas. Art party letterpress taiyaki try-hard, gentrify retro tumblr heirloom narwhal.
           <br /><br />
           Oh. You need a little dummy text for your mockup? How quaint.
           <br /><br />

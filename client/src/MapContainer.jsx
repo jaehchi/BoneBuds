@@ -13,7 +13,7 @@ export class MapContainer extends Component {
       earthquakeData: [],
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
-
+    this.onMapClicked = this.onMapClicked.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +38,15 @@ export class MapContainer extends Component {
     });
   }
 
+  onMapClicked() {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      })
+    }
+  }
+
   render() {
     const style = {
       width:'1000px',
@@ -47,12 +56,26 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        zoom={11}
+        zoom={1}
         style={style}
         initialCenter={{
           lat: 33.976796,
           lng: -118.392161
-        }}>
+        }}
+        onClick={this.onMapClicked}
+        >
+
+        {
+          this.state.earthquakeData.map((info, i) => {
+            console.log(info.geometry.coordinates[0], info.geometry.coordinates[1], info.geometry.type)
+            return <Marker
+              key={i}
+              name={info.geometry.type}
+              position={{lat: info.geometry.coordinates[0], lng: info.geometry.coordinates[1]}}
+              onClick={this.onMarkerClick}
+            />
+          })
+        }
 
         <Marker
           title={'The marker`s title will appear as a tooltip.'}
@@ -75,6 +98,23 @@ export class MapContainer extends Component {
           onClick={this.onMarkerClick}
         />
 
+        <Marker
+          name={'Your position'}
+          position={{lat: 37.762391, lng: -122.439192}}
+          icon={{
+            url: "/path/to/custom_icon.png",
+            anchor: new google.maps.Point(32,32),
+            scaledSize: new google.maps.Size(64,64)
+          }}
+        />
+
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+            </div>
+        </InfoWindow>
       </Map>
     );
   }

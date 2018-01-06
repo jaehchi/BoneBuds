@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import Markers from '../Markers';
-
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -11,6 +9,7 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      eventInfo: 'Pug photo booth poutine, whatever hexagon sustainable iPhone hell of. Meh portland gluten-free kogi sustainable intelligentsia ethical. Narwhal coloring book pinterest raw denim.',
       latLong: [],
       earthquakeData: [],
     }
@@ -91,16 +90,15 @@ export class MapContainer extends Component {
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+            <div id="popupInfo">
+              <h5>{this.state.selectedPlace.name}</h5>
+              {this.state.eventInfo}
             </div>
         </InfoWindow>
       </Map>
     );
   }
 }
-
-
 
 export default GoogleApiWrapper({
   apiKey: ('AIzaSyDh9Qs7nl5RKXwaDmCeo8bt0YG4cb0xnh8')

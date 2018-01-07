@@ -3,6 +3,12 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+
+ .scrollable {
+  overflow-y: scroll;
+  height: 80vh;
+ }
+
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -2159,6 +2165,9 @@ html {
  */
 body {
   margin: 0;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* HTML5 display definitions
@@ -3410,7 +3419,6 @@ nav ul a span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  /* margin-bottom: 20px; */
 }
 
 .row:after {
@@ -3488,8 +3496,8 @@ nav ul a span.badge {
 }
 
 .row .col.s9 {
-  width: 75%;
-  margin: 0;
+  width: 73%;
+  margin: 0 1rem;
   padding: 0;
 }
 
@@ -4211,8 +4219,8 @@ nav {
   color: #fff;
   background-color: #ee6e73;
   width: 100%;
-  height: 56px;
-  line-height: 56px;
+  height: 5rem;
+  line-height: 5rem;
 }
 
 nav.nav-extended {
@@ -4503,9 +4511,9 @@ h2 {
 }
 
 h3 {
-  font-size: 2.92rem;
+  font-size: 3rem;
   line-height: 110%;
-  margin: 1.46rem 0 1.168rem 0;
+  margin: 1rem 0 1rem 0;
 }
 
 h4 {
@@ -4708,7 +4716,7 @@ small {
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
-  padding: 24px;
+  padding: 4px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #fff;
@@ -4716,7 +4724,7 @@ small {
 
 .card {
   position: relative;
-  margin: 0.5rem 0 1rem 0;
+  margin: 0 1rem 1rem 0;
   background-color: #fff;
   -webkit-transition: -webkit-box-shadow .25s;
   transition: -webkit-box-shadow .25s;

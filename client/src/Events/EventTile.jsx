@@ -6,7 +6,7 @@ class EventTile extends Component {
     this.showToast = this.showToast.bind(this)
   }
   showToast() {
-    Materialize.toast('Event Added!', 3000)
+    Materialize.toast('Event Added!', 3000, 'rounded')
   }
 
   render () {

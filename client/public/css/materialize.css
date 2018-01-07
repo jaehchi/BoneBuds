@@ -4,6 +4,11 @@
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 
+ .scrollable {
+  overflow-y: scroll;
+  height: 80vh;
+ }
+
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -2160,6 +2165,7 @@ html {
  */
 body {
   margin: 0;
+  position: absolute;
 }
 
 /* HTML5 display definitions
@@ -4708,7 +4714,7 @@ small {
   transition: -webkit-box-shadow .25s;
   transition: box-shadow .25s;
   transition: box-shadow .25s, -webkit-box-shadow .25s;
-  padding: 24px;
+  padding: 4px;
   margin: 0.5rem 0 1rem 0;
   border-radius: 2px;
   background-color: #fff;

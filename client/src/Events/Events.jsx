@@ -8,7 +8,7 @@ class Events extends Component {
 
   render () {
     return (
-      <div>
+      <div className="scrollable">
         <EventTile/>
         <EventTile/>
         <EventTile/>

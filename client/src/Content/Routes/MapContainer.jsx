@@ -62,7 +62,7 @@ export class MapContainer extends Component {
   render() {
     const style = {
       width:'75%',
-      height: '80%',
+      height: '80vh',
     }
 
     return (

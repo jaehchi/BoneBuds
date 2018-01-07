@@ -21,8 +21,15 @@ const EventController = {
         res.status(500).send(err);
       })
   },
-  retrieveEventFromTiles : (req, res) => {
-    
+  fetchAllEvents : (req, res) => {
+    events.findAll()
+      .then( results => {
+        res.status(200).send(results);
+      })
+      .catch( err => {
+        console.log(err);
+        res.status(500).send(err);
+      })
   }
 }
 

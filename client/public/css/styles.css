@@ -61,15 +61,29 @@
   background: #E74B37;
 }
 .loginLanding {
-	width: 50%;
-	height: 50%;
-	
-
-	position: absolute;
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	
-	margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+/* button styling */
+.emailBtn {
+  display: inline;
+  float: left;
+  position: relative;
+  margin: 5px;
+  top: -30px;
+  right: -35px;
+  background-color: #fff;
+  color: #0ae;
+  box-shadow: 2px 3px #999;
+}
+.emailBtn:hover {
+  background-color: #0ae;
+  color: #fff;
+}
+.emailBtn:active {
+  transform: translateY(3px);
+  box-shadow: 1px 1px #999;
 }

@@ -124,8 +124,12 @@ class LoginLanding extends Component {
           Password:<br />
           <input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
           <br /><br />
-          <input type="submit" value="Login" onClick={this.emailLogin} />
-          <input type="submit" value="Signup" onClick={this.emailSignup} />
+          <div>
+            <button className="emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+          </div>
+          <div>
+            <button className="emailBtn" type="submit" value="Signup" onClick={this.emailSignup}><span className="button__inner">SignUp</span> </button>
+          </div>
         </div>
         <div>
           <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>

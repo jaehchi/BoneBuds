@@ -6,7 +6,7 @@ const MapLocationController = require('./controllers/MapLocationController');
 router.route('/createUser')
   .post(UserController.checkIfUserExists);
 router.route('/popups')
-  .get(MapLocationController.GetEventLocation);
+  .get(MapLocationController.GetAllEvents);
 router.route('/latLong')
   .post(MapLocationController.GetLocationLatLong)
 

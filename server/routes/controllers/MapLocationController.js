@@ -2,15 +2,16 @@ const axios = require('axios');
 const Events = require('../../SQL/models/events');
 
 const MapLocationController = {
-  GetEventLocation: (req, res) => {
-    Events.findAll({ attributes: ['longitude', 'latitude'] })
+  GetAllEvents: (req, res) => {
+    Events.findAll()
       .then((response) =>{
         console.log('Event location data fetched')
         console.log('Event long/lat results:', response);
         res.send(response).status(200);
       })
       .catch((e) => {
-        console.log(e, 'Did Not Find Event Data')
+        console.log(e, 'Did Not Find Event Data');
+        res.status(500);
       })
   },
   GetLocationLatLong: (req, res) => {
@@ -19,10 +20,11 @@ const MapLocationController = {
 
     axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + swapped + '&key=AIzaSyBsL7VlcbDZTbz2CvN6moCFIQOR27U1t6s')
       .then((response) => {
-        res.send(response.data.results[0].geometry.location)
+        res.send(response.data.results[0]).status(200)
       })
       .catch((e)=> {
         console.log('Not able to fetch api data for latLong', e)
+        res.status(500);
       })
   }
 }

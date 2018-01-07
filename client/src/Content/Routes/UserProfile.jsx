@@ -12,11 +12,47 @@ class UserProfile extends Component{
     return (
       <div id="userProfile">
         <h3>User Profile Page</h3>
-        <p>Farm-to-table prism biodiesel dreamcatcher. Vexillologist vinyl godard offal. Vape flexitarian green juice franzen bitters semiotics, lo-fi vinyl echo park godard pok pok offal meh. Typewriter subway tile meh pickled cronut. Austin coloring book lyft bushwick brunch food truck hashtag lo-fi fanny pack affogato YOLO 90's. Roof party swag palo santo, cold-pressed pabst affogato sartorial intelligentsia freegan biodiesel fanny pack kombucha vexillologist.
-        <br/><br/>
-        Oh. You need a little dummy text for your mockup? How quaint.
-        <br/><br/>
-        I bet you’re still using Bootstrap too…</p>
+        <div class="row">
+          <form class="col s12">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Upload</span>
+                <input type="file"/>
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text"/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s6">
+                <input id="first_name" type="text" class="validate"/>
+                <label for="first_name">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="last_name" type="text" class="validate"/>
+                <label for="last_name">Last Name</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="disabled" type="text" class="validate"/>
+                <label for="disabled">Address</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate"/>
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate"/>
+                <label for="email" data-error="enter a valid password" data-success="Success!">Email</label>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }

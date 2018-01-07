@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 class EventTile extends Component {
   constructor () {
     super();
+    this.showToast = this.showToast.bind(this)
+  }
+  showToast() {
+    Materialize.toast('Event Added!', 3000)
   }
 
   render () {
@@ -25,8 +29,8 @@ class EventTile extends Component {
         </div>
 
         <div className="card-action">
-          <a >Share</a>
-          <a >Attend</a>
+          <a>Share</a>
+          <a onClick={this.showToast}>Attend</a>
         </div>
 
         {/* <div className="card">

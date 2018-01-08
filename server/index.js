@@ -4,7 +4,7 @@ const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
 const router = require('./routes');
-const db = require('./SQL/db')
+const db = require('./SQL/db');
 
 const app = express();
 
@@ -16,7 +16,8 @@ app.use(express.static(path.resolve(__dirname, '../client/public')));
 app.get('/userprofile', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
-app.use('/dogs', router);
+
+app.use('/events', router);
 app.use('/users', router);
 
 app.listen(PORT, () => {

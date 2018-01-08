@@ -43,11 +43,11 @@ users.sync()
                 console.log('Comments tables has been synced succesfully');
               })
               .catch ( err => {
-              console.log('Unable to sync Events table', err);
+              console.log('Unable to sync Comments table', err);
               })
           })
           .catch ( err => {
-          console.log('Unable to sync Events table', err);
+          console.log('Unable to sync Post table', err);
           }) 
       })
       .catch ( err => {

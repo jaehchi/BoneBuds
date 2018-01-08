@@ -18,6 +18,7 @@ class UserProfile extends Component{
 
   consoleState() {
     console.log('info being sent to db:', this.state)
+    console.log('passed down props.email:', this.props.currentUser.email)
   }
 
   onChangeHandler(e) {
@@ -29,10 +30,11 @@ class UserProfile extends Component{
   updateUserInfo() {
     const payload = {
       info: this.state,
+      email: this.props.currentUser.email,
     }
     axios.post('/users/update', payload)
       .then((response) => {
-        console.log('User data sent to db for update. Server response:', response)
+        console.log('User data sent to db for update. \nServer response:', response)
       })
       .catch((e) => {
         console.log('User data was not sent to db for update', e)
@@ -45,6 +47,7 @@ class UserProfile extends Component{
         <h3>User Profile Page</h3>
         <button onClick={this.consoleState}>Show State</button>
         <button onClick={this.updateUserInfo}>Update user info</button>
+
         <div className="row">
           <form className="col s12">
 

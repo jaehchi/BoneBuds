@@ -71,7 +71,7 @@ class App extends Component {
                   <Events />
                 </div>
                 <div className="col s9">
-                  <ContentContainer />
+                  <ContentContainer currentUser={this.state.user}/>
                 </div>
               </div>
             </div>

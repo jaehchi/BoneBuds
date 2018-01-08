@@ -13,9 +13,9 @@ const UserController = {
       dogbio: '',
       profileUrl: ''
     })
-      .then(() => {
+      .then((results) => {
         console.log('sqlite user created');
-        res.sendStatus(201);
+        res.status(201).send(results);
       })
       .catch(() => {
         console.error('error creating sqlite user');

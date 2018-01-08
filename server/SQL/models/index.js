@@ -6,13 +6,13 @@ const comments = require('./comments.js');
 users.belongsToMany(events, {
   as: 'users',
   through: 'users_events',
-  foreignKey: 'userID'
+  foreignKey: 'eventsID'
 })
 
 events.belongsToMany(users, {
   as: 'events',
   through: 'users_events',
-  foreignKey: 'eventID'
+  foreignKey: 'userID'
 })
 
 comments.belongsTo(posts, {

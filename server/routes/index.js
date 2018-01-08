@@ -23,7 +23,6 @@ router.route('/createEvent')
   .post(EventController.createEvent);
 
 // Fetches all Events
-
 router.route('/fetchAllEvents')
   .get(EventController.fetchAllEvents);
 

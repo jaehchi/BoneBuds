@@ -43,7 +43,6 @@ class App extends Component {
 
     axios.get('/events/fetchAllEvents')
       .then( eventsResponse => {
-        console.log(eventsResponse, 'event response')
         this.setState({
           events: eventsResponse.data
         })
@@ -69,7 +68,7 @@ class App extends Component {
       });
   }
   render() {
-    console.log(this.state.events, 'herro');
+
     return (
       <div>
         {!this.state.user ?

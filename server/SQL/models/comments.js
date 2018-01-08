@@ -7,7 +7,8 @@ const comments = db.define('comments', {
     autoIncrement: true,
     primaryKey: true
   },
-  text: Sequelize.TEXT,
+  username: Sequelize.STRING,
+  text: Sequelize.STRING,
 })
 
 module.exports = comments;

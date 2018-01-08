@@ -20,7 +20,8 @@ app.get('/userprofile', (req, res) => {
 app.use('/events', router);
 app.use('/users', router);
 app.use('/posts', router);
+app.use('/comments', router);
 
 app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+  console.log(`Server is now listening on port ${PORT}`);
 });

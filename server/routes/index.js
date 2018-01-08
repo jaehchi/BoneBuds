@@ -31,16 +31,17 @@ router.route('/fetchAllEvents')
 router.route('/createPost')
   .post(PostController.createPost);
 
-// Fetches all Post By Event
+// Fetches all Posts By Event
 router.route('/fetchAllPostsByEvent')
   .post(PostController.fetchAllPostsByEvent);
 
 // Create Comment for Post
 router.route('/createComment')
-  .post();
+  .post(CommentController.createComment);
 
+// Fetches All Comments by Post
 router.route('/fetchAllCommentsByPost')
-  .get()
+  .post(CommentController.fetchAllCommentsByPost);
 
 
 

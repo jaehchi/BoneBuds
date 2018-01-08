@@ -31,7 +31,7 @@ class EventTile extends Component {
         </div>
 
         <div className="card-action">
-          <a>Info</a>
+          <a>Share</a>
           <a onClick={this.showToast}>Attend</a>
         </div>
 

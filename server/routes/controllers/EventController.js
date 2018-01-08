@@ -6,7 +6,7 @@ const EventController = {
       title: req.body.title,
       date: req.body.date,
       time: req.body.time,
-      owner: req.body.owner.displayName,
+      owner: req.body.owner,
       latitude : req.body.latitude,
       longitude: req.body.longitude,
       description : req.body.description,

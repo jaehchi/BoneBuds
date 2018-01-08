@@ -6,13 +6,13 @@ const comments = require('./comments.js');
 users.belongsToMany(events, {
   as: 'users',
   through: 'users_events',
-  foreignKey: 'userID'
+  foreignKey: 'eventsID'
 })
 
 events.belongsToMany(users, {
   as: 'events',
   through: 'users_events',
-  foreignKey: 'eventID'
+  foreignKey: 'userID'
 })
 
 comments.belongsTo(posts, {
@@ -43,11 +43,11 @@ users.sync()
                 console.log('Comments tables has been synced succesfully');
               })
               .catch ( err => {
-              console.log('Unable to sync Events table', err);
+              console.log('Unable to sync Comments table', err);
               })
           })
           .catch ( err => {
-          console.log('Unable to sync Events table', err);
+          console.log('Unable to sync Post table', err);
           }) 
       })
       .catch ( err => {

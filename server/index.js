@@ -4,7 +4,7 @@ const express = require('express');
 const parser = require('body-parser');
 const path = require('path');
 const router = require('./routes');
-const db = require('./SQL/db')
+const db = require('./SQL/db');
 
 const app = express();
 
@@ -16,9 +16,18 @@ app.use(express.static(path.resolve(__dirname, '../client/public')));
 app.get('/userprofile', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
-app.use('/dogs', router);
+
+//
+app.get('/eventprofile', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
+})
+
+
+app.use('/events', router);
 app.use('/users', router);
+app.use('/posts', router);
+app.use('/comments', router);
 
 app.listen(PORT, () => {
-  console.log(`listening on port ${PORT}`);
+  console.log(`Server is now listening on port ${PORT}`);
 });

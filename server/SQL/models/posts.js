@@ -8,7 +8,7 @@ const posts = db.define('posts', {
     primaryKey: true
   },
   username: Sequelize.STRING,
-  text: Sequelize.TEXT,
+  text: Sequelize.STRING,
 })
 
 module.exports = posts;

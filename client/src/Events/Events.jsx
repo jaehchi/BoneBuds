@@ -1,19 +1,27 @@
-import React, { Component } from 'react';
-import EventTile from './EventTile.jsx';
+import React, { Component } from "react";
+import EventTile from "./EventTile.jsx";
 
 class Events extends Component {
-  constructor () {
+  constructor() {
     super();
   }
 
-  render () {
+  render() {
+    console.log("event props", this.props);
     return (
       <div className="scrollable">
-        <EventTile/>
-        <EventTile/>
-        <EventTile/>
+        {this.props.events.map(event => {
+          return (
+            <EventTile
+              key={event.eventID}
+              id={event.eventID}
+              value={event.eventID}
+              event={event}
+            />
+          );
+        })}
       </div>
-    )
+    );
   }
 }
 

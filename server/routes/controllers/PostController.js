@@ -27,7 +27,6 @@ const PostController = {
       })
   },
   fetchAllPostsByEvent: (req, res) => {
-    console.log(req.body.eventID)
     posts.findAll({
       where: {
         eventID: req.body.eventID

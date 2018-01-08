@@ -5,8 +5,12 @@ const UserController = {
     users.create({
       userID: `${req.body.userId}`,
       username: `${req.body.username}`,
-      description: null,
+      firstname: null,
+      lastname: null,
+      address: null,
       email: `${req.body.email}`,
+      dogname: null,
+      dogbio: null,
       profileUrl: null
     })
       .then(() => {

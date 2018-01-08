@@ -8,8 +8,12 @@ const users = db.define('users', {
     primaryKey: true
   },
   username: Sequelize.STRING,
-  description: Sequelize.STRING,
+  firstname: Sequelize.STRING,
+  lastname: Sequelize.STRING,
+  address: Sequelize.STRING,
   email: { type: Sequelize.STRING, unique: true },
+  dogname: Sequelize.STRING,
+  dogbio: Sequelize.STRING,
   profileUrl: Sequelize.STRING,
 })
 

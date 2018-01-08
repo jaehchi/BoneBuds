@@ -29,22 +29,22 @@ class UserProfile extends Component{
 
             <div class="row">
               <div class="input-field col s12">
-                <input id="disabled" type="text" class="validate"/>
-                <label for="disabled">Address</label>
+                <input id="address" type="text" class="validate"/>
+                <label for="address">Address</label>
               </div>
             </div>
 
             <div class="row">
               <div class="input-field col s12">
-                <input id="password" type="password" class="validate"/>
-                <label for="password">Password</label>
+                <input id="dogname" type="text" class="validate"/>
+                <label for="dogname">Dog Name</label>
               </div>
             </div>
 
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" type="email" class="validate"/>
-                <label for="email" data-error="enter a valid password" data-success="Success!">Email</label>
+                <input id="dogbio" type="text" class="validate"/>
+                <label for="dogbio">Dog Bio</label>
               </div>
             </div>
 
@@ -56,3 +56,10 @@ class UserProfile extends Component{
 }
 
 export default UserProfile;
+
+// <div class="row">
+//   <div class="input-field col s12">
+//     <input id="email" type="email" class="validate"/>
+//     <label for="email" data-error="enter a valid password" data-success="Success!">Email</label>
+//   </div>
+// </div>

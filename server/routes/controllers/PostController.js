@@ -25,6 +25,20 @@ const PostController = {
       .catch( error => {
         res.status(500).send(error);
       })
+  },
+  fetchAllPostsByEvent: (req, res) => {
+    console.log(req.body.eventID)
+    posts.findAll({
+      where: {
+        eventID: req.body.eventID
+      }
+    })
+      .then( results => {
+        res.status(201).send(results);
+      })
+      .catch( err => {
+        res.status(500).send(err);
+      })
   }
   
 }

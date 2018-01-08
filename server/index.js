@@ -19,6 +19,7 @@ app.get('/userprofile', (req, res) => {
 
 app.use('/events', router);
 app.use('/users', router);
+app.use('/posts', router);
 
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);

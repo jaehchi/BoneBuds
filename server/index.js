@@ -17,6 +17,12 @@ app.get('/userprofile', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
 
+//
+app.get('/eventprofile', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
+})
+
+
 app.use('/events', router);
 app.use('/users', router);
 app.use('/posts', router);

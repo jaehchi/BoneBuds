@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class EventTile extends Component {
   constructor () {
     super();
-    this.showToast = this.showToast.bind(this)
+
+    this.showToast = this.showToast.bind(this);
+    // this.onClick = this.onClick.bind(this);
   }
   showToast() {
     Materialize.toast('Event Added!', 3000, 'rounded')
   }
+
+  // onClick () {
+  //   console.log(this.props.event.eventID)
+  // }
 
   render () {
     console.log(this.props)
@@ -28,7 +35,7 @@ class EventTile extends Component {
         </div>
 
         <div className="card-action">
-          <a>View</a>
+          <Link to="/eventprofile" id={this.props.event.eventID}>View</Link>
           <a onClick={this.showToast}>Attend</a>
         </div>
 

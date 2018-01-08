@@ -2,7 +2,7 @@ const axios = require('axios');
 const Events = require('../../SQL/models/events');
 
 const MapLocationController = {
-  GetAllEvents: (req, res) => {
+  getAllEvents: (req, res) => {
     Events.findAll()
       .then((response) =>{
         console.log('Event location data fetched')
@@ -14,7 +14,7 @@ const MapLocationController = {
         res.status(500);
       })
   },
-  GetLocationLatLong: (req, res) => {
+  getLocationLatLong: (req, res) => {
     const query = req.body.query;
     const swapped = query.replace(/\s/g, '+');
 

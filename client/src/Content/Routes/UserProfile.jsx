@@ -14,6 +14,7 @@ class UserProfile extends Component{
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.updateUserInfo = this.updateUserInfo.bind(this);
+    this.showToast = this.showToast.bind(this);
   }
 
   componentWillMount() {
@@ -26,19 +27,25 @@ class UserProfile extends Component{
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
         })
-        console.log('Pre-fetched user info:', res.data)
+        console.log('Pre-fetching user data... \nserver response:', res)
+      })
+      .then(() => {
+        this.props.setName(this.state.firstname);
       })
   }
 
   consoleState() {
-    console.log('info being sent to db:', this.state)
-    console.log('passed down props:', this.props.currentUser)
+    console.log('info being sent to db:', this.state);
   }
 
   onChangeHandler(e) {
     this.setState({
       [e.target.name]: e.target.value,
     })
+  }
+
+  showToast() {
+    Materialize.toast('User Info Updated!', 3000, 'rounded');
   }
 
   updateUserInfo() {
@@ -48,7 +55,8 @@ class UserProfile extends Component{
     }
     axios.post('/users/update', payload)
       .then((response) => {
-        console.log('User data sent to db for update. \nServer response:', response)
+        console.log('User data updating... \nServer response:', response.data);
+        this.showToast();
       })
       .catch((e) => {
         console.log('User data was not sent to db for update', e)
@@ -58,14 +66,14 @@ class UserProfile extends Component{
   render() {
     return (
       <div id="userProfile">
-        <h3>User Profile Page</h3>
+        <h3>Profile</h3>
         <button onClick={this.consoleState}>Show State</button>
         <button onClick={this.updateUserInfo}>Update user info</button>
 
         <div className="row">
           <form className="col s12">
-
             <div className="row">
+
               <div className="input-field col s6">
                 <input
                   placeholder={this.state.firstname}
@@ -117,13 +125,13 @@ class UserProfile extends Component{
 
             <div className="row">
               <div className="input-field col s12">
-                <input
+                <textarea
                   placeholder={this.state.dogbio}
                   name="dogbio"
                   type="text"
-                  className="validate"
+                  className="materialize-textarea"
                   onChange={this.onChangeHandler}
-                />
+                ></textarea>
                 <label htmlFor="dogbio">Dog Bio</label>
               </div>
             </div>

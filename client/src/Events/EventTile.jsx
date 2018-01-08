@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class EventTile extends Component {
   constructor () {
     super();
     this.showToast = this.showToast.bind(this)
   }
+
   showToast() {
     Materialize.toast('Event Added!', 3000, 'rounded')
   }
@@ -29,7 +31,7 @@ class EventTile extends Component {
         </div>
 
         <div className="card-action">
-          <a>Share</a>
+          <a>Info</a>
           <a onClick={this.showToast}>Attend</a>
         </div>
 

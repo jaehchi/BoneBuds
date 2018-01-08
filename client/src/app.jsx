@@ -17,6 +17,7 @@ class App extends Component {
     }
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
+    this.setName = this.setName.bind(this);
   }
   componentDidMount() {
     const usersRef = firebase.database().ref('users');
@@ -27,7 +28,8 @@ class App extends Component {
         newState.push({
           id: users[user].uid,
           email: users[user].email,
-          user: users[user].displayName
+          user: users[user].displayName,
+          name: '',
         });
       }
       this.setState({
@@ -56,6 +58,11 @@ class App extends Component {
         alert('logout successful');
       });
   }
+  setName(name) {
+    this.setState({
+      name,
+    })
+  }
   render() {
     return (
       <div>
@@ -64,14 +71,14 @@ class App extends Component {
           :
           <div>
             <Nav logout={this.logout}/>
-            <h3>Welcome, {this.state.user.displayName || this.state.user.email}</h3>
+            <h3>Welcome, {this.state.name || this.state.user.displayName || this.state.user.email}</h3>
             <div className="container">
               <div className="row">
                 <div className="col s3" >
                   <Events />
                 </div>
                 <div className="col s9">
-                  <ContentContainer currentUser={this.state.user}/>
+                  <ContentContainer currentUser={this.state.user} setName={this.setName} users={this.state.users}/>
                 </div>
               </div>
             </div>

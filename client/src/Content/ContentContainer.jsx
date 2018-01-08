@@ -7,7 +7,7 @@ const ContentContainer = (props) => (
   <main>
     <Switch>
       <Route exact path='/' component={MapContainer} />
-      <Route path='/userprofile' render={ () => (<UserProfile currentUser={props.currentUser}/>) } />
+      <Route path='/userprofile' render={ () => (<UserProfile currentUser={props.currentUser} setName={props.setName}/>) } />
     </Switch>
   </main>
 )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ export class MapContainer extends Component {
       eventInfo: 'Pug photo booth poutine, whatever hexagon sustainable iPhone hell of. Meh portland gluten-free kogi sustainable intelligentsia ethical. Narwhal coloring book pinterest raw denim.',
       latLong: [],
       earthquakeData: [],
+      hasSetUserInfo: false,
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
@@ -21,11 +23,11 @@ export class MapContainer extends Component {
   componentWillMount() {
     axios.get('users/popups')
       .then((response) => {
-        console.log('Pre-fetched lat long info', response)
+        console.log('Pre-fetching coordinates data... \nserver response:', response)
       })
       .catch((e) => {
         console.log('Was Not Able to GET latLong info from db', e);
-      })
+      });
   }
 
   componentDidMount() {

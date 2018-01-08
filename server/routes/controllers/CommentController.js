@@ -1,7 +1,7 @@
 const { users, events, posts, comments } = require('../../sql/models');
 
 const CommentController = {
-  createPost: (req, res) => {
+  createComment: (req, res) => {
     console.log(req.body)
     posts.find({
       where : {

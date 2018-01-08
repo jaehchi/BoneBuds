@@ -7,6 +7,7 @@ class Events extends Component {
   }
 
   render () {
+    console.log('event props' , this.props);
     return (
       <div className="scrollable">
         <EventTile/>

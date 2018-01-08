@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       users: [],
-      user: null
+      user: null,
+      events: []
     }
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
@@ -39,6 +40,17 @@ class App extends Component {
         this.setState({ user });
       }
     });
+
+    axios.get('/events/fetchAllEvents')
+      .then( eventsResponse => {
+        console.log(eventsResponse, 'event response')
+        this.setState({
+          events: eventsResponse.data
+        })
+      })
+      .catch( err => {
+        console.log(err);
+      })
   }
   handleUserToken() {
     auth.onAuthStateChanged((user) => {
@@ -57,6 +69,7 @@ class App extends Component {
       });
   }
   render() {
+    console.log(this.state.events, 'herro');
     return (
       <div>
         {!this.state.user ?
@@ -68,7 +81,7 @@ class App extends Component {
             <div className="container">
               <div className="row">
                 <div className="col s3" >
-                  <Events />
+                  <Events events={this.state.events}/>
                 </div>
                 <div className="col s9">
                   <ContentContainer currentUser={this.state.user}/>

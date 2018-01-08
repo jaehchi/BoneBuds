@@ -9,7 +9,9 @@ router.route('/popups')
   .get(MapLocationController.GetAllEvents);
 router.route('/latLong')
   .post(MapLocationController.GetLocationLatLong)
-router.route('/update')
+router.route('/update/')
   .post(UserController.updateUserProfile)
+router.route('/update/:uid')
+  .get(UserController.getUsersSavedInfo)
 
 module.exports = router;

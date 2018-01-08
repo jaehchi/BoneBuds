@@ -5,20 +5,34 @@ class UserProfile extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      firstname: null,
-      lastname: null,
-      address: null,
-      dogname: null,
-      dogbio: null,
+      firstname: '',
+      lastname: '',
+      address: '',
+      dogname: '',
+      dogbio: '',
     }
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.updateUserInfo = this.updateUserInfo.bind(this);
   }
 
+  componentWillMount() {
+    axios.get('/users/update/' + this.props.currentUser.uid)
+      .then((res) => {
+        this.setState({
+          firstname: res.data.firstname,
+          lastname: res.data.lastname,
+          address: res.data.address,
+          dogname: res.data.dogname,
+          dogbio: res.data.dogbio,
+        })
+        console.log('Pre-fetched user info:', res.data)
+      })
+  }
+
   consoleState() {
     console.log('info being sent to db:', this.state)
-    console.log('passed down props.email:', this.props.currentUser.email)
+    console.log('passed down props:', this.props.currentUser)
   }
 
   onChangeHandler(e) {
@@ -54,6 +68,7 @@ class UserProfile extends Component{
             <div className="row">
               <div className="input-field col s6">
                 <input
+                  placeholder={this.state.firstname}
                   name="firstname"
                   type="text"
                   className="validate"
@@ -64,6 +79,7 @@ class UserProfile extends Component{
 
               <div className="input-field col s6">
                 <input
+                  placeholder={this.state.lastname}
                   name="lastname"
                   type="text"
                   className="validate"
@@ -76,6 +92,7 @@ class UserProfile extends Component{
             <div className="row">
               <div className="input-field col s12">
                 <input
+                  placeholder={this.state.address}
                   name="address"
                   type="text"
                   className="validate"
@@ -88,6 +105,7 @@ class UserProfile extends Component{
             <div className="row">
               <div className="input-field col s12">
                 <input
+                  placeholder={this.state.dogname}
                   name="dogname"
                   type="text"
                   className="validate"
@@ -100,6 +118,7 @@ class UserProfile extends Component{
             <div className="row">
               <div className="input-field col s12">
                 <input
+                  placeholder={this.state.dogbio}
                   name="dogbio"
                   type="text"
                   className="validate"

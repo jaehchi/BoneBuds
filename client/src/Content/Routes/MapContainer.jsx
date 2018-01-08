@@ -21,10 +21,10 @@ export class MapContainer extends Component {
   componentWillMount() {
     axios.get('users/popups')
       .then((response) => {
-        console.log(response, 'Component Will Mount; Getting LatLong Info')
+        console.log('Pre-fetched lat long info', response)
       })
       .catch((e) => {
-        console.log(e, 'Was Not Able to GET latLong info from db');
+        console.log('Was Not Able to GET latLong info from db', e);
       })
   }
 
@@ -68,7 +68,7 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        zoom={3}
+        zoom={13}
         style={style}
         initialCenter={{
           lat: 33.976796,

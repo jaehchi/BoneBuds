@@ -31,7 +31,7 @@ const UserController = {
       dogname: user.dogname,
       dogbio: user.dogbio,
     }, { where: { email: req.body.email }, returning: true, plain: true })
-      .then((result) => {
+      .then(() => {
         console.log('DB found:', req.body.email);
         res.send(`${req.body.info.firstname}'s account has been updated`);
       })
@@ -40,7 +40,13 @@ const UserController = {
         console.log(err);
         res.status(500);
       })
-  }
+  },
+  getUsersSavedInfo: (req, res) => {
+    users.find({ where: { userID: req.params.uid } })
+      .then((result) => {
+        res.send(result)
+      })
+  },
 }
 
 module.exports = UserController;

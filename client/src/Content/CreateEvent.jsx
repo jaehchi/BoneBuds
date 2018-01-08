@@ -34,38 +34,48 @@ class CreateEvent extends Component {
 
   render () {
     return (
-      <div>
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s6">
-                <i class="material-icons prefix">title</i>
-                <input id="icon_prefix" type="text" class="validate" data-length="25"/>
+      <div className="valign-wrapper">
+        <div className="row">
+          <form className="col s12">
+            <div className="row">
+              <h1 className="header center teal-text text-lighten-2">Create an Event!</h1>
+            </div>
+            <div className="row">
+              <div className="input-field col s12">
+                <i className="material-icons prefix">title</i>
+                <input id="icon_prefix" type="text" className="validate" data-length="25"/>
                 <label for="icon_prefix">Event Title</label>
               </div>
             </div>
 
-          {/* <form class="col s12"> */}
-            <div class="row">
-              <div class="input-field col s6">
-                <i class="material-icons prefix">description</i>
-                <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+          {/* <form className="col s12"> */}
+            <div className="row">
+              <div className="input-field col s12">
+                <i className="material-icons prefix">description</i>
+                <textarea id="textarea1" className="materialize-textarea" data-length="120"></textarea>
                 <label for="textarea1">Description</label>
               </div>
             </div>
-          {/* </form> */}
-            <div class="row">  
-              <div id="date-picker" class="section scrollspy col s6">
-              <i class="material-icons prefix">date_range</i>
-                <label for="eventdate">Event Date</label>
-                <input id="eventdate" type="text" class="datepicker"/>
+            <div className="row">
+              <div className="input-field col s12">
+                <i className="material-icons prefix">gesture</i>
+                <textarea id="textarea1" className="materialize-textarea" data-length="120"></textarea>
+                <label for="textarea1">Tag</label>
               </div>
             </div>
-            <div class="row">  
-              <div id="time-picker" class="section scrollspy col s6">
-              <i class="material-icons prefix">access_time</i>
+          {/* </form> */}
+            <div className="row">  
+              <div id="date-picker" className="section scrollspy col s12">
+              <i className="material-icons prefix">date_range</i>
+                <label for="eventdate">Event Date</label>
+                <input id="eventdate" type="text" className="datepicker"/>
+              </div>
+            </div>
+            <div className="row">  
+              <div id="time-picker" className="section scrollspy col s12">
+              <i className="material-icons prefix">access_time</i>
                 <label for="eventtime">Event Time</label>
-                <input id="eventtime" type="text" class="timepicker"/>
+                <input id="eventtime" type="text" className="timepicker"/>
               </div> 
             </div>
           </form>

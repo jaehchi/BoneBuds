@@ -22,7 +22,7 @@ class EventTile extends Component {
 
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4">Card Title<i className="material-icons right">close</i></span>
-          <p>90's letterpress stumptown, cliche chicharrones cold-pressed cloud bread skateboard tumeric helvetica woke post-ironic next level pok pok. Knausgaard biodiesel polaroid ethical, brooklyn gentrify cronut migas.
+          <p>90's letterpress stumptown, cliche chicharrones cold-pressed cloud bread skateboard tumeric pok pok. Knausgaard biodiesel polaroid ethical, brooklyn gentrify cronut migas.
           <br /><br />
           Art party letterpress taiyaki try-hard, gentrify retro tumblr heirloom narwhal.
           </p>

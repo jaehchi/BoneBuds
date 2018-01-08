@@ -23,8 +23,23 @@ const UserController = {
       })
   },
   updateUserProfile: (req, res) => {
-    console.log('this is upadate user profile body:', req.body);
-    res.send('server recieved data');
+    const user = req.body.info;
+    users.update({
+      firstname: user.firstname,
+      lastname: user.lastname,
+      address: user.address,
+      dogname: user.dogname,
+      dogbio: user.dogbio,
+    }, { where: { email: req.body.email }, returning: true, plain: true })
+      .then((result) => {
+        console.log('DB found:', req.body.email);
+        res.send(`${req.body.info.firstname}'s account has been updated`);
+      })
+      .catch((err) => {
+        console.log('DB could not find:', req.body.email);
+        console.log(err);
+        res.status(500);
+      })
   }
 }
 

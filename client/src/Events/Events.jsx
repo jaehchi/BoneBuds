@@ -10,9 +10,11 @@ class Events extends Component {
     console.log('event props' , this.props);
     return (
       <div className="scrollable">
-        <EventTile/>
-        <EventTile/>
-        <EventTile/>
+        {
+          this.props.events.map( event => {
+            return <EventTile key={event.eventID} id={event.eventID} event={event}/>
+        })
+        }
       </div>
     )
   }

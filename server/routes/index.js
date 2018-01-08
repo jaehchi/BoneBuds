@@ -33,7 +33,7 @@ router.route('/createPost')
 
 // Fetches all Post By Event
 router.route('/fetchAllPostsByEvent')
-  .get();
+  .post(PostController.fetchAllPostsByEvent);
 
 // Create Comment for Post
 router.route('/createComment')

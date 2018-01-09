@@ -22,6 +22,22 @@ const EventController = {
         res.status(500).send(err);
       });
   },
+  editEvent: (req, res) => {
+    console.log('edit event. req.body.info:', req.body.info);
+    const event = req.body.info
+    events.update({
+      title: event.title,
+      date: event.date,
+      time: event.time,
+      owner: event.owner,
+      latitude: event.latitude,
+      longitude: event.longitude,
+      description: event.description,
+      tag: event.tag,
+      image: event.image,
+      userID: event.owner.uid
+    })
+  },
   fetchAllEvents: (req, res) => {
     events
       .findAll()

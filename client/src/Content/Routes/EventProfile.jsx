@@ -40,22 +40,25 @@ class EventProfile extends Component {
                   <p>{this.props.event.description}</p>
                 </div>
                 <div class="card-action row">
-                  <div class="col s4 card-action-share">
+                  <div class="col s2 card-action-share">
                     <a href="#"><i className="material-icons left">thumb_up</i></a>                          
                     <a href="#">Share</a>
                   </div>
                   
-                  <div class="input-field col s8 margin">
+                  <div class="input-field col s10 margin">
                     <input id="profile-comments" type="text" class="validate margin"/>
                     <label for="profile-comments" class="">Comments</label>
+
                   </div>                        
+                    <div className="row small right">
+                        { this.props.posts.map( post => {
+                          return ( <Post postID={post.postID} post={post}/> );
+                        })}
+                    </div>    
                 </div>                        
               </div>
 
             
-            { this.props.posts.map( post => {
-              return ( <Post postID={post.postID} post={post}/> );
-            })}
             </div>
           </div>
         </div>

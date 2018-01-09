@@ -59,7 +59,8 @@ class Post extends Component {
               <input id="profile-comments" type="text" className="validate margin" placeholder="Write a reply!"/>
               <label for="profile-comments" className="">Comments</label>
             </div>
-            <div className="row col s6 small right">
+
+            <div className="row col s10 small right">
               {this.state.comments.map( comment => {
                 return  ( <Comment comment={comment}/> )
               })}

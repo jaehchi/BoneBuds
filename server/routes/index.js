@@ -35,6 +35,10 @@ router.route('/createPost')
 router.route('/fetchAllPostsByEvent')
   .post(PostController.fetchAllPostsByEvent);
 
+// Fetch event by ID
+router.route('/fetchByEventID')
+  .post(EventController.fetchByEventID);
+
 // Create Comment for Post
 router.route('/createComment')
   .post(CommentController.createComment);

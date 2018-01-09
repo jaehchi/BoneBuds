@@ -5,20 +5,23 @@ class EventTile extends Component {
   constructor () {
     super();
 
+    this.state = {
+      eventID: this.props
+    }
+
     this.showToast = this.showToast.bind(this);
-    // this.onClick = this.onClick.bind(this);
+    this.eventClick = this.eventClick.bind(this);
   }
 
   showToast() {
     Materialize.toast('Event Added!', 3000, 'rounded')
   }
 
-  // onClick () {
-  //   console.log(this.props.event.eventID)
-  // }
+  eventClick () {
+    this.props.click(this.props.id);
+  }
 
   render () {
-    console.log(this.props)
     return (
 
       <div className="card card-panel hoverable sticky-action">
@@ -36,7 +39,7 @@ class EventTile extends Component {
         </div>
 
         <div className="card-action">
-          <Link to="/eventprofile" id={this.props.event.eventID}>View</Link>
+          <Link to="/eventprofile" onClick={this.eventClick}>View</Link>
           <a onClick={this.showToast}>Attend</a>
         </div>
 

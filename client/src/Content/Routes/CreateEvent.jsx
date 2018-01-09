@@ -34,7 +34,6 @@ class CreateEvent extends Component {
 
   render () {
     return (
-      <div className="valign-wrapper">
         <div className="row">
           <form className="col s12">
             <div className="row">
@@ -80,7 +79,7 @@ class CreateEvent extends Component {
             </div>
           </form>
         </div>
-      </div>
+
     )
   }
 }

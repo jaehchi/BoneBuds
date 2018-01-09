@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Post from '../Post'
+import Post from '../Post';
+import axios from 'axios';
 
 
 class EventProfile extends Component {
@@ -7,18 +8,18 @@ class EventProfile extends Component {
     super();
 
     this.state = {
+      event: {
+        data: []
+      },
       posts: []
     }
   }
-  componentDidMount () {
-    
-  }
 
   render () {
-    console.log(this.state, 'props')
+  
     return (
       <div id="eventProfile">
-      it worked fucker
+      <h5>{this.props.event.title}</h5>
         <Post/>
       </div>
     )

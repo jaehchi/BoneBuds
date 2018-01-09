@@ -4,23 +4,19 @@ import axios from 'axios';
 
 
 class EventProfile extends Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
 
-    this.state = {
-      event: {
-        data: []
-      },
-      posts: []
-    }
   }
 
   render () {
-    console.log('Event profile props: ', this.props)
+
     return (
       <div id="eventProfile">
       <h5>{this.props.event.title}</h5>
-        <Post/>
+      { this.props.posts.map( post => {
+        return ( <Post postID={post.postID}/> );
+      })}
       </div>
     )
   }

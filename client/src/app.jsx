@@ -24,7 +24,6 @@ class App extends Component {
     this.logout = this.logout.bind(this);
     this.setName = this.setName.bind(this);
     this.onClick = this.onClick.bind(this);
-    this.onChangePost = this.onChangePost.bind(this);
     this.onSubmitPost = this.onSubmitPost.bind(this);
   }
   componentDidMount() {
@@ -129,12 +128,6 @@ class App extends Component {
         console.log(err);
       })
       
-  }
-
-  onChangePost(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
   }
 
 

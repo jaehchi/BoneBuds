@@ -75,7 +75,7 @@ class EventProfile extends Component {
 
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
-    console.log(this.props, 'event profile')
+    
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">

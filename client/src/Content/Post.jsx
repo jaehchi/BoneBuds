@@ -42,7 +42,7 @@ class Post extends Component {
 
     axios.post('/comments/createComment', payload)
       .then( response => {
-        console.log(response);
+  
         this.setState({
           comments: response.data
         })

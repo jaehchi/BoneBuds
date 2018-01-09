@@ -7,14 +7,13 @@ class Post extends Component {
     super(props);
   
     this.state = {
-      comments: []
+      comments: [],
+      comment: ''
     }
+
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);  
   }
-  // componentWillMount () {
-  //   this.setState({
-  //     comments: []
-  //   })
-  // }
 
   componentDidMount () {
 
@@ -33,8 +32,39 @@ class Post extends Component {
       })
   }
 
+  onSubmit (e) {
+    e.preventDefault()
+    
+    const payload = {
+      postID: this.props.postID,
+      text: this.state.comment,
+      username: this.props.user
+    }
+
+    axios.post('/comments/createComment', payload)
+      .then( response => {
+        console.log(response);
+        this.setState({
+          comments: response.data
+        })
+      })
+      .catch( err => {
+        console.log(err);
+      })
+    
+     e.target.reset();
+  }
+
+  onChangeHandler(e) {
+    console.log(e.target.value)
+    this.setState({
+      [e.target.name]: e.target.value,
+    })
+    console.log(this.state)
+  }
+
   render () {
-    console.log(this.props.postID);
+    console.log(this.props, 'herror');
     return (
       <div> 
         <div id="profile-page-wall-post" className="card blue lighten-5 ">
@@ -62,14 +92,24 @@ class Post extends Component {
               <a href="#"><i className="material-icons left">thumb_up</i></a>                          
             </div>
             
-            <div className="input-field col s10 margin right">
-              <input id="profile-comments" type="text" className="validate margin" placeholder="Write a reply!"/>
-              <label for="profile-comments" className="">Comments</label>
-            </div>
-
+              <div className="input-field col s10 margin right">
+                <form onSubmit={this.onSubmit} >
+                  <input
+                    id="profile-comments"
+                    type="text"
+                    name="comment"
+                    className="validate margin" 
+                    onChange={this.onChangeHandler}
+                  />
+                </form>
+                <label htmlFor="profile-comments" className="">Comments</label>
+                <h5 className="right">Comments</h5>
+              </div>
+            
+            
             <div className="row col s10 small right">
               {this.state.comments.map( comment => {
-                return  ( <Comment key={comment.id} comment={comment}/> )
+                return  ( <Comment key={comment.id} comment={comment} /> )
               })}
             </div>                      
           </div>  

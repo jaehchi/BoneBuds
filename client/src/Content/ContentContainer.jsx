@@ -17,16 +17,23 @@ const ContentContainer = props => {
         />
         <Route
           path="/eventprofile"
-          render={() => <EventProfile eventID={props.eventID} event={props.event}  posts={props.posts} />}
+          render={() => (
+            <EventProfile
+              eventID={props.eventID}
+              event={props.event}
+              posts={props.posts}
+              currentUser={props.currentUser}
+            />
+          )}
         />
-        <Route
-          path="/createEvent"
-          render={() => <CreateEvent/>}
-        />
+<<<<<<< HEAD
         <Route
           path="/editEvent"
           render={() => <EditEvent />}
         />
+=======
+        <Route path="/createEvent" render={() => <CreateEvent />} />
+>>>>>>> [add] - adding posting comments functionality
       </Switch>
     </main>
   );

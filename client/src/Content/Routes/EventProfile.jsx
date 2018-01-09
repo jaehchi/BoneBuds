@@ -10,6 +10,7 @@ class EventProfile extends Component {
   }
 
   render () {
+    // console.log(this.props.currentUser.displayName, 'eventprofile')
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts"class="row">
@@ -51,12 +52,13 @@ class EventProfile extends Component {
                   
                   <div class="input-field col s10 margin">
                     <input id="profile-comments" type="text" class="validate margin"/>
-                    <label for="profile-comments" class="">Comments</label>
+                    <label for="profile-comments" class="">Posts</label>
 
-                  </div>                        
+                  </div>
+                    <h5 className="right">Replies</h5>
                     <div className="row small right">
                         { this.props.posts.map( post => {
-                          return ( <Post key={post.postID} postID={post.postID} post={post}/> );
+                          return ( <Post key={post.postID} postID={post.postID} post={post} user={this.props.currentUser.displayName}/> );
                         })}
                     </div>    
                 </div>                        

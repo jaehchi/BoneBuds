@@ -27,7 +27,7 @@ class UserProfile extends Component{
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
         })
-        console.log('Pre-fetching user data... \nserver response:', res)
+        console.log('Pre-fetching user data... \nServer response:', res)
       })
       .then(() => {
         this.props.setName(this.state.firstname);

@@ -13,7 +13,7 @@ const ContentContainer = props => {
         <Route exact path="/" component={MapContainer} />
         <Route
           path="/userprofile"
-          render={() => <UserProfile currentUser={props.currentUser} />}
+          render={() => <UserProfile currentUser={props.currentUser} setName={props.setName}/>}
         />
         <Route
           path="/eventprofile"

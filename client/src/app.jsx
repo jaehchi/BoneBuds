@@ -24,6 +24,8 @@ class App extends Component {
     this.logout = this.logout.bind(this);
     this.setName = this.setName.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.onChangePost = this.onChangePost.bind(this);
+    this.onSubmitPost = this.onSubmitPost.bind(this);
   }
   componentDidMount() {
     const usersRef = firebase.database().ref("users");
@@ -115,6 +117,27 @@ class App extends Component {
       })
   }
 
+  onSubmitPost(payload) {
+ 
+    axios.post('posts/createPost', payload)
+      .then( response => {
+        this.setState({
+          posts: response.data
+        })
+      })
+      .catch( err => {
+        console.log(err);
+      })
+      
+  }
+
+  onChangePost(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+
   render() {
   
     return (
@@ -146,6 +169,8 @@ class App extends Component {
                     eventID={this.state.currentEventID}
                     event={this.state.currentEvent}
                     posts={this.state.posts}
+                    submit={this.onSubmitPost}
+                    change={this.onChangePost}
                   />
                 </div>
               </div>

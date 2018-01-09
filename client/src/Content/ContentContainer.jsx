@@ -23,6 +23,8 @@ const ContentContainer = props => {
               event={props.event}
               posts={props.posts}
               currentUser={props.currentUser}
+              change={props.change}
+              submit={props.submit}
             />
           )}
         />

@@ -55,15 +55,13 @@ class Post extends Component {
   }
 
   onChangeHandler(e) {
-    console.log(e.target.value)
     this.setState({
       [e.target.name]: e.target.value,
     })
-    console.log(this.state)
   }
 
   render () {
-    console.log(this.props, 'herror');
+
     return (
       <div> 
         <div id="profile-page-wall-post" className="card blue lighten-5 ">

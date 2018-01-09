@@ -10,8 +10,14 @@ class Post extends Component {
       comments: []
     }
   }
+  // componentWillMount () {
+  //   this.setState({
+  //     comments: []
+  //   })
+  // }
 
   componentDidMount () {
+
     const payload = {
       postID: this.props.postID
     }
@@ -28,6 +34,7 @@ class Post extends Component {
   }
 
   render () {
+    console.log(this.props.postID);
     return (
       <div> 
         <div id="profile-page-wall-post" className="card blue lighten-5 ">
@@ -62,7 +69,7 @@ class Post extends Component {
 
             <div className="row col s10 small right">
               {this.state.comments.map( comment => {
-                return  ( <Comment comment={comment}/> )
+                return  ( <Comment key={comment.id} comment={comment}/> )
               })}
             </div>                      
           </div>  

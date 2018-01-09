@@ -91,27 +91,29 @@ class App extends Component {
           currentEventID: id,
           currentEvent: eventResponse.data
         });
-
-        const payloadForPost = {
-          eventID: this.state.currentEventID
-        }
-    
-        axios.post('/posts/fetchAllPostsByEvent', payloadForPost)
-          .then( postResponse => {
-            this.setState({
-              posts: postResponse.data
-            })
-          })
-          .catch( err => {
-            console.log( err);
-          })
-        
       })
+        .then( () => {
+          const payloadForPost = {
+            eventID: this.state.currentEventID
+          }
+      
+          axios.post('/posts/fetchAllPostsByEvent', payloadForPost)
+            .then( postResponse => {
+              this.setState({
+                posts: postResponse.data
+              })
+            })
+            .catch( err => {
+              console.log( err);
+            })
+        })
+        .catch( error => {
+          console.log(error);
+        })
       .catch( err => {
         console.log(err);
       })
   
-
   }
 
   render() {

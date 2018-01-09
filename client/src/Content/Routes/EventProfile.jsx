@@ -12,25 +12,53 @@ class EventProfile extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onSubmitPost = this.onSubmitPost.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  // componentDidMount () {
+  componentDidMount () {
+    const payload = {
+      eventID: this.props.eventID
+    }
+    axios.post('/posts/fetchAllPostsByEvent', payload)
+      .then( postResponse => {
+        this.setState({
+          posts: postResponse.data
+        })
+      })
+      .catch( err => {
+        console.log(err);
+      })
+  }
+
+  // onSubmitPost(e) {
+  //   e.preventDefault()
+
   //   const payload = {
-  //     eventID: this.props.eventID
+  //     eventID: this.props.eventID,
+  //     text: this.state.post,
+  //     username: this.props.currentUser.displayName
   //   }
-  //   axios.post('/posts/fetchAllPostsByEvent', payload)
-  //     .then( postResponse => {
+
+  //   axios.post('posts/createPost', payload)
+  //     .then( response => {
   //       this.setState({
-  //         posts: postResponse.data
+  //         posts: response.data
   //       })
   //     })
   //     .catch( err => {
   //       console.log(err);
   //     })
+      
+  //   e.target.reset();
   // }
 
-  onSubmitPost(e) {
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  onSubmit (e) {
     e.preventDefault()
 
     const payload = {
@@ -39,29 +67,15 @@ class EventProfile extends Component {
       username: this.props.currentUser.displayName
     }
 
-    axios.post('posts/createPost', payload)
-      .then( response => {
-        this.setState({
-          posts: response.data
-        })
-      })
-      .catch( err => {
-        console.log(err);
-      })
-      
-    e.target.reset();
-  }
+    this.props.submit(payload);
 
-  onChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    e.target.reset()
+
   }
 
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
- 
-
+    
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">
@@ -118,7 +132,7 @@ class EventProfile extends Component {
                   </div>
 
                   <div className="input-field col s10 margin">
-                    <form onSubmit={this.onSubmitPost} >
+                    <form onSubmit={this.onSubmit} >
                       <input
                         id="profile-comments"
                         type="text"
@@ -133,8 +147,8 @@ class EventProfile extends Component {
                   </div>
                   <h5 className="right">Replies</h5>
                   <div className="row small right">
-                    { this.state.posts.length === 0 ? 
-                    this.props.posts.map(post => {
+                    {
+                      this.props.posts.map(post => {
                       return (
                         <Post
                           key={post.postID}
@@ -144,17 +158,7 @@ class EventProfile extends Component {
                         />
                       );
                     }) 
-                    :
-                    this.state.posts.map(post => {
-                      return (
-                        <Post
-                          key={post.postID}
-                          postID={post.postID}
-                          post={post}
-                          user={this.props.currentUser.displayName}
-                        />
-                      );
-                    }) 
+                    
                   }
                   </div>
                 </div>

@@ -12,11 +12,10 @@ class Post extends Component {
     }
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);  
+    this.onSubmitComment = this.onSubmitComment.bind(this);  
   }
 
   componentDidMount () {
-
     const payload = {
       postID: this.props.postID
     }
@@ -32,7 +31,7 @@ class Post extends Component {
       })
   }
 
-  onSubmit (e) {
+  onSubmitComment (e) {
     e.preventDefault()
     
     const payload = {
@@ -52,7 +51,7 @@ class Post extends Component {
         console.log(err);
       })
     
-     e.target.reset();
+      e.target.reset();
   }
 
   onChangeHandler(e) {
@@ -93,7 +92,7 @@ class Post extends Component {
             </div>
             
               <div className="input-field col s10 margin right">
-                <form onSubmit={this.onSubmit} >
+                <form onSubmit={this.onSubmitComment} >
                   <input
                     id="profile-comments"
                     type="text"

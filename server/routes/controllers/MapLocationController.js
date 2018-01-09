@@ -6,7 +6,6 @@ const MapLocationController = {
     Events.findAll()
       .then((response) =>{
         console.log('Event location data fetched')
-        console.log('Event long/lat results:', response);
         res.send(response).status(200);
       })
       .catch((e) => {

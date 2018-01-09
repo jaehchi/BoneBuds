@@ -13,10 +13,11 @@ export class MapContainer extends Component {
       selectedPlace: {},
       eventInfo: 'Pug photo booth poutine, whatever hexagon sustainable iPhone hell of. Meh portland gluten-free kogi sustainable intelligentsia ethical. Narwhal coloring book pinterest raw denim.',
       events: [],
-      hasSetUserInfo: false,
+      hasSetUserInfo: this.props.isLoggedIn,
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
+    this.routeToUserProfile = this.routeToUserProfile.bind(this);
   }
 
   componentWillMount() {
@@ -30,6 +31,12 @@ export class MapContainer extends Component {
       .catch((e) => {
         console.log('Was Not Able to GET latLong info from db', e);
       });
+  }
+
+  componentDidMount() {
+    if (this.state.hasSetUserInfo === false) {
+      Materialize.toast('Looks like your profile is missing some information!', 20000);
+    }
   }
 
   onMarkerClick(props, marker, e) {

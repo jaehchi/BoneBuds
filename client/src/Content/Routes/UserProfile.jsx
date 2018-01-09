@@ -61,6 +61,9 @@ class UserProfile extends Component{
         console.log('User data updating... \nServer response:', response.data);
         this.showToast();
       })
+      .then(() => {
+        this.props.isLoggedIn(true)
+      })
       .catch((e) => {
         console.log('User data was not sent to db for update', e)
       })
@@ -69,7 +72,7 @@ class UserProfile extends Component{
   render() {
     return (
       <div id="userProfile">
-      <h1 className="header center teal-text text-lighten-2">Edit User Profile!</h1>
+      <h1 className="header center teal-text text-lighten-2">User Profile</h1>
         <button onClick={this.consoleState}>Show State</button>
         <button onClick={this.updateUserInfo}>Update user info</button>
 

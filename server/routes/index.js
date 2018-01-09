@@ -55,9 +55,12 @@ router.route('/fetchAllCommentsByPost')
   .post(CommentController.fetchAllCommentsByPost);
 
 // Edits Event Data
-router.route('/editEvent')
+router.route('/editEvent/')
   .post(EventController.editEvent)
 
+// Pre-fetches events data
+// router.route('/fetchUsersEventsData/:owner')
+//   .get(EventController.fetchEventData)
 
 
 module.exports = router;

@@ -32,6 +32,9 @@ class UserProfile extends Component{
       .then(() => {
         this.props.setName(this.state.firstname);
       })
+      .catch((e) => {
+        console.error('Could not fetch user data...', e);
+      })
   }
 
   consoleState() {

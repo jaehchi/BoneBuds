@@ -35,8 +35,17 @@ const EventController = {
       description: event.description,
       tag: event.tag,
       image: event.image,
-      userID: event.owner.uid
-    })
+      userID: event.owner
+    }, { where: { owner: event.owner }, returning: true, plain: true })
+      .then(() => {
+        console.log('Event is updated!');
+        res.send(`${event.title} has been updated`);
+      })
+      .catch((e) => {
+        console.log('DB could not find:', event.title);
+        console.log(e);
+        res.status(500);
+      })
   },
   fetchAllEvents: (req, res) => {
     events

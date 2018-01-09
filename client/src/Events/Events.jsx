@@ -7,7 +7,6 @@ class Events extends Component {
   }
 
   render() {
-    console.log("event props", this.props);
     return (
       <div className="scrollable">
         {this.props.events.map(event => {
@@ -17,6 +16,7 @@ class Events extends Component {
               id={event.eventID}
               value={event.eventID}
               event={event}
+              click={this.props.click}
             />
           );
         })}

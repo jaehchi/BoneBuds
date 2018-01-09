@@ -2,7 +2,7 @@ const { users, events, posts, comments } = require('../../sql/models');
 
 const PostController = {
   createPost: (req, res) => {
-    console.log(req.body)
+ 
     events.find({
       where : {
         eventID : req.body.eventID

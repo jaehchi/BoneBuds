@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Post extends Component {
+class Comment extends Component {
   constructor (props) {
     super(props);
   }
@@ -14,7 +14,7 @@ class Post extends Component {
               <img src="logo2.png" alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
             </div>
             <div className="col s10">
-              <p className="grey-text text-darken-4 margin">John Doe</p>
+              <p className="grey-text text-darken-4 margin">{this.props.comment.username}</p>
             </div>
             <div className="col s1 right-align">
               <i className="mdi-navigation-expand-more"></i>
@@ -23,7 +23,7 @@ class Post extends Component {
         </div>
 
         <div className="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          <p>{this.props.comment.text}</p>
         </div>
 
         <div className="card-action row">
@@ -31,7 +31,7 @@ class Post extends Component {
             <a href="#"><i className="material-icons left">thumb_up</i></a>    
           </div>
           <div className="col s10 card-action-share right">
-            <span className="grey-text text-darken-1 ultra-small">26 Jun 2015</span>                      
+            <span className="grey-text text-darken-1 ultra-small">{this.props.comment.createdAt}</span>                      
           </div>
         </div>
       </div>
@@ -39,4 +39,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default Comment;

@@ -28,7 +28,6 @@ class Post extends Component {
   }
 
   render () {
-    console.log('state for posts' , this.props);
     return (
       <div className="scrollable"> 
         <div id="profile-page-wall-post" className="card">
@@ -62,9 +61,10 @@ class Post extends Component {
             </div>
           </div>  
           <div className="row col s9 right">
-            <Comment/>
-            <Comment/>
-            <Comment/>
+          
+          {this.state.comments.map( comment => {
+            return <Comment comment={comment}/>
+          })}
 
           </div>                      
         </div>

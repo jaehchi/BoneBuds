@@ -10,13 +10,14 @@ class EventProfile extends Component {
   }
 
   render () {
-
+    console.log('props for events', this.props);
     return (
       <div id="eventProfile">
-      <h5>{this.props.event.title}</h5>
-      { this.props.posts.map( post => {
-        return ( <Post postID={post.postID} post={post}/> );
-      })}
+        <h5>{this.props.event.title}</h5>
+        
+        { this.props.posts.map( post => {
+          return ( <Post postID={post.postID} post={post}/> );
+        })}
       </div>
     )
   }

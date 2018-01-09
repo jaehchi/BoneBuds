@@ -115,7 +115,7 @@ class App extends Component {
   }
 
   render() {
-    console.log('post from this.state', this.state)
+  
     return (
       <div>
         {!this.state.user ? (

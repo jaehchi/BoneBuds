@@ -5,13 +5,30 @@ import axios from 'axios'
 class Post extends Component {
   constructor (props) {
     super(props);
+  
+    this.state = {
+      comments: []
+    }
   }
 
-  componentWillMount () {
-    
+  componentDidMount () {
+    const payload = {
+      postID: this.props.postID
+    }
+
+    axios.post('/comments/fetchAllCommentsByPost', payload)
+      .then( commentResponse => {
+        this.setState({
+          comments: commentResponse.data
+        })
+      })
+      .catch( err => {
+        console.log(err);
+      })
   }
 
   render () {
+    console.log('state for posts' , this.props);
     return (
       <div className="scrollable"> 
         <div id="profile-page-wall-post" className="card">
@@ -21,8 +38,8 @@ class Post extends Component {
                 <img src="logo2.png" alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
               </div>
               <div className="col s10">
-                <p className="grey-text text-darken-4 margin">John Doe</p>
-                <span className="grey-text text-darken-1 ultra-small">25 Jun 2015</span>
+                <p className="grey-text text-darken-4 margin">{this.props.post.username}</p>
+                <span className="grey-text text-darken-1 ultra-small">{this.props.post.createdAt}</span>
               </div>
               <div className="col s1 right-align">
                 <i className="mdi-navigation-expand-more"></i>
@@ -31,7 +48,7 @@ class Post extends Component {
           </div>
 
           <div className="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+            <p>{this.props.post.text}</p>
           </div>
 
           <div className="card-action row">

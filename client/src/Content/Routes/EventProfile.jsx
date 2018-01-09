@@ -15,7 +15,7 @@ class EventProfile extends Component {
       <div id="eventProfile">
       <h5>{this.props.event.title}</h5>
       { this.props.posts.map( post => {
-        return ( <Post postID={post.postID}/> );
+        return ( <Post postID={post.postID} post={post}/> );
       })}
       </div>
     )

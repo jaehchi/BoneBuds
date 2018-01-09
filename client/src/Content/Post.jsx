@@ -29,7 +29,7 @@ class Post extends Component {
 
   render () {
     return (
-      <div className="scrollable"> 
+      <div> 
         <div id="profile-page-wall-post" className="card">
           <div className="card-profile-title">
             <div className="row">

@@ -27,10 +27,13 @@ class UserProfile extends Component{
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
         })
-        console.log('Pre-fetching user data... \nserver response:', res)
+        console.log('Pre-fetching user data... \nServer response:', res)
       })
       .then(() => {
         this.props.setName(this.state.firstname);
+      })
+      .catch((e) => {
+        console.error('Could not fetch user data...', e);
       })
   }
 
@@ -66,7 +69,7 @@ class UserProfile extends Component{
   render() {
     return (
       <div id="userProfile">
-        <h3>Profile</h3>
+      <h1 className="header center teal-text text-lighten-2">Edit User Profile!</h1>
         <button onClick={this.consoleState}>Show State</button>
         <button onClick={this.updateUserInfo}>Update user info</button>
 

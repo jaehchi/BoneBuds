@@ -22,6 +22,31 @@ const EventController = {
         res.status(500).send(err);
       });
   },
+  editEvent: (req, res) => {
+    console.log('edit event. req.body.info:', req.body.info);
+    const event = req.body.info
+    events.update({
+      title: event.title,
+      date: event.date,
+      time: event.time,
+      owner: event.owner,
+      latitude: event.latitude,
+      longitude: event.longitude,
+      description: event.description,
+      tag: event.tag,
+      image: event.image,
+      userID: event.owner
+    }, { where: { owner: event.owner }, returning: true, plain: true })
+      .then(() => {
+        console.log('Event is updated!');
+        res.send(`${event.title} has been updated`);
+      })
+      .catch((e) => {
+        console.log('DB could not find:', event.title);
+        console.log(e);
+        res.status(500);
+      })
+  },
   fetchAllEvents: (req, res) => {
     events
       .findAll()

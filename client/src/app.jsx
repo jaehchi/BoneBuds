@@ -7,6 +7,7 @@ import Login from "./Authentication/Login";
 import LoginLanding from "./Authentication/LoginLanding";
 import firebase, { auth } from "./Authentication/firebase";
 
+
 class App extends Component {
   constructor(props) {
     super(props);

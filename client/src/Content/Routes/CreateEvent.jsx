@@ -34,7 +34,7 @@ class CreateEvent extends Component {
 
   render () {
     return (
-        <div className="row">
+        <div className="row scrollable">
           <form className="col s12">
             <div className="row">
               <h1 className="header center teal-text text-lighten-2">Create an Event!</h1>

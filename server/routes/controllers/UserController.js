@@ -17,8 +17,8 @@ const UserController = {
         console.log('sqlite user created');
         res.status(201).send(results);
       })
-      .catch(() => {
-        console.error('error creating sqlite user');
+      .catch((e) => {
+        console.error('error creating sqlite user', e);
         res.sendStatus(500);
       })
   },
@@ -46,9 +46,9 @@ const UserController = {
         console.log('Entry is updated!');
         res.send(`${req.body.info.firstname}'s account was updated`);
       })
-      .catch((err) => {
+      .catch((e) => {
         console.log('DB could not find:', req.body.email);
-        console.log(err);
+        console.log(e);
         res.status(500);
       })
   },

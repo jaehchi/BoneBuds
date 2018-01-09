@@ -36,7 +36,8 @@ class App extends Component {
           id: users[user].uid,
           email: users[user].email,
           user: users[user].displayName,
-          name: ""
+          first: "",
+          last: "",
         });
       }
       this.setState({
@@ -75,9 +76,10 @@ class App extends Component {
       alert("logout successful");
     });
   }
-  setName(name) {
+  setName(first, last) {
     this.setState({
-      name
+      first,
+      last,
     });
   }
 
@@ -97,7 +99,7 @@ class App extends Component {
           const payloadForPost = {
             eventID: this.state.currentEventID
           }
-      
+
           axios.post('/posts/fetchAllPostsByEvent', payloadForPost)
             .then( postResponse => {
               this.setState({
@@ -117,7 +119,7 @@ class App extends Component {
   }
 
   onSubmitPost(payload) {
- 
+
     axios.post('posts/createPost', payload)
       .then( response => {
         this.setState({
@@ -127,12 +129,12 @@ class App extends Component {
       .catch( err => {
         console.log(err);
       })
-      
+
   }
 
 
   render() {
-  
+
     return (
       <div>
         {!this.state.user ? (
@@ -145,7 +147,7 @@ class App extends Component {
             <Nav logout={this.logout} />
             <h3>
               Welcome,{" "}
-              {this.state.name ||
+              {this.state.first + ' ' + this.state.last||
                 this.state.user.displayName ||
                 this.state.user.email}
             </h3>

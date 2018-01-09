@@ -26,9 +26,12 @@ app.get('/createEvent', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
 
+<<<<<<< HEAD
 app.get('/editEvent', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
+=======
+>>>>>>> [add] - refreshing page now stays on create Event page
 
 app.use('/events', router);
 app.use('/users', router);

@@ -16,7 +16,7 @@ class EventProfile extends Component {
   }
 
   render () {
-  
+    console.log('Event profile props: ', this.props)
     return (
       <div id="eventProfile">
       <h5>{this.props.event.title}</h5>

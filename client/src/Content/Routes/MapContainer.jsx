@@ -12,8 +12,7 @@ export class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {},
       eventInfo: 'Pug photo booth poutine, whatever hexagon sustainable iPhone hell of. Meh portland gluten-free kogi sustainable intelligentsia ethical. Narwhal coloring book pinterest raw denim.',
-      latLong: [],
-      earthquakeData: [],
+      events: [],
       hasSetUserInfo: false,
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
@@ -24,27 +23,16 @@ export class MapContainer extends Component {
     axios.get('users/popups')
       .then((response) => {
         console.log('Pre-fetching coordinates data... \nserver response:', response)
+        response.data.forEach(event => {
+          this.state.events.push(event)
+        })
       })
       .catch((e) => {
         console.log('Was Not Able to GET latLong info from db', e);
       });
   }
 
-  componentDidMount() {
-    fetch('https://api.geonet.org.nz/intensity?type=measured')
-      .then(results => results.json())
-      .then(data => {
-        this.setState({
-          earthquakeData: data.features,
-        })
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }
-
   onMarkerClick(props, marker, e) {
-    console.log('marker clicked');
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
@@ -70,7 +58,7 @@ export class MapContainer extends Component {
     return (
       <Map
         google={this.props.google}
-        zoom={13}
+        zoom={10}
         style={style}
         initialCenter={{
           lat: 33.976796,
@@ -79,14 +67,14 @@ export class MapContainer extends Component {
         onClick={this.onMapClicked}>
 
         {
-          this.state.earthquakeData.map((info, i) => {
+          this.state.events.map((event, i) => {
             return <Marker
               key={i}
-              title={'The marker`s title will appear as a tooltip.'}
-              name={info.geometry.type}
+              title={'Why don\'t ya click and find out?'}
+              name={event.title}
               position={{
-                lat: info.geometry.coordinates[1],
-                lng: info.geometry.coordinates[0],
+                lat: event.latitude,
+                lng: event.longitude,
               }}
               onClick={this.onMarkerClick}
             />
@@ -94,7 +82,7 @@ export class MapContainer extends Component {
         }
 
         <Marker
-          title={'Why won\'t ya click and find out?'}
+          title={'Why don\'t ya click and find out?'}
           name={'Hack Reactor LA ya bish!'}
           position={{lat: 33.976796, lng: -118.392161}}
           onClick={this.onMarkerClick}

@@ -66,7 +66,7 @@ class UserProfile extends Component{
   render() {
     return (
       <div id="userProfile">
-        <h3>Profile</h3>
+      <h1 className="header center teal-text text-lighten-2">Edit User Profile!</h1>
         <button onClick={this.consoleState}>Show State</button>
         <button onClick={this.updateUserInfo}>Update user info</button>
 

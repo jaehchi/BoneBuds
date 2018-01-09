@@ -6,18 +6,25 @@ const EventController = require('./controllers/EventController');
 const PostController = require('./controllers/PostController');
 const CommentController = require('./controllers/CommentController');
 
-
+// Create User
 router.route('/createUser')
   .post(UserController.checkIfUserExists);
+
+// Populates Map with Pins
 router.route('/popups')
   .get(MapLocationController.getAllEvents);
+
+// Calls API to get latitude longitude for location
 router.route('/latLong')
   .post(MapLocationController.getLocationLatLong)
+
+// Updates User Info
 router.route('/update/')
   .post(UserController.updateUserProfile)
+
+// Gets User's Saved Info
 router.route('/update/:uid')
   .get(UserController.getUsersSavedInfo)
-
 
 // Creates Event
 router.route('/createEvent')
@@ -47,6 +54,9 @@ router.route('/createComment')
 router.route('/fetchAllCommentsByPost')
   .post(CommentController.fetchAllCommentsByPost);
 
+// Edits Event Data
+router.route('/editEvent')
+  .post(EventController.editEvent)
 
 
 

@@ -13,11 +13,10 @@ export class MapContainer extends Component {
       selectedPlace: {},
       eventInfo: 'Pug photo booth poutine, whatever hexagon sustainable iPhone hell of. Meh portland gluten-free kogi sustainable intelligentsia ethical. Narwhal coloring book pinterest raw denim.',
       events: [],
-      hasSetUserInfo: this.props.isLoggedIn,
+      hasSetUserInfo: '',
     }
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
-    this.routeToUserProfile = this.routeToUserProfile.bind(this);
   }
 
   componentWillMount() {
@@ -35,7 +34,7 @@ export class MapContainer extends Component {
 
   componentDidMount() {
     if (this.state.hasSetUserInfo === false) {
-      Materialize.toast('Looks like your profile is missing some information!', 20000);
+      Materialize.toast('Looks like your profile is missing some information!', 10000, 'rounded');
     }
   }
 

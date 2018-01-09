@@ -30,7 +30,7 @@ class UserProfile extends Component{
         console.log('Pre-fetching user data... \nServer response:', res)
       })
       .then(() => {
-        this.props.setName(this.state.firstname);
+        this.props.setName(this.state.firstname, this.state.lastname);
       })
       .catch((e) => {
         console.error('Could not fetch user data...', e);
@@ -60,9 +60,6 @@ class UserProfile extends Component{
       .then((response) => {
         console.log('User data updating... \nServer response:', response.data);
         this.showToast();
-      })
-      .then(() => {
-        this.props.isLoggedIn(true)
       })
       .catch((e) => {
         console.log('User data was not sent to db for update', e)

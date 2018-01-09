@@ -6,36 +6,62 @@ import EventProfile from "./Routes/EventProfile";
 import CreateEvent from "./Routes/CreateEvent";
 import EditEvent from "./Routes/EditEvent"
 
-const ContentContainer = props => {
-  return (
-    <main>
-      <Switch>
-        <Route exact path="/" component={MapContainer} />
-        <Route
-          path="/userprofile"
-          render={() => <UserProfile currentUser={props.currentUser} setName={props.setName}/>}
-        />
-        <Route
-          path="/eventprofile"
-          render={() => (
-            <EventProfile
-              eventID={props.eventID}
-              event={props.event}
-              posts={props.posts}
-              currentUser={props.currentUser}
-              change={props.change}
-              submit={props.submit}
-            />
-          )}
-        />
-        <Route
-          path="/editEvent"
-          render={() => <EditEvent />}
-        />
-        <Route path="/createEvent" render={() => <CreateEvent />} />
-      </Switch>
-    </main>
-  );
-};
+class ContentContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      hasSetUserInfo: '',
+    }
+    this.hasSetUserInfo = this.hasSetUserInfo.bind(this);
+  }
+
+  hasSetUserInfo() {
+    this.setState({
+      hasSetUserInfo: true,
+    })
+  }
+
+  render() {
+    return (
+      <main>
+        <Switch>
+          <Route
+            exact path="/"
+            component={MapContainer}
+            hasSetUserInfo={this.state.hasSetUserInfo}
+          />
+          <Route
+            path="/userprofile"
+            render={() => (
+              <UserProfile
+                currentUser={this.props.currentUser}
+                setName={this.props.setName}
+                isLoggedIn={this.isLoggedIn}
+              />
+            )}
+          />
+          <Route
+            path="/eventprofile"
+            render={() => (
+              <EventProfile
+                eventID={this.props.eventID}
+                event={this.props.event}
+                posts={this.props.posts}
+                currentUser={this.props.currentUser}
+                change={this.props.change}
+                submit={this.props.submit}
+              />
+            )}
+          />
+          <Route
+            path="/editEvent"
+            render={() => <EditEvent />}
+          />
+          <Route path="/createEvent" render={() => <CreateEvent />} />
+        </Switch>
+      </main>
+    )
+  }
+}
 
 export default ContentContainer;

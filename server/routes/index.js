@@ -10,9 +10,9 @@ const CommentController = require('./controllers/CommentController');
 router.route('/createUser')
   .post(UserController.checkIfUserExists);
 router.route('/popups')
-  .get(MapLocationController.GetAllEvents);
+  .get(MapLocationController.getAllEvents);
 router.route('/latLong')
-  .post(MapLocationController.GetLocationLatLong)
+  .post(MapLocationController.getLocationLatLong)
 router.route('/update/')
   .post(UserController.updateUserProfile)
 router.route('/update/:uid')

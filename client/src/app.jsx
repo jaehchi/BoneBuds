@@ -17,7 +17,8 @@ class App extends Component {
       user: null,
       events: [],
       currentEventID: "",
-      currentEvent: []
+      currentEvent: [],
+      posts: []
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
@@ -84,20 +85,38 @@ class App extends Component {
       eventID : id
     }
     axios.post('/events/fetchByEventID', payload)
-      .then( (response) => {
+      .then( (eventResponse) => {
+
         this.setState({
           currentEventID: id,
-          currentEvent: response.data
+          currentEvent: eventResponse.data
         });
       })
+        .then( () => {
+          const payloadForPost = {
+            eventID: this.state.currentEventID
+          }
+      
+          axios.post('/posts/fetchAllPostsByEvent', payloadForPost)
+            .then( postResponse => {
+              this.setState({
+                posts: postResponse.data
+              })
+            })
+            .catch( err => {
+              console.log( err);
+            })
+        })
+        .catch( error => {
+          console.log(error);
+        })
       .catch( err => {
         console.log(err);
       })
-  
-
   }
 
   render() {
+  
     return (
       <div>
         {!this.state.user ? (
@@ -126,6 +145,7 @@ class App extends Component {
                     users={this.state.users}
                     eventID={this.state.currentEventID}
                     event={this.state.currentEvent}
+                    posts={this.state.posts}
                   />
                 </div>
               </div>

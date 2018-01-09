@@ -7,7 +7,6 @@ import CreateEvent from "./Routes/CreateEvent";
 import EditEvent from "./Routes/EditEvent"
 
 const ContentContainer = props => {
-  console.log(props);
   return (
     <main>
       <Switch>
@@ -18,16 +17,20 @@ const ContentContainer = props => {
         />
         <Route
           path="/eventprofile"
-          render={() => <EventProfile eventID={props.eventID} event={props.event} />}
-        />
-        <Route
-          path="/createEvent"
-          render={() => <CreateEvent/>}
+          render={() => (
+            <EventProfile
+              eventID={props.eventID}
+              event={props.event}
+              posts={props.posts}
+              currentUser={props.currentUser}
+            />
+          )}
         />
         <Route
           path="/editEvent"
           render={() => <EditEvent />}
         />
+        <Route path="/createEvent" render={() => <CreateEvent />} />
       </Switch>
     </main>
   );

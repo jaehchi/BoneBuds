@@ -3,28 +3,28 @@ const { users, events, posts, comments } = require('../../sql/models');
 const CommentController = {
   createComment: (req, res) => {
 
-    posts.find({
-      where : {
-        postID : req.body.postID
-      }
+    comments.create({
+      username: req.body.username,
+      text: req.body.text,
+      postID: req.body.postID
     })
-      .then( result => {
-        console.log(result)
-        comments.create({
-          username: req.body.username,
-          text: req.body.text,
-          postID: result.dataValues.postID
-        })
-          .then( results => {
-            res.status(201).send(results);
+      .then( results => {
+          comments.findAll({
+            where: {
+              postID: req.body.postID
+            }
           })
-          .catch( err => {
-            res.status(500).send(err);
-          })
+            .then( commentResults => {
+              res.status(201).send(commentResults);
+            })
+            .catch( err => {
+              res.status(500).send(err);
+            })
       })
-      .catch( error => {
-        res.status(500).send(error);
+      .catch( err => {
+        res.status(500).send(err);
       })
+
   },
   fetchAllCommentsByPost: (req, res) => {
     comments.findAll({

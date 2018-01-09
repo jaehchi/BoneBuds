@@ -30,7 +30,7 @@ class Post extends Component {
   render () {
     return (
       <div> 
-        <div id="profile-page-wall-post" className="card">
+        <div id="profile-page-wall-post" className="card blue lighten-5 ">
           <div className="card-profile-title">
             <div className="row">
               <div className="col s1">
@@ -59,14 +59,13 @@ class Post extends Component {
               <input id="profile-comments" type="text" className="validate margin" placeholder="Write a reply!"/>
               <label for="profile-comments" className="">Comments</label>
             </div>
+            <div className="row col s6 small right">
+              {this.state.comments.map( comment => {
+                return  ( <Comment comment={comment}/> )
+              })}
+            </div>                      
           </div>  
-          <div className="row col s9 right">
-          
-          {this.state.comments.map( comment => {
-            return <Comment comment={comment}/>
-          })}
 
-          </div>                      
         </div>
       </div>  
     )

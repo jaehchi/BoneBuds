@@ -48,11 +48,7 @@ class App extends Component {
       console.log(data);
     })
 
-<<<<<<< HEAD
-    //check postcontroller.js for createPost
-=======
     //check createPost.js for fetchPostbyEventID
->>>>>>> [ fix ] - edit event form fix
     //listens on posts event and setstate the data!
     //look at onPostSubmit
     socket.on('posts', posts => {

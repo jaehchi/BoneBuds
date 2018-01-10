@@ -4,7 +4,8 @@ import MapContainer from "./Routes/MapContainer";
 import UserProfile from "./Routes/UserProfile";
 import EventProfile from "./Routes/EventProfile";
 import CreateEvent from "./Routes/CreateEvent";
-import EditEvent from "./Routes/EditEvent"
+import EditEvent from "./Routes/EditEvent";
+import UserPage from './Routes/UserPage';
 
 class ContentContainer extends Component {
   constructor(props) {
@@ -29,6 +30,16 @@ class ContentContainer extends Component {
             exact path="/"
             component={MapContainer}
             hasSetUserInfo={this.state.hasSetUserInfo}
+          />
+          <Route
+            path="/userpage"
+            render={() => (
+              <UserPage
+                currentUser={this.props.currentUser}
+                setName={this.props.setName}
+                isLoggedIn={this.isLoggedIn}
+              />
+            )}
           />
           <Route
             path="/userprofile"

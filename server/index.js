@@ -16,6 +16,9 @@ app.use(express.static(path.resolve(__dirname, '../client/public')));
 app.get('/userprofile', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
+app.get('/userpage', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
+})
 
 //
 app.get('/eventprofile', (req, res) => {

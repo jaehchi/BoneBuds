@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class UserProfile extends Component{
   constructor(props) {
@@ -71,7 +72,7 @@ class UserProfile extends Component{
       <div id="userProfile">
       <h1 className="header center teal-text text-lighten-2">User Profile</h1>
         <button onClick={this.consoleState}>Show State</button>
-        <button onClick={this.updateUserInfo}>Update user info</button>
+        <Link to='/userpage'><button onClick={this.updateUserInfo}>Update user info</button></Link>
 
         <div className="row">
           <form className="col s12">

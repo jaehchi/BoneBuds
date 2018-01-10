@@ -50,11 +50,15 @@ app.set('socketio', io);
 
 //listens for a connection with a callback with a socket
 io.on('connection', (socket) => {
-  console.log('connection establsihed')
+  console.log('connection establsihed');
+
+  //sets a listener event for join from client
   socket.on('join', (data) => {
     console.log(data)
   })
-  socket.emit('yo', 'fuc kyou');
+
+  //on 'yo' event, the client will be sent 'fuck you' check app.jsx
+  socket.emit('yo', 'fuck you');
 })
 
 

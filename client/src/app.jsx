@@ -41,21 +41,21 @@ class App extends Component {
     const socket = io('/');
     // solution for that is ^^ 
 
-    socket.emit('join', 'yo')
+    // sends someData to the server thru join listener event
+    socket.emit('join', 'someDATA')
+    //set a 'yo' event listener and console.logs data sent from server
     socket.on('yo', (data) => {
       console.log(data);
     })
+
+    //check postcontroller.js for fetchPostbyEventID
+    //listens on posts event and setstate the data!
+    //look at onPostSubmit
     socket.on('posts', (data) => {
-      console.log('hello', data)
       this.setState({
         posts: data
       })
     })
-
-    //sets a listener from the server!
-    // this.socket.on('something', something => {
-    //   this.setState({ something });
-    // })
 
     const usersRef = firebase.database().ref("users");
     usersRef.on("value", snapshot => {
@@ -153,7 +153,8 @@ class App extends Component {
 
     axios.post('posts/createPost', payload)
       .then(response => {
-        console.log(response);
+        // NO NEED FOR THIS SETSTATE HERE 
+        // console.log(response);
       })
       .catch(err => {
         console.log(err);

@@ -18,7 +18,7 @@ class Post extends Component {
   componentDidMount () {
     const socket = this.props.socket;
 
-    socket.on('comments', (comments) => {
+    socket.on(`comments ${this.props.postID}`, comments => {
       this.setState({
         comments: comments
       })
@@ -51,10 +51,9 @@ class Post extends Component {
 
     axios.post('/comments/createComment', payload)
       .then( response => {
-
-        this.setState({
-          comments: response.data
-        })
+        // this.setState({
+        //   comments: response.data
+        // })
       })
       .catch( err => {
         console.log(err);
@@ -115,7 +114,7 @@ class Post extends Component {
             
             <div className="row col s10 small right">
               {this.state.comments.map( comment => {
-                return  ( <Comment key={comment.id} comment={comment} /> )
+                return  ( <Comment key={comment.createdAt} comment={comment} /> )
               })}
             </div>                      
           </div>  

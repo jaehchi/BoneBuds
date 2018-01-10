@@ -48,10 +48,10 @@ class App extends Component {
       console.log(data);
     })
 
-    //check postcontroller.js for fetchPostbyEventID
+    //check postcontroller.js for createPost
     //listens on posts event and setstate the data!
     //look at onPostSubmit
-    socket.on('posts', (posts) => {
+    socket.on('posts', posts => {
       this.setState({
         posts: posts
       })

@@ -69,7 +69,7 @@ class UserProfile extends Component{
 
   render() {
     return (
-      <div id="userProfile">
+      <div id="userProfile" className="scrollable">
       <h1 className="header center teal-text text-lighten-2">User Profile</h1>
         <button onClick={this.consoleState}>Show State</button>
         <Link to='/userpage'><button onClick={this.updateUserInfo}>Update user info</button></Link>

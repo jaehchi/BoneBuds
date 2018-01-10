@@ -18,7 +18,7 @@ export default class EditEvent extends Component {
       events: [],
       eventsWereLoaded: false,
     }
-    this.onChangeHandler = this.onChangeHandler.bind(this);
+    // this.onChangeHandler = this.onChangeHandler.bind(this);
   }
 
   componentWillMount() {

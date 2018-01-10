@@ -6969,7 +6969,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 /* Select Field
    ========================================================================== */
 select {
-  display: none;
+  margin: 0;
 }
 
 select.browser-default {

@@ -47,6 +47,7 @@ app.use('/comments', router);
 //listens for a connection with a callback with a socket
 io.on('connection', (socket) => {
   //the socket will listen for ?? from the client
+  
 
   console.log('Socket io connection');
 })

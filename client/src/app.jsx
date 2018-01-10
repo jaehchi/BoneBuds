@@ -151,7 +151,7 @@ class App extends Component {
 
 
   render() {
-    console.log('this.state for app: ', this.state);
+    // console.log('this.state for app: ', this.state);
     return (
       <div>
         {!this.state.user ? (
@@ -182,6 +182,7 @@ class App extends Component {
                       posts={this.state.posts}
                       submit={this.onSubmitPost}
                       change={this.onChangePost}
+                      socket={socket}
                     />
                   </div>
                 </div>

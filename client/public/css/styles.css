@@ -87,3 +87,8 @@
   transform: translateY(3px);
   box-shadow: 1px 1px #999;
 }
+
+/* Profile Page */
+#profPic {
+  height: 150px;
+}

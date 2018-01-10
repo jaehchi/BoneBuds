@@ -85,35 +85,35 @@ class App extends Component {
 
   onClick(id) {
     const payload = {
-      eventID : id
+      eventID: id
     }
     axios.post('/events/fetchByEventID', payload)
-      .then( (eventResponse) => {
+      .then((eventResponse) => {
 
         this.setState({
           currentEventID: id,
           currentEvent: eventResponse.data
         });
       })
-        .then( () => {
-          const payloadForPost = {
-            eventID: this.state.currentEventID
-          }
+      .then(() => {
+        const payloadForPost = {
+          eventID: this.state.currentEventID
+        }
 
-          axios.post('/posts/fetchAllPostsByEvent', payloadForPost)
-            .then( postResponse => {
-              this.setState({
-                posts: postResponse.data
-              })
+        axios.post('/posts/fetchAllPostsByEvent', payloadForPost)
+          .then(postResponse => {
+            this.setState({
+              posts: postResponse.data
             })
-            .catch( err => {
-              console.log( err);
-            })
-        })
-        .catch( error => {
-          console.log(error);
-        })
-      .catch( err => {
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      })
+      .catch(error => {
+        console.log(error);
+      })
+      .catch(err => {
         console.log(err);
       })
   }
@@ -121,12 +121,12 @@ class App extends Component {
   onSubmitPost(payload) {
 
     axios.post('posts/createPost', payload)
-      .then( response => {
+      .then(response => {
         this.setState({
           posts: response.data
         })
       })
-      .catch( err => {
+      .catch(err => {
         console.log(err);
       })
 
@@ -143,35 +143,34 @@ class App extends Component {
             handleLogin={this.handleLogin}
           />
         ) : (
-          <div>
-            <Nav logout={this.logout} />
-            <h3>
-              Welcome,{" "}
-              {this.state.first + ' ' + this.state.last||
-                this.state.user.displayName ||
-                this.state.user.email}
-            </h3>
-            <div className="container">
-              <div className="row">
-                <div className="col s3">
-                  <Events click={this.onClick} events={this.state.events} />
-                </div>
-                <div className="col s9">
-                  <ContentContainer
-                    currentUser={this.state.user}
-                    setName={this.setName}
-                    users={this.state.users}
-                    eventID={this.state.currentEventID}
-                    event={this.state.currentEvent}
-                    posts={this.state.posts}
-                    submit={this.onSubmitPost}
-                    change={this.onChangePost}
-                  />
+            <div>
+              <Nav logout={this.logout} />
+              <h3>
+                Welcome,{" "}
+                {this.state.user.displayName ||
+                  this.state.user.email}
+              </h3>
+              <div className="container">
+                <div className="row">
+                  <div className="col s3">
+                    <Events click={this.onClick} events={this.state.events} />
+                  </div>
+                  <div className="col s9">
+                    <ContentContainer
+                      currentUser={this.state.user}
+                      setName={this.setName}
+                      users={this.state.users}
+                      eventID={this.state.currentEventID}
+                      event={this.state.currentEvent}
+                      posts={this.state.posts}
+                      submit={this.onSubmitPost}
+                      change={this.onChangePost}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
       </div>
     );
   }

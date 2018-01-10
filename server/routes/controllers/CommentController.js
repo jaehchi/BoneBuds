@@ -3,7 +3,7 @@ const { users, events, posts, comments } = require('../../sql/models');
 const CommentController = {
   createComment: (req, res) => {
     let io = req.app.get('socketio');
-
+   
     comments.create({
       username: req.body.username,
       text: req.body.text,
@@ -16,7 +16,7 @@ const CommentController = {
             }
           })
             .then( commentResults => {
-              io.emit('comments', commentResults);
+              io.emit(`comments ${req.body.postID}`, commentResults);
               // res.status(201).send(commentResults);
             })
             .catch( err => {

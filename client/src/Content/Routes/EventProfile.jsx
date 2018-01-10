@@ -30,27 +30,6 @@ class EventProfile extends Component {
       })
   }
 
-  // onSubmitPost(e) {
-  //   e.preventDefault()
-
-  //   const payload = {
-  //     eventID: this.props.eventID,
-  //     text: this.state.post,
-  //     username: this.props.currentUser.displayName
-  //   }
-
-  //   axios.post('posts/createPost', payload)
-  //     .then( response => {
-  //       this.setState({
-  //         posts: response.data
-  //       })
-  //     })
-  //     .catch( err => {
-  //       console.log(err);
-  //     })
-      
-  //   e.target.reset();
-  // }
 
   onChange(e) {
     this.setState({
@@ -76,7 +55,7 @@ class EventProfile extends Component {
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
     
-    // console.log('props for event profile,', this.props)
+    console.log('props for event profile,', this.props)
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">

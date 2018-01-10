@@ -8,7 +8,7 @@ import LoginLanding from "./Authentication/LoginLanding";
 import firebase, { auth } from "./Authentication/firebase";
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3000');
+const socket = io('/');
 
 class App extends Component {
   constructor(props) {
@@ -37,7 +37,12 @@ class App extends Component {
   componentDidMount() {
     //this will trigger the on connection event in server/index.js
     // now socket.io is connecting server/client
-    this.socket = io('/');
+    // this.socket = io('/');
+    const socket = io('/');
+
+    socket.on('connection', post => {
+      console.log('connected from clients')
+    })
 
     //sets a listener from the server!
     // this.socket.on('something', something => {

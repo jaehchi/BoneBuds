@@ -23,7 +23,7 @@ class ContentContainer extends Component {
   }
 
   render() {
-    console.log('props for content container', this.props);
+    // console.log('props for content container', this.props);
     return (
       <main>
         <Switch>

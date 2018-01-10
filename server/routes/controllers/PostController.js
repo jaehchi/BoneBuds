@@ -2,7 +2,9 @@ const { users, events, posts, comments } = require('../../sql/models');
 
 const PostController = {
   createPost: (req, res) => {
-    console.log(req.app.get('socketio'), 'mortyandrick');
+
+    let io = req.app.get('socketio');
+
     posts.create({
       username: req.body.username,
       text: req.body.text,
@@ -15,7 +17,8 @@ const PostController = {
           }
         })
           .then( postsResults => {
-            res.status(201).send(postsResults);
+            // res.status(201).send(postsResults);
+            io.emit('posts', postsResults);
           })
           .catch( err => {
             res.status(500).send(err);

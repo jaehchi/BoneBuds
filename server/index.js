@@ -50,8 +50,13 @@ app.set('socketio', io);
 
 //listens for a connection with a callback with a socket
 io.on('connection', (socket) => {
-  console.log('Socket io connection');
+  console.log('connection establsihed')
+  socket.on('join', (data) => {
+    console.log(data)
+  })
+  socket.emit('yo', 'fuc kyou');
 })
+
 
 //must do server.listen for our sockets to work
 //if you do app.listen, everything will still work, but the
@@ -59,4 +64,3 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
   console.log(`Server is now listening on port ${PORT}`);
 });
-

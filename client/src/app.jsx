@@ -41,8 +41,15 @@ class App extends Component {
     const socket = io('/');
     // solution for that is ^^ 
 
-    socket.on('connection', () => {
-      console.log('connected from clients')
+    socket.emit('join', 'yo')
+    socket.on('yo', (data) => {
+      console.log(data);
+    })
+    socket.on('posts', (data) => {
+      console.log('hello', data)
+      this.setState({
+        posts: data
+      })
     })
 
     //sets a listener from the server!
@@ -110,6 +117,7 @@ class App extends Component {
     const payload = {
       eventID: id
     }
+
     axios.post('/events/fetchByEventID', payload)
       .then((eventResponse) => {
 
@@ -142,13 +150,10 @@ class App extends Component {
   }
 
   onSubmitPost(payload) {
-    socket.emit('PostSubmitted', payload);    
 
     axios.post('posts/createPost', payload)
       .then(response => {
-        this.setState({
-          posts: response.data
-        })
+        console.log(response);
       })
       .catch(err => {
         console.log(err);

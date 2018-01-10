@@ -23,6 +23,7 @@ class ContentContainer extends Component {
   }
 
   render() {
+    // console.log('props for content container', this.props);
     return (
       <main>
         <Switch>
@@ -61,12 +62,13 @@ class ContentContainer extends Component {
                 currentUser={this.props.currentUser}
                 change={this.props.change}
                 submit={this.props.submit}
+                socket={this.props.socket}
               />
             )}
           />
           <Route
             path="/editEvent"
-            render={() => <EditEvent />}
+            render={() => <EditEvent eventID={this.props.eventID} />}
           />
           <Route path="/createEvent" render={() => <CreateEvent />} />
         </Switch>

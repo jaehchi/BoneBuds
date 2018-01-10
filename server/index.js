@@ -8,6 +8,13 @@ const db = require('./SQL/db');
 
 const app = express();
 
+
+//creates an http server and serving app
+const server = require('http').createServer(app);
+
+//creates an instance of socketio and serving server so it can bind to it
+const io = require('socket.io')(server);
+
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, '../client/public')));
@@ -38,6 +45,26 @@ app.use('/users', router);
 app.use('/posts', router);
 app.use('/comments', router);
 
-app.listen(PORT, () => {
+//stores a reference to the io object on instantiation of express.
+app.set('socketio', io);
+
+//listens for a connection with a callback with a socket
+io.on('connection', (socket) => {
+  console.log('connection establsihed');
+
+  //sets a listener event for join from client
+  socket.on('join', (data) => {
+    console.log(data)
+  })
+
+  //on 'yo' event, the client will be sent 'fuck you' check app.jsx
+  socket.emit('yo', 'fuck you');
+})
+
+
+//must do server.listen for our sockets to work
+//if you do app.listen, everything will still work, but the
+//sockets won't!!!
+server.listen(PORT, () => {
   console.log(`Server is now listening on port ${PORT}`);
 });

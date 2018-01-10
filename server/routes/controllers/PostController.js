@@ -2,7 +2,10 @@ const { users, events, posts, comments } = require('../../sql/models');
 
 const PostController = {
   createPost: (req, res) => {
- 
+    
+    //allows us to use socket.io outside of server/index.js
+    let io = req.app.get('socketio');
+
     posts.create({
       username: req.body.username,
       text: req.body.text,
@@ -15,7 +18,9 @@ const PostController = {
           }
         })
           .then( postsResults => {
-            res.status(201).send(postsResults);
+            // res.status(201).send(postsResults);
+            // sends all posts by eventID thru post listener event
+            io.emit('posts', postsResults);
           })
           .catch( err => {
             res.status(500).send(err);

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Post from "../Post";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
 
 class EventProfile extends Component {
   constructor(props) {
@@ -16,41 +18,21 @@ class EventProfile extends Component {
   }
 
   componentDidMount () {
-    const payload = {
-      eventID: this.props.eventID
-    }
-    axios.post('/posts/fetchAllPostsByEvent', payload)
-      .then( postResponse => {
-        this.setState({
-          posts: postResponse.data
-        })
-      })
-      .catch( err => {
-        console.log(err);
-      })
+
+    // const payload = {
+    //   eventID: this.props.eventID
+    // }
+    // axios.post('/posts/fetchAllPostsByEvent', payload)
+    //   .then( postResponse => {
+    //     this.setState({
+    //       posts: postResponse.data
+    //     })
+    //   })
+    //   .catch( err => {
+    //     console.log(err);
+    //   })
   }
 
-  // onSubmitPost(e) {
-  //   e.preventDefault()
-
-  //   const payload = {
-  //     eventID: this.props.eventID,
-  //     text: this.state.post,
-  //     username: this.props.currentUser.displayName
-  //   }
-
-  //   axios.post('posts/createPost', payload)
-  //     .then( response => {
-  //       this.setState({
-  //         posts: response.data
-  //       })
-  //     })
-  //     .catch( err => {
-  //       console.log(err);
-  //     })
-      
-  //   e.target.reset();
-  // }
 
   onChange(e) {
     this.setState({
@@ -70,12 +52,14 @@ class EventProfile extends Component {
     this.props.submit(payload);
 
     e.target.reset()
-
   }
+
+ 
 
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
     
+    // console.log('props for event profile,', this.props)
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">
@@ -94,7 +78,7 @@ class EventProfile extends Component {
                         className="circle responsive-img valign profile-post-uer-image"
                       />
                     </div>
-                    <div className="col s10">
+                    <div className="col s8">
                       <p className="grey-text text-darken-4 margin">
                         {this.props.event.owner}
                       </p>
@@ -106,8 +90,9 @@ class EventProfile extends Component {
                         {this.props.event.time}
                       </span>
                     </div>
-                    <div className="col s1 right-align">
-                      <i className="mdi-navigation-expand-more" />
+                    <div className="col s3 right-align">
+                      {/* <i className="mdi-navigation-expand-more" /> */}
+                      <Link to="/editEvent" className="waves-effect waves-light btn"><i className="material-icons right">mode_edit</i>Edit Event</Link>
                     </div>
                   </div>
                 </div>
@@ -155,6 +140,7 @@ class EventProfile extends Component {
                           postID={post.postID}
                           post={post}
                           user={this.props.currentUser.displayName}
+                          socket={this.props.socket}
                         />
                       );
                     }) 

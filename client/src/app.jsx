@@ -6,7 +6,9 @@ import Events from "./Events/Events";
 import Login from "./Authentication/Login";
 import LoginLanding from "./Authentication/LoginLanding";
 import firebase, { auth } from "./Authentication/firebase";
+import io from 'socket.io-client';
 
+const socket = io('/');
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +28,35 @@ class App extends Component {
     this.onClick = this.onClick.bind(this);
     this.onSubmitPost = this.onSubmitPost.bind(this);
   }
+
+  //To initialize socketio, we will place it in componentDidMount 
+  // and not in constructor because it is an network event
+  // WHY? because constructor is gonna happen initially,
+  // and CDM is something that happens asynchronously
+  
   componentDidMount() {
+    //this will trigger the on connection event in server/index.js
+    // now socket.io is connecting server/client
+    // this.socket = io('/') <-- unable to pass this shit down to childen;
+    const socket = io('/');
+    // solution for that is ^^ 
+
+    // sends someData to the server thru join listener event
+    socket.emit('join', 'someDATA')
+    //set a 'yo' event listener and console.logs data sent from server
+    socket.on('yo', (data) => {
+      console.log(data);
+    })
+
+    //check postcontroller.js for fetchPostbyEventID
+    //listens on posts event and setstate the data!
+    //look at onPostSubmit
+    socket.on('posts', (posts) => {
+      this.setState({
+        posts: posts
+      })
+    })
+
     const usersRef = firebase.database().ref("users");
     usersRef.on("value", snapshot => {
       let users = snapshot.val();
@@ -87,6 +117,7 @@ class App extends Component {
     const payload = {
       eventID: id
     }
+
     axios.post('/events/fetchByEventID', payload)
       .then((eventResponse) => {
 
@@ -122,19 +153,17 @@ class App extends Component {
 
     axios.post('posts/createPost', payload)
       .then(response => {
-        this.setState({
-          posts: response.data
-        })
+        // NO NEED FOR THIS SETSTATE HERE 
+        // console.log(response);
       })
       .catch(err => {
         console.log(err);
       })
-
   }
 
 
   render() {
-
+    // console.log('this.state for app: ', this.state);
     return (
       <div>
         {!this.state.user ? (
@@ -165,6 +194,7 @@ class App extends Component {
                       posts={this.state.posts}
                       submit={this.onSubmitPost}
                       change={this.onChangePost}
+                      socket={socket}
                     />
                   </div>
                 </div>
@@ -177,3 +207,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+//emit data to trigger someting listener event on the server
+//this.socket.emit('something', somethingdata)

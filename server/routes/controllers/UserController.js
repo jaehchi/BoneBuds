@@ -41,6 +41,7 @@ const UserController = {
       address: user.address,
       dogname: user.dogname,
       dogbio: user.dogbio,
+      profileUrl: user.profileUrl,
     }, { where: { email: req.body.email }, returning: true, plain: true })
       .then(() => {
         console.log('Entry is updated!');

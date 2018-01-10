@@ -16,6 +16,14 @@ class EventProfile extends Component {
   }
 
   componentDidMount () {
+    const { socket } = this.props;
+    
+    socket.on('RetrievingPosts', posts => {
+      this.setState({
+        posts: posts
+      })
+    });
+
     const payload = {
       eventID: this.props.eventID
     }
@@ -55,7 +63,7 @@ class EventProfile extends Component {
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
     
-    console.log('props for event profile,', this.props)
+    // console.log('props for event profile,', this.props)
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">

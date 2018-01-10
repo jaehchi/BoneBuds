@@ -5,12 +5,13 @@ const parser = require('body-parser');
 const path = require('path');
 const router = require('./routes');
 const db = require('./SQL/db');
-const { users, events, posts, comments } = require('./SQL/models');
+
 const app = express();
 
 
 //creates an http server and serving app
 const server = require('http').createServer(app);
+
 //creates an instance of socketio and serving server so it can bind to it
 const io = require('socket.io')(server);
 
@@ -44,12 +45,11 @@ app.use('/users', router);
 app.use('/posts', router);
 app.use('/comments', router);
 
+//stores a reference to the io object on instantiation of express.
+app.set('socketio', io);
+
 //listens for a connection with a callback with a socket
 io.on('connection', (socket) => {
-  //the socket will listen for ?? from the client
-  // this.socket.on('post', )
-
-
   console.log('Socket io connection');
 })
 
@@ -59,3 +59,4 @@ io.on('connection', (socket) => {
 server.listen(PORT, () => {
   console.log(`Server is now listening on port ${PORT}`);
 });
+

@@ -37,10 +37,11 @@ class App extends Component {
   componentDidMount() {
     //this will trigger the on connection event in server/index.js
     // now socket.io is connecting server/client
-    // this.socket = io('/');
+    // this.socket = io('/') <-- unable to pass this shit down to childen;
     const socket = io('/');
+    // solution for that is ^^ 
 
-    socket.on('connection', post => {
+    socket.on('connection', () => {
       console.log('connected from clients')
     })
 
@@ -141,6 +142,7 @@ class App extends Component {
   }
 
   onSubmitPost(payload) {
+    socket.emit('PostSubmitted', payload);    
 
     axios.post('posts/createPost', payload)
       .then(response => {

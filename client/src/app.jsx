@@ -6,7 +6,9 @@ import Events from "./Events/Events";
 import Login from "./Authentication/Login";
 import LoginLanding from "./Authentication/LoginLanding";
 import firebase, { auth } from "./Authentication/firebase";
+import io from 'socket.io-client';
 
+const socket = io('http://localhost:3000');
 
 class App extends Component {
   constructor(props) {
@@ -26,7 +28,22 @@ class App extends Component {
     this.onClick = this.onClick.bind(this);
     this.onSubmitPost = this.onSubmitPost.bind(this);
   }
+
+  //To initialize socketio, we will place it in componentDidMount 
+  // and not in constructor because it is an network event
+  // WHY? because constructor is gonna happen initially,
+  // and CDM is something that happens asynchronously
+  
   componentDidMount() {
+    //this will trigger the on connection event in server/index.js
+    // now socket.io is connecting server/client
+    this.socket = io('/');
+
+    //sets a listener from the server!
+    // this.socket.on('something', something => {
+    //   this.setState({ something });
+    // })
+
     const usersRef = firebase.database().ref("users");
     usersRef.on("value", snapshot => {
       let users = snapshot.val();
@@ -134,7 +151,7 @@ class App extends Component {
 
 
   render() {
-
+    console.log('this.state for app: ', this.state);
     return (
       <div>
         {!this.state.user ? (
@@ -177,3 +194,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+//emit data to trigger someting listener event on the server
+//this.socket.emit('something', somethingdata)

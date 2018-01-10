@@ -143,6 +143,7 @@ class EventProfile extends Component {
                           postID={post.postID}
                           post={post}
                           user={this.props.currentUser.displayName}
+                          socket={this.props.socket}
                         />
                       );
                     }) 

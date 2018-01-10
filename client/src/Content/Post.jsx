@@ -16,6 +16,14 @@ class Post extends Component {
   }
 
   componentDidMount () {
+    const socket = this.props.socket;
+
+    socket.on('comments', (comments) => {
+      this.setState({
+        comments: comments
+      })
+    })
+
     const payload = {
       postID: this.props.postID
     }
@@ -32,6 +40,7 @@ class Post extends Component {
   }
 
   onSubmitComment (e) {
+
     e.preventDefault()
     
     const payload = {
@@ -42,7 +51,7 @@ class Post extends Component {
 
     axios.post('/comments/createComment', payload)
       .then( response => {
-  
+
         this.setState({
           comments: response.data
         })

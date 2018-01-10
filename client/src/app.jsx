@@ -51,9 +51,9 @@ class App extends Component {
     //check postcontroller.js for fetchPostbyEventID
     //listens on posts event and setstate the data!
     //look at onPostSubmit
-    socket.on('posts', (data) => {
+    socket.on('posts', (posts) => {
       this.setState({
-        posts: data
+        posts: posts
       })
     })
 
@@ -159,7 +159,6 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       })
-
   }
 
 

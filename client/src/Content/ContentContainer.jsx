@@ -77,7 +77,7 @@ class ContentContainer extends Component {
 
           <Route
             path="/userEvents"
-            render={() => <UserEvents user={this.props.currentUser}/>} />
+            render={() => <UserEvents user={this.props.currentUser} socket={this.props.socket}/>} />
 
         </Switch>
       </main>

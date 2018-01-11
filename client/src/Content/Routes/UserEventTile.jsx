@@ -15,7 +15,7 @@ class UserEventTile extends Component {
         <div className="card">
           <div className="card-image">
             <img src="https://i.imgur.com/2KoKbtz.gif"/>
-            <span className="card-title">Card Title</span>
+            <span className="card-title">{this.props.event.title}</span>
             <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
           </div>
           <div className="card-content">

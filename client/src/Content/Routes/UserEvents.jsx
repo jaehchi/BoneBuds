@@ -5,13 +5,27 @@ import axios from 'axios'
 class UserEvents extends Component {
   constructor() {
     super();
+
+    this.state = {
+      events: []
+    }
   }
 
   componentDidMount () {
+    const socket = this.props.socket;
+
     const userID = this.props.user.uid;
+
     const payload = {
       userID: userID
     }
+
+    socket.on(`eventsByUser ${userID}`, eventsByUser => {
+      console.log('Users events in Socket', eventsByUser);
+      this.setState({
+        events: eventsByUser
+      });
+    });
     console.log('payload', payload)
 
     axios.post('/events/fetchEventsByUser', payload)
@@ -29,11 +43,11 @@ class UserEvents extends Component {
     console.log('props for userEvents', this.props);
     return (
       <div className="scrollable">
-        {/* {this.props.events.map(event => { */}
-          {/* return ( */}
-            <UserEventTile/>
-          {/* ); */}
-        {/* })} */}
+        {this.state.events.map(event => {
+          return (
+            <UserEventTile event={event}/>
+          );
+        })}
       </div>
     );
   }

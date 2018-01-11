@@ -17,6 +17,7 @@ class App extends Component {
     this.state = {
       users: [],
       user: '',
+      username: '',
       events: [],
       currentEventID: "",
       currentEvent: [],
@@ -99,8 +100,16 @@ class App extends Component {
       if (user) {
         this.setState({ user });
       }
+      axios.get(`/users/update/${user.uid}`)
+        .then((res) => {
+          this.setState({
+            username: res.data.username
+          })
+        })
+        .catch((error) => {
+          console.error('couldnt fetch user data', error);
+        })
     });
-
     axios
       .get("/events/fetchAllEvents")
       .then(eventsResponse => {
@@ -201,6 +210,7 @@ class App extends Component {
               <h3>
                 Welcome,{" "}
                 {this.state.user.displayName ||
+                  this.state.username ||
                   this.state.user.email}
               </h3>
               <div className="container">

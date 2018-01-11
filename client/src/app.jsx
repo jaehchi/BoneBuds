@@ -54,8 +54,13 @@ class App extends Component {
     socket.on('posts', posts => {
       this.setState({
         posts: posts
-      })
-    })
+      });
+    });
+
+    socket.on('fetchAllEvents', events => {
+      console.log('in socket... Events:', events);
+    });
+
 
     const usersRef = firebase.database().ref("users");
     usersRef.on("value", snapshot => {
@@ -91,6 +96,7 @@ class App extends Component {
         console.log(err);
       });
   }
+
   handleUserToken() {
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -98,6 +104,7 @@ class App extends Component {
       }
     });
   }
+
   logout() {
     auth.signOut().then(() => {
       this.setState({
@@ -106,6 +113,7 @@ class App extends Component {
       alert("logout successful");
     });
   }
+  
   setName(first, last) {
     this.setState({
       first,

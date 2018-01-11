@@ -39,7 +39,7 @@ const EventController = {
       description: event.description,
       tag: event.tag,
       image: event.image,
-      userID: event.owner,
+      userID: event.userID,
     }, { where: { owner: event.owner }, returning: true, plain: true })
       .then(() => {
         console.log('Event is updated!');

@@ -17,7 +17,7 @@ const CommentController = {
           })
             .then( commentResults => {
               io.emit(`comments ${req.body.postID}`, commentResults);
-              // res.status(201).send(commentResults);
+              res.status(201).send(commentResults);
             })
             .catch( err => {
               res.status(500).send(err);

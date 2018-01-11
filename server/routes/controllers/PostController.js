@@ -18,9 +18,9 @@ const PostController = {
           }
         })
           .then( postsResults => {
-            // res.status(201).send(postsResults);
             // sends all posts by eventID thru post listener event
             io.emit('posts', postsResults);
+            res.status(201).send(postsResults);
           })
           .catch( err => {
             res.status(500).send(err);

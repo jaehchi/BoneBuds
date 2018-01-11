@@ -7,6 +7,7 @@ const CommentController = {
     comments.create({
       username: req.body.username,
       text: req.body.text,
+      userID: req.body.userID,
       postID: req.body.postID
     })
       .then( results => {

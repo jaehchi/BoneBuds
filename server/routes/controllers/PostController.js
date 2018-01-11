@@ -9,6 +9,7 @@ const PostController = {
     posts.create({
       username: req.body.username,
       text: req.body.text,
+      userID: req.body.userID,
       eventID: req.body.eventID
     })
       .then( results => {

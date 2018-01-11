@@ -15,7 +15,7 @@ class CreateEvent extends Component {
       image: '',
       userID: '',
       owner: '',
-      ownerUrl: ''
+
     };
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);

@@ -12,6 +12,7 @@ class UserProfile extends Component {
       dogname: '',
       dogbio: '',
       profileUrl: '',
+      username: ''
     }
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -28,8 +29,8 @@ class UserProfile extends Component {
           address: res.data.address,
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
-          username: res.data.username,
-          profileUrl: res.data.profileUrl
+          profileUrl: res.data.profileUrl,
+          username: res.data.username
         })
         console.log('Pre-fetching user data... \nServer response:', res)
       })

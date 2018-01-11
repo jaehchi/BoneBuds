@@ -13,6 +13,7 @@ class UserPage extends Component {
       address: '',
       dogname: '',
       dogbio: '',
+      username: '',
       profileUrl: '',
     }
     this.consoleState = this.consoleState.bind(this);
@@ -29,6 +30,7 @@ class UserPage extends Component {
           address: res.data.address,
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
+          username: res.data.username,
           profileUrl: res.data.profileUrl,
         })
         console.log('Pre-fetched user info:', res.data)
@@ -72,7 +74,7 @@ class UserPage extends Component {
     return (
       <div id="userPage">
         <img id="profPic" src={profilePic} />
-        <div>Username: {this.state.firstname} {this.state.lastname}</div>
+        <div>Username: {this.state.username}</div>
         <div>Dog: {this.state.dogname}</div>
         <div>Dog Bio: {this.state.dogbio}</div>
         <Link to="userprofile"><i>Edit Profile</i></Link>

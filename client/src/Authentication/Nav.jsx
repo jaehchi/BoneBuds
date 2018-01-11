@@ -15,7 +15,7 @@ class Nav extends Component {
             <li><Link to='/createEvent'><i className="material-icons">fingerprint</i></Link></li>
             <li><Link to="/"><i className="material-icons">location_on</i></Link></li>
             <li><Link to="/userpage"><i className="material-icons">face</i></Link></li>
-            <li><a href="#!" onClick={this.props.logout}>Logout</a></li>
+            <li><a href="/" onClick={this.props.logout}>Logout</a></li>
           </ul>
         </div>
       </nav>

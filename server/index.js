@@ -42,6 +42,9 @@ app.get('/editEvent', (req, res) => {
 app.get('/userEvents', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
+app.get('/signup', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
+})
 
 app.use('/events', router);
 app.use('/users', router);

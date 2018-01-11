@@ -1,93 +1,85 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import firebase, { auth, facebookProvider, googleProvider } from './firebase.js';
+import { Link } from 'react-router-dom';
 
 class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: [],
-      user: '',
+      email: '',
+      password: '',
+
     }
     this.googleLogin = this.googleLogin.bind(this);
-    this.facebookLogin = this.facebookLogin.bind(this);
-    this.logout = this.logout.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.emailLogin = this.emailLogin.bind(this);
   }
-  componentDidMount() {
-    const usersRef = firebase.database().ref('users');
-    usersRef.on('value', (snapshot) => {
-      let users = snapshot.val();
-      let newState = [];
-      for (let user in users) {
-        newState.push({
-          id: users[user].uid,
-          email: users[user].email,
-          user: users[user].displayName
-        });
-      }
-      this.setState({
-        users: newState
-      });
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
     })
-    auth.onAuthStateChanged((user) => {
+  }
+  emailLogin() {
+    const email = this.state.email;
+    const password = this.state.password;
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .catch(() => {
+        console.error('error validating user with email and password');
+      })
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.setState({ user });
+        this.props.handleUserToken();
       }
-    });
+    })
   }
   googleLogin() {
     auth.signInWithPopup(googleProvider)
       .then((result) => {
         const usersRef = firebase.database().ref('users');
         const user = result.user;
-        this.setState({
-          user
-        });
         const dbUser = {
-          userName: user.displayName,
+          username: user.displayName,
           email: user.email
         }
-        usersRef.child(user.uid).set(dbUser)
-      });
-  }
-  facebookLogin() {
-    auth.signInWithPopup(facebookProvider)
-      .then((result) => {
-        const usersRef = firebase.database().ref('users');
-        const user = result.user;
-        this.setState({
-          user
-        });
-        const dbUser = {
-          userName: user.displayName,
-          email: user.email
+        const payload = {
+          username: user.email,
+          email: user.email,
+          userId: user.uid
         }
-        usersRef.child(user.uid).set(dbUser)
-      });
-  }
-  logout() {
-    auth.signOut()
-      .then(() => {
-        this.setState({
-          user: '',
-        });
-        alert('logout successful');
+        // below is sending post to server/db to check if user exists
+        // if it doesn't, creates new user on sqlite
+        axios.post('/users/createUser', payload)
+          .then(() => {
+            usersRef.child(user.uid).set(dbUser)
+            this.props.handleUserToken();
+          })
+          .catch(() => {
+            console.error('error signing up user in google login');
+          })
       });
   }
   render() {
     return (
-      <div>
-        {!this.state.user ?
+      <div className="loginLanding">
+        <div >
+          Email:<br />
+          <input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
+          <br />
+          Password:<br />
+          <input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
+          <br /><br />
           <div>
-            <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
-            <button className="loginBtn loginBtn--facebook" onClick={this.facebookLogin}>Log In with Facebook</button>
+            <button className="emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
           </div>
-          :
-          <div>
-            <h3>Welcome, {this.state.user.displayName}</h3>
-            <button onClick={this.logout}>Logout</button>
-          </div>
-        }
+        </div>
+        <div>
+          <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
+        </div>
+        <br />
+        <div>
+          <Link to="/signup"><button>Not a user? Sign Up!</button></Link>
+        </div>
       </div>
     )
   }

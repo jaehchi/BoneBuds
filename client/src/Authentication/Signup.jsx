@@ -69,7 +69,7 @@ class Signup extends Component {
   render() {
     return (
       <div>
-        <div id="signupForm">
+        <div className="signupForm">
           Username:
           <input type="text" name="username" onChange={this.handleChange} value={this.state.username} />
           Email:
@@ -88,8 +88,10 @@ class Signup extends Component {
           <input type="text" name="dogbio" onChange={this.handleChange} value={this.state.dogbio} />
           Profile Pic Url:
           <input type="text" name="profileUrl" onChange={this.handleChange} value={this.state.profileUrl} />
+          <div>
+            <Link to="/"><button onClick={this.emailSignup}>Sign Up!</button></Link>
+          </div>
         </div>
-        <Link to="/"><button className="signupButton" onClick={this.emailSignup}>Sign Up!</button></Link>
       </div>
     )
   }

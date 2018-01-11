@@ -61,24 +61,26 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className="loginLanding">
-        <div >
-          Email:<br />
-          <input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
-          <br />
-          Password:<br />
-          <input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
-          <br /><br />
-          <div>
-            <button className="emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+      <div className="loginBG">
+        <div className="loginLanding">
+          <div >
+            Email:<br />
+            <input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
+            <br />
+            Password:<br />
+            <input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
+            <br /><br />
+            <div>
+              <button className="emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+            </div>
           </div>
-        </div>
-        <div>
-          <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
-        </div>
-        <br />
-        <div>
-          <Link to="/signup"><button>Not a user? Sign Up!</button></Link>
+          <div>
+            <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
+          </div>
+          <br />
+          <div>
+            <Link to="/signup"><button>Not a user? Sign Up!</button></Link>
+          </div>
         </div>
       </div>
     )

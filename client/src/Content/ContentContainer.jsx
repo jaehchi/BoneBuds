@@ -68,7 +68,7 @@ class ContentContainer extends Component {
           />
           <Route
             path="/createEvent"
-            render={() => <CreateEvent owner={this.props.user} userData={this.props.userData}/>} />
+            render={() => <CreateEvent owner={this.props.user} username={this.props.username} userData={this.props.userData}/>} />
 
           <Route
             path="/userEvents"

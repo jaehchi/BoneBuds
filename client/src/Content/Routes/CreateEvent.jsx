@@ -43,9 +43,9 @@ class CreateEvent extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.owner, 'need to set owner as username')
+    console.log(this.props.username, 'need to set owner as username')
     this.setState({
-      owner: '',
+      owner: this.props.username,
       userID: this.props.owner.uid,
       ownerUrl: this.props.userData.profileUrl
     })

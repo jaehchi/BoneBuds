@@ -3,16 +3,23 @@ const events = require('./events.js');
 const posts = require('./posts.js');
 const comments = require('./comments.js');
 
-users.belongsToMany(events, {
-  as: 'users',
-  through: 'users_events',
-  foreignKey: 'eventsID'
+// users.belongsToMany(events, {
+//   as: 'users',
+//   through: 'users_events',
+//   foreignKey: 'eventsID'
+// })
+
+// events.belongsToMany(users, {
+//   as: 'events',
+//   through: 'users_events',
+//   foreignKey: 'userID'
+// })
+users.hasMany(events, {
+  foreignKey: 'userID'
 })
 
-events.belongsToMany(users, {
-  as: 'events',
-  through: 'users_events',
-  foreignKey: 'userID'
+events.hasMany(users, {
+  foreignKey: 'eventID'
 })
 
 comments.belongsTo(posts, {

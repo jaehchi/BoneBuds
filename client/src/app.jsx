@@ -20,7 +20,8 @@ class App extends Component {
       events: [],
       currentEventID: "",
       currentEvent: [],
-      posts: []
+      posts: [],
+      usersEvents: []
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
@@ -58,11 +59,14 @@ class App extends Component {
     });
 
     socket.on('fetchAllEvents', events => {
-      console.log(events, 'insocket')
       this.setState({
         events: events
       });
     });
+
+    socket.on('eventsByUser', eventsByUser => {
+      console.log('Users events in Socket', eventsByUser);
+    })
 
 
     const usersRef = firebase.database().ref("users");

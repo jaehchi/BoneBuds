@@ -82,6 +82,23 @@ const EventController = {
       .catch( err => {
         res.status(500).send(err);
       })
+  },
+  fetchEventsByUser: (req, res) => {
+    let io = req.app.get('socketio');
+
+    events.findAll({
+      where : {
+        userID: req.body.userID
+      }
+    })
+      .then( events => {
+        io.emit('eventsByUser', events);
+        res.status(201).send(events);
+      })
+      .catch( err => {
+        console.log(err);
+      })
+
   }
 };
 

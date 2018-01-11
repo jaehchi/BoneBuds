@@ -58,6 +58,9 @@ router.route('/fetchAllCommentsByPost')
 router.route('/editEvent')
   .put(EventController.editEvent)
 
+//Fetches All Events for a User
+router.route('/fetchEventsByUser')
+  .post(EventController.fetchEventsByUser);
 // Pre-fetches events data
 // router.route('/fetchUsersEventsData/:owner')
 //   .get(EventController.fetchEventData)

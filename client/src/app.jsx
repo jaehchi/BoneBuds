@@ -193,7 +193,6 @@ class App extends Component {
         {!this.state.user ? (
           <LoginLanding
             handleUserToken={this.handleUserToken}
-            handleLogin={this.handleLogin}
           />
         ) : (
             <div>

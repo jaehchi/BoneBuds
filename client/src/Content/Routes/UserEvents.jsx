@@ -3,8 +3,8 @@ import UserEventTile from "./UserEventTile.jsx";
 import axios from 'axios'
 
 class UserEvents extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       events: []
     }
@@ -14,7 +14,7 @@ class UserEvents extends Component {
     const socket = this.props.socket;
     const userID = this.props.user.uid;
     const payload = {
-      userID: userID
+      userID: this.props.user.uid
     }
 
     socket.on(`eventsByUser ${userID}`, eventsByUser => {
@@ -26,7 +26,7 @@ class UserEvents extends Component {
 
     axios.post('/events/fetchEventsByUser', payload)
       .then(response => {
-        console.log('post:/fetchEventByUser', response.data);
+        console.log('post to events/fetchEventByUser', response.data);
       })
       .catch( err => {
         console.log(err);
@@ -34,7 +34,7 @@ class UserEvents extends Component {
   }
 
   render() {
-    console.log('props for userEvents', this.props);
+    console.log('props for userEvents', this.props.user.uid);
     return (
       <div className="scrollable">
         {this.state.events.map((event, index) => {

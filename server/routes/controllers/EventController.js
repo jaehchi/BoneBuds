@@ -96,15 +96,15 @@ const EventController = {
   },
   fetchEventsByUser: (req, res) => {
     let io = req.app.get('socketio');
-    const owner = req.params.owner
-
+    const owner = req.body.userID
+    console.log(owner);
     events.findAll({
       where : {
         userID: owner,
       }
     })
       .then( events => {
-        io.emit(`eventsByUser ${userID}`, events);
+        io.emit(`eventsByUser ${owner}`, events);
         res.status(201).send(events);
       })
       .catch( err => {

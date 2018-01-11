@@ -97,7 +97,7 @@ const EventController = {
   fetchEventsByUser: (req, res) => {
     let io = req.app.get('socketio');
     const owner = req.body.userID
-    console.log(owner);
+    // onwer is the user's uid
     events.findAll({
       where : {
         userID: owner,

@@ -12,8 +12,8 @@ class UserEventTile extends Component {
 
   render () {
     return (
-      <div className="row">
-      <div className="col s12 m6">
+      <div className="wrapper">
+      <div className="col s6">
         <div className="card">
           <div className="card-image">
             <img src="https://i.imgur.com/2KoKbtz.gif"/>

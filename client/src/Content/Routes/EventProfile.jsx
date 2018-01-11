@@ -16,13 +16,17 @@ class EventProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount () {
+  componentWillMount() {
+    console.log('fetch all data from this post');
+  }
 
+  componentDidMount () {
     const payload =  {
       userID: this.props.userData.userID
     };
     axios.post('/users/getUserData', payload)
       .then( response => {
+        console.log(response.data)
         this.setState({
           owner: response.data
         })
@@ -30,9 +34,7 @@ class EventProfile extends Component {
       .catch( err => {
         console.log(err);
       })
-
   }
-
 
   onChange(e) {
     this.setState({
@@ -48,13 +50,9 @@ class EventProfile extends Component {
       text: this.state.post,
       username: this.props.currentUser.displayName
     }
-
     this.props.submit(payload);
-
     e.target.reset()
   }
-
-
 
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
@@ -146,7 +144,6 @@ class EventProfile extends Component {
                         />
                       );
                     })
-
                   }
                   </div>
                 </div>

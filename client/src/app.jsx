@@ -20,7 +20,8 @@ class App extends Component {
       events: [],
       currentEventID: "",
       currentEvent: [],
-      posts: []
+      posts: [],
+      userData: null
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
@@ -54,8 +55,19 @@ class App extends Component {
     socket.on('posts', posts => {
       this.setState({
         posts: posts
-      })
+      });
+    });
+
+    socket.on('fetchAllEvents', events => {
+      this.setState({
+        events: events
+      });
+    });
+
+    socket.on('eventsByUser', eventsByUser => {
+      console.log('Users events in Socket', eventsByUser);
     })
+
 
     const usersRef = firebase.database().ref("users");
     usersRef.on("value", snapshot => {
@@ -70,9 +82,18 @@ class App extends Component {
           last: "",
         });
       }
-      this.setState({
-        users: newState
-      });
+
+      axios.post('/users/getUserData', { userID: this.state.user.uid } )
+        .then( response => {
+  
+          this.setState({
+            userData: response.data,
+            users: newState
+          })
+        })
+        .catch( err => {
+          console.log(err)
+        })
     });
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -90,7 +111,10 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
+
+  
   }
+
   handleUserToken() {
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -98,6 +122,7 @@ class App extends Component {
       }
     });
   }
+
   logout() {
     auth.signOut().then(() => {
       this.setState({
@@ -106,6 +131,7 @@ class App extends Component {
       alert("logout successful");
     });
   }
+  
   setName(first, last) {
     this.setState({
       first,
@@ -163,7 +189,7 @@ class App extends Component {
 
 
   render() {
-    // console.log('this.state for app: ', this.state);
+    console.log('this.state for app: ', this.state);
     return (
       <div>
         {!this.state.user ? (
@@ -196,6 +222,7 @@ class App extends Component {
                       change={this.onChangePost}
                       socket={socket}
                       user={this.state.user}
+                      userData={this.state.userData}
                     />
                   </div>
                 </div>

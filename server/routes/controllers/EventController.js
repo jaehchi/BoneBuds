@@ -2,7 +2,10 @@ const { users, events, posts, comments } = require("../../sql/models");
 
 const EventController = {
   createEvent: (req, res) => {
-    const event = req.body.info;
+    let io = req.app.get('socketio');
+    const event = req.body;
+
+
     events
       .create({
         title: event.title,
@@ -16,10 +19,14 @@ const EventController = {
         tag: event.tag,
         image: event.image,
         userID: event.userID,
+        ownerUrl: event.ownerUrl
       })
       .then(results => {
-        console.log(results)
-        res.status(201).send(results);
+        events.findAll()
+          .then( allEvents => {
+            io.emit('fetchAllEvents', allEvents);
+            res.status(201).send(allEvents);
+          })
       })
       .catch(err => {
         res.status(500).send(err);
@@ -39,7 +46,7 @@ const EventController = {
       description: event.description,
       tag: event.tag,
       image: event.image,
-      userID: event.owner,
+      userID: event.userID,
     }, { where: { owner: event.owner }, returning: true, plain: true })
       .then(() => {
         console.log('Event is updated!');
@@ -52,9 +59,12 @@ const EventController = {
       })
   },
   fetchAllEvents: (req, res) => {
+    let io = req.app.get('socketio');
+
     events
       .findAll()
       .then(results => {
+        io.emit('fetchAllEvents', results);
         res.status(200).send(results);
       })
       .catch(err => {
@@ -74,6 +84,24 @@ const EventController = {
       .catch( err => {
         res.status(500).send(err);
       })
+  },
+  fetchEventsByUser: (req, res) => {
+    let io = req.app.get('socketio');
+    const userID = req.body.userID
+
+    events.findAll({
+      where : {
+        userID: req.body.userID
+      }
+    })
+      .then( events => {
+        io.emit(`eventsByUser ${userID}`, events);
+        res.status(201).send(events);
+      })
+      .catch( err => {
+        console.log(err);
+      })
+
   }
 };
 

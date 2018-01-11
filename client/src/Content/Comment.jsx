@@ -11,7 +11,7 @@ class Comment extends Component {
         <div className="card-profile-title">
           <div className="row">
             <div className="col s1">
-              <img src="logo2.png" alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
+              <img src={this.props.userData.profileUrl} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
             </div>
             <div className="col s10">
               <p className="grey-text text-darken-4 margin">{this.props.comment.username}</p>

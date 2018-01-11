@@ -9,8 +9,7 @@ class EventProfile extends Component {
     super(props);
 
     this.state = {
-      post: "",
-      posts: []
+      owner: ''
     };
 
     this.onChange = this.onChange.bind(this);
@@ -19,18 +18,19 @@ class EventProfile extends Component {
 
   componentDidMount () {
 
-    // const payload = {
-    //   eventID: this.props.eventID
-    // }
-    // axios.post('/posts/fetchAllPostsByEvent', payload)
-    //   .then( postResponse => {
-    //     this.setState({
-    //       posts: postResponse.data
-    //     })
-    //   })
-    //   .catch( err => {
-    //     console.log(err);
-    //   })
+    const payload =  { 
+      userID: this.props.userData.userID
+    };
+    axios.post('/users/getUserData', payload)
+      .then( response => {
+        this.setState({
+          owner: response.data
+        })
+      })
+      .catch( err => {
+        console.log(err);
+      })
+
   }
 
 
@@ -59,7 +59,8 @@ class EventProfile extends Component {
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
     
-    // console.log('props for event profile,', this.props)
+    console.log('state for event profile,', this.state)
+    console.log('state for event props', this.props)
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">
@@ -73,7 +74,7 @@ class EventProfile extends Component {
                   <div className="row">
                     <div className="col s1">
                       <img
-                        src="logo.png"
+                        src={this.props.event.ownerUrl}
                         alt=""
                         className="circle responsive-img valign profile-post-uer-image"
                       />
@@ -140,7 +141,9 @@ class EventProfile extends Component {
                           postID={post.postID}
                           post={post}
                           user={this.props.currentUser.displayName}
+                          //dont need user ^ when  username is working on userData
                           socket={this.props.socket}
+                          userData={this.props.userData}
                         />
                       );
                     }) 

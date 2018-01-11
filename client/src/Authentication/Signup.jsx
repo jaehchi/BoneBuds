@@ -89,7 +89,7 @@ class Signup extends Component {
           Profile Pic Url:
           <input type="text" name="profileUrl" onChange={this.handleChange} value={this.state.profileUrl} />
         </div>
-        <button className="signupButton" onClick={this.emailSignup}>Sign Up!</button>
+        <Link to="/"><button className="signupButton" onClick={this.emailSignup}>Sign Up!</button></Link>
       </div>
     )
   }

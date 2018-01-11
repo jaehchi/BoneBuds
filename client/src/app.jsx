@@ -22,7 +22,7 @@ class App extends Component {
       currentEventID: "",
       currentEvent: [],
       posts: [],
-      userData: '',
+      userData: ''
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);

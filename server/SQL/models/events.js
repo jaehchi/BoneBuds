@@ -17,6 +17,7 @@ const events = db.define('events', {
   description : Sequelize.STRING,
   tag: Sequelize.STRING,
   image: Sequelize.STRING,
+  ownerUrl: Sequelize.STRING
 });
 
 module.exports = events;

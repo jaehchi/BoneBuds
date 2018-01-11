@@ -7,7 +7,7 @@ class Login extends Component {
     super(props)
     this.state = {
       users: [],
-      user: null,
+      user: '',
     }
     this.googleLogin = this.googleLogin.bind(this);
     this.facebookLogin = this.facebookLogin.bind(this);
@@ -69,7 +69,7 @@ class Login extends Component {
     auth.signOut()
       .then(() => {
         this.setState({
-          user: null
+          user: '',
         });
         alert('logout successful');
       });

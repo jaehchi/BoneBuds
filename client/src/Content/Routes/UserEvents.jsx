@@ -3,9 +3,8 @@ import UserEventTile from "./UserEventTile.jsx";
 import axios from 'axios'
 
 class UserEvents extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       events: []
     }
@@ -13,41 +12,37 @@ class UserEvents extends Component {
 
   componentDidMount () {
     const socket = this.props.socket;
-
     const userID = this.props.user.uid;
-
     const payload = {
-      userID: userID
+      userID: this.props.user.uid
     }
 
     socket.on(`eventsByUser ${userID}`, eventsByUser => {
-      console.log('Users events in Socket', eventsByUser);
       this.setState({
         events: eventsByUser
       });
     });
-    console.log('payload', payload)
 
     axios.post('/events/fetchEventsByUser', payload)
-      .then( response => {
-        console.log('herrro' ,response);
+      .then(response => {
+        console.log('socket works. result:', response.data);
       })
       .catch( err => {
         console.log(err);
       })
-
   }
 
-
   render() {
-    console.log('props for userEvents', this.props);
+    // this.props.user.uid works
     return (
-      <div className="scrollable">
-        {this.state.events.map(event => {
-          return (
-            <UserEventTile event={event}/>
-          );
-        })}
+      <div className="wrapper">
+        <div className="scrollable">
+          {this.state.events.map((event, index) => {
+            return (
+              <UserEventTile event={event} key={index}/>
+            );
+          })}
+        </div>
       </div>
     );
   }

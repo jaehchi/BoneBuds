@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class CreateEvent extends Component {
   componentWillMount() {
     console.log(this.props.owner, 'need to set owner as username')
     this.setState({
-      owner: this.props.userData.username,
+      owner: '',
       userID: this.props.owner.uid,
       ownerUrl: this.props.userData.profileUrl
     })
@@ -52,7 +53,6 @@ class CreateEvent extends Component {
 
   consoleState() {
     console.log("info being sent to database:", this.state);
-
   }
 
   onChangeHandler(e) {
@@ -81,11 +81,10 @@ class CreateEvent extends Component {
   }
 
   render() {
-    console.log(this.props, 'asdfasdfadsf')
     return (
       <div className="row scrollable">
         <button onClick={this.consoleState}>Console State</button>
-        <button onClick={this.createEvent}>Submit Changes</button>
+        <button onClick={this.createEvent}>Create Event</button>
 
         <form className="col s12">
           <div className="row">
@@ -105,7 +104,7 @@ class CreateEvent extends Component {
                 data-length="25"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix">Event Title</label>
+              <label htmlFor="icon_prefix" className="active">Event Title</label>
             </div>
           </div>
 
@@ -120,7 +119,7 @@ class CreateEvent extends Component {
                 data-length="120"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="textarea1">Description</label>
+              <label htmlFor="textarea1" className="active">Description</label>
             </div>
           </div>
 
@@ -135,7 +134,7 @@ class CreateEvent extends Component {
                 data-length="25"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix">Location</label>
+              <label htmlFor="icon_prefix" className="active">Location</label>
             </div>
           </div>
 
@@ -150,7 +149,7 @@ class CreateEvent extends Component {
                 data-length="255"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix">Image Url</label>
+              <label htmlFor="icon_prefix" className="active">Image Url</label>
             </div>
           </div>
 

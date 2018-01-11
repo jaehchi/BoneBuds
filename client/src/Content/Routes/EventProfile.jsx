@@ -16,13 +16,17 @@ class EventProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentDidMount () {
+  componentWillMount() {
+    console.log('fetch all data from this post');
+  }
 
-    const payload =  { 
+  componentDidMount () {
+    const payload =  {
       userID: this.props.userData.userID
     };
     axios.post('/users/getUserData', payload)
       .then( response => {
+        console.log(response.data)
         this.setState({
           owner: response.data
         })
@@ -30,9 +34,7 @@ class EventProfile extends Component {
       .catch( err => {
         console.log(err);
       })
-
   }
-
 
   onChange(e) {
     this.setState({
@@ -48,19 +50,14 @@ class EventProfile extends Component {
       text: this.state.post,
       username: this.props.currentUser.displayName
     }
-
     this.props.submit(payload);
-
     e.target.reset()
   }
 
- 
-
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
-    
-    console.log('state for event profile,', this.state)
-    console.log('state for event props', this.props)
+
+    // console.log('props for event profile,', this.props)
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">
@@ -126,7 +123,7 @@ class EventProfile extends Component {
                         className="validate margin"
                         onChange={this.onChange}
                       />
-                    </form> 
+                    </form>
                     <label htmlFor="profile-comments" className="">
                       Posts
                     </label>
@@ -146,8 +143,7 @@ class EventProfile extends Component {
                           userData={this.props.userData}
                         />
                       );
-                    }) 
-                    
+                    })
                   }
                   </div>
                 </div>

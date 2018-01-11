@@ -24,13 +24,13 @@ events.hasMany(users, {
 
 comments.belongsTo(posts, {
   foreignKey: 'postID'
-});  
+});
 posts.hasMany(comments, {
   foreignKey: 'postID'
-});  
+});
 posts.belongsTo(events, {
   foreignKey: 'eventID'
-});  
+});
 events.hasMany(posts, {
   foreignKey: 'eventID'
 });
@@ -55,12 +55,12 @@ users.sync()
           })
           .catch ( err => {
           console.log('Unable to sync Post table', err);
-          }) 
+          })
       })
       .catch ( err => {
       console.log('Unable to sync Events table', err);
       })
-  
+
   })
   .catch ( error => {
     console.log('Unable to sync Users table', error);

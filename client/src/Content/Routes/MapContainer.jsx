@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import io from 'socket.io-client';
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -11,7 +11,6 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      eventInfo: 'Pug photo booth poutine, whatever hexagon sustainable iPhone hell of. Meh portland gluten-free kogi sustainable intelligentsia ethical. Narwhal coloring book pinterest raw denim.',
       events: [],
       hasSetUserInfo: '',
     }
@@ -20,11 +19,20 @@ export class MapContainer extends Component {
   }
 
   componentWillMount() {
+    const socket = io('/');
+    socket.on('getAllMapEvents', events => {
+      this.setState({
+        events,
+      })
+    })
+  }
+
+  componentDidMount() {
     axios.get('users/popups')
       .then((response) => {
-        console.log('Pre-fetching coordinates data... \nserver response:', response)
-        response.data.forEach(event => {
-          this.state.events.push(event)
+        console.log('Pre-fetching coordinates data... \nserver response:', response);
+        this.setState({
+          events: response.data,
         })
       })
       .catch((e) => {
@@ -32,11 +40,6 @@ export class MapContainer extends Component {
       });
   }
 
-  componentDidMount() {
-    if (this.state.hasSetUserInfo === false) {
-      Materialize.toast('Looks like your profile is missing some information!', 10000, 'rounded');
-    }
-  }
 
   onMarkerClick(props, marker, e) {
     this.setState({
@@ -50,7 +53,7 @@ export class MapContainer extends Component {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
-        activeMarker: null
+        activeMarker: null,
       })
     }
   }
@@ -98,8 +101,7 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
             <div id="popupInfo">
-              <h5>{this.state.selectedPlace.name}</h5>
-              {this.state.eventInfo}
+              <h5 className="header center teal-text text-lighten-2">{this.state.selectedPlace.name}</h5>
             </div>
         </InfoWindow>
       </Map>

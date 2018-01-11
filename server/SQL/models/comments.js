@@ -9,7 +9,7 @@ const comments = db.define('comments', {
   },
   username: Sequelize.STRING,
   text: Sequelize.STRING,
-  url: Sequelize.STRING
+  userID: Sequelize.STRING
 })
 
 module.exports = comments;

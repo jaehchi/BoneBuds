@@ -58,7 +58,10 @@ class App extends Component {
     });
 
     socket.on('fetchAllEvents', events => {
-      console.log('in socket... Events:', events);
+      console.log(events, 'insocket')
+      this.setState({
+        events: events
+      });
     });
 
 

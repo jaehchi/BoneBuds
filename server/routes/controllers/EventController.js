@@ -2,7 +2,9 @@ const { users, events, posts, comments } = require("../../sql/models");
 
 const EventController = {
   createEvent: (req, res) => {
+    let io = req.app.get('socketio');
     const event = req.body.info;
+
     events
       .create({
         title: event.title,
@@ -18,8 +20,11 @@ const EventController = {
         userID: event.userID,
       })
       .then(results => {
-        console.log(results)
-        res.status(201).send(results);
+        events.findAll()
+          .then( allEvents => {
+            io.emit('fetchAllEvents', allEvents);
+            res.status(201).send(allEvents);
+          })
       })
       .catch(err => {
         res.status(500).send(err);
@@ -52,9 +57,12 @@ const EventController = {
       })
   },
   fetchAllEvents: (req, res) => {
+    let io = req.app.get('socketio');
+
     events
       .findAll()
       .then(results => {
+        io.emit('fetchAllEvents', results);
         res.status(200).send(results);
       })
       .catch(err => {

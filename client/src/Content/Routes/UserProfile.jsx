@@ -59,7 +59,7 @@ class UserProfile extends Component{
       info: this.state,
       email: this.props.currentUser.email,
     }
-    axios.post('/users/update', payload)
+    axios.put('/users/update', payload)
       .then((response) => {
         console.log('User data updating... \nServer response:', response.data);
         this.showToast();

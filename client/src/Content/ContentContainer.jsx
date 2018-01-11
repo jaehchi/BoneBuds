@@ -70,7 +70,9 @@ class ContentContainer extends Component {
             path="/editEvent"
             render={() => <EditEvent eventID={this.props.eventID} />}
           />
-          <Route path="/createEvent" render={() => <CreateEvent />} />
+          <Route
+            path="/createEvent"
+            render={() => <CreateEvent owner={this.props.user}/>} />
         </Switch>
       </main>
     )

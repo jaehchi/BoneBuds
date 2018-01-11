@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       users: [],
-      user: null,
+      user: '',
       events: [],
       currentEventID: "",
       currentEvent: [],
@@ -195,6 +195,7 @@ class App extends Component {
                       submit={this.onSubmitPost}
                       change={this.onChangePost}
                       socket={socket}
+                      user={this.state.user}
                     />
                   </div>
                 </div>

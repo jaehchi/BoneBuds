@@ -19,8 +19,8 @@ router.route('/latLong')
   .post(MapLocationController.getLocationLatLong)
 
 // Updates User Info
-router.route('/update/')
-  .post(UserController.updateUserProfile)
+router.route('/update')
+  .put(UserController.updateUserProfile)
 
 // Gets User's Saved Info
 router.route('/update/:uid')
@@ -55,8 +55,8 @@ router.route('/fetchAllCommentsByPost')
   .post(CommentController.fetchAllCommentsByPost);
 
 // Edits Event Data
-router.route('/editEvent/')
-  .post(EventController.editEvent)
+router.route('/editEvent')
+  .put(EventController.editEvent)
 
 // Pre-fetches events data
 // router.route('/fetchUsersEventsData/:owner')

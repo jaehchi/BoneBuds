@@ -14,10 +14,6 @@ router.route('/createUser')
 router.route('/popups')
   .get(MapLocationController.getAllEvents);
 
-// Calls API to get latitude longitude for location
-router.route('/latLong')
-  .post(MapLocationController.getLocationLatLong)
-
 // Updates User Info
 router.route('/update')
   .put(UserController.updateUserProfile)

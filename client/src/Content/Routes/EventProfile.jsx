@@ -54,11 +54,11 @@ class EventProfile extends Component {
     e.target.reset()
   }
 
- 
+
 
   render() {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
-    
+
     // console.log('props for event profile,', this.props)
     return (
       <div id="eventProfile">
@@ -125,7 +125,7 @@ class EventProfile extends Component {
                         className="validate margin"
                         onChange={this.onChange}
                       />
-                    </form> 
+                    </form>
                     <label htmlFor="profile-comments" className="">
                       Posts
                     </label>
@@ -143,8 +143,8 @@ class EventProfile extends Component {
                           socket={this.props.socket}
                         />
                       );
-                    }) 
-                    
+                    })
+
                   }
                   </div>
                 </div>

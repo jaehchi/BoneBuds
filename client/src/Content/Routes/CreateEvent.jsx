@@ -50,7 +50,6 @@ class CreateEvent extends Component {
 
   consoleState() {
     console.log("info being sent to database:", this.state);
-
   }
 
   onChangeHandler(e) {
@@ -102,7 +101,7 @@ class CreateEvent extends Component {
                 data-length="25"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix">Event Title</label>
+              <label htmlFor="icon_prefix" className="active">Event Title</label>
             </div>
           </div>
 
@@ -117,7 +116,7 @@ class CreateEvent extends Component {
                 data-length="120"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="textarea1">Description</label>
+              <label htmlFor="textarea1" className="active">Description</label>
             </div>
           </div>
 
@@ -132,7 +131,7 @@ class CreateEvent extends Component {
                 data-length="25"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix">Location</label>
+              <label htmlFor="icon_prefix" className="active">Location</label>
             </div>
           </div>
 
@@ -147,7 +146,7 @@ class CreateEvent extends Component {
                 data-length="255"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix">Image Url</label>
+              <label htmlFor="icon_prefix" className="active">Image Url</label>
             </div>
           </div>
 

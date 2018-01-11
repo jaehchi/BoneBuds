@@ -22,11 +22,12 @@ class EventTile extends Component {
   }
 
   render () {
+    console.log(this.props.event)
     return (
 
       <div className="card card-panel hoverable sticky-action">
         <div className="card-image waves-effect waves-block waves-light">
-          <img className="activator" src="https://www.banfflakelouise.com/sites/default/files/moraine-lake-photographer-banff-alberta_0.jpeg"/>
+          <img className="activator" src={this.props.event.image}/>
         </div>
 
         <div className="card-content">
@@ -48,4 +49,3 @@ class EventTile extends Component {
 }
 
 export default EventTile;
-

@@ -11,6 +11,7 @@ class Nav extends Component {
         <div className="nav-wrapper blue darken-1">
           <a href="/" className="left brand-logo"><img src="logo.png"/>BoneBuds</a>
           <ul className="right">
+            <li><Link to='/userEvents'><i className="material-icons">pregnant_woman</i></Link></li>
             <li><Link to='/createEvent'><i className="material-icons">fingerprint</i></Link></li>
             <li><Link to="/"><i className="material-icons">location_on</i></Link></li>
             <li><Link to="/userpage"><i className="material-icons">face</i></Link></li>

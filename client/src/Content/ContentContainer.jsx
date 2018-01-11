@@ -6,6 +6,7 @@ import EventProfile from "./Routes/EventProfile";
 import CreateEvent from "./Routes/CreateEvent";
 import EditEvent from "./Routes/EditEvent";
 import UserPage from './Routes/UserPage';
+import UserEvents from './Routes/UserEvents'
 
 class ContentContainer extends Component {
   constructor(props) {
@@ -73,6 +74,11 @@ class ContentContainer extends Component {
           <Route
             path="/createEvent"
             render={() => <CreateEvent owner={this.props.user}/>} />
+
+          <Route
+            path="/userEvents"
+            render={() => <UserEvents />} />
+
         </Switch>
       </main>
     )

@@ -14,14 +14,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
       users: [],
       user: '',
       events: [],
       currentEventID: "",
       currentEvent: [],
       posts: [],
-      userData: null
+      userData: '',
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
@@ -85,7 +84,7 @@ class App extends Component {
 
       axios.post('/users/getUserData', { userID: this.state.user.uid } )
         .then( response => {
-  
+
           this.setState({
             userData: response.data,
             users: newState
@@ -112,7 +111,7 @@ class App extends Component {
         console.log(err);
       });
 
-  
+
   }
 
   handleUserToken() {
@@ -126,12 +125,12 @@ class App extends Component {
   logout() {
     auth.signOut().then(() => {
       this.setState({
-        user: null
+        user: '',
       });
       alert("logout successful");
     });
   }
-  
+
   setName(first, last) {
     this.setState({
       first,
@@ -189,7 +188,6 @@ class App extends Component {
 
 
   render() {
-    console.log('this.state for app: ', this.state);
     return (
       <div>
         {!this.state.user ? (

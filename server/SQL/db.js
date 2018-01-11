@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const path = require('path');
-const db = new Sequelize('db', 'null', 'null', {
+const db = new Sequelize('db', null, null, {
   dialect: 'sqlite',
   storage: path.join(__dirname, 'BoneBuds.sqlite'),
   logging: false,

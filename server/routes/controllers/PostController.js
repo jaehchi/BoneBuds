@@ -1,4 +1,4 @@
-const { users, events, posts, comments } = require('../../sql/models');
+const { users, events, posts, comments } = require('../../SQL/models');
 
 const PostController = {
   createPost: (req, res) => {

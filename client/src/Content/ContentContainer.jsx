@@ -8,19 +8,12 @@ import EditEvent from "./Routes/EditEvent";
 import UserPage from './Routes/UserPage';
 import UserEvents from './Routes/UserEvents'
 
+
 class ContentContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hasSetUserInfo: '',
     }
-    this.hasSetUserInfo = this.hasSetUserInfo.bind(this);
-  }
-
-  hasSetUserInfo() {
-    this.setState({
-      hasSetUserInfo: true,
-    })
   }
 
   render() {
@@ -30,8 +23,9 @@ class ContentContainer extends Component {
         <Switch>
           <Route
             exact path="/"
-            component={MapContainer}
-            hasSetUserInfo={this.state.hasSetUserInfo}
+            render={() => (
+              <MapContainer />
+            )}
           />
           <Route
             path="/userpage"

@@ -53,7 +53,7 @@ app.set('socketio', io);
 
 //listens for a connection with a callback with a socket
 io.on('connection', (socket) => {
-  console.log('connection establsihed');
+  console.log('New user has connected');
 
   //sets a listener event for join from client
   socket.on('join', (data) => {

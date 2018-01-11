@@ -3,9 +3,11 @@ const Events = require('../../SQL/models/events');
 
 const MapLocationController = {
   getAllEvents: (req, res) => {
+    let io = req.app.get('socketio');
     Events.findAll()
       .then((response) =>{
-        console.log('Event location data fetched');
+        console.log('Event location data sent to client');
+        io.emit('getAllMapEvents', response)
         res.send(response);
       })
       .catch((e) => {

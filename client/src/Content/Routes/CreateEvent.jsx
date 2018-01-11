@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -83,7 +84,7 @@ class CreateEvent extends Component {
     return (
       <div className="row scrollable">
         <button onClick={this.consoleState}>Console State</button>
-        <button onClick={this.createEvent}>Submit Changes</button>
+        <button onClick={this.createEvent}>Create Event</button>
 
         <form className="col s12">
           <div className="row">

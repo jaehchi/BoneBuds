@@ -2165,7 +2165,6 @@ html {
  */
 body {
   margin: 0;
-  position: absolute;
   overflow-x: hidden;
   overflow-y: hidden;
 }
@@ -6969,7 +6968,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::before {
 /* Select Field
    ========================================================================== */
 select {
-  display: none;
+  margin: 0;
 }
 
 select.browser-default {

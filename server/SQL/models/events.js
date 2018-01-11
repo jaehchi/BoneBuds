@@ -11,6 +11,7 @@ const events = db.define('events', {
   date: Sequelize.STRING,
   time: Sequelize.STRING,
   owner: Sequelize.STRING,
+  location: Sequelize.STRING,
   latitude : Sequelize.STRING,
   longitude: Sequelize.STRING,
   description : Sequelize.STRING,

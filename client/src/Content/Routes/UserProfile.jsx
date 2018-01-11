@@ -11,6 +11,7 @@ class UserProfile extends Component{
       address: '',
       dogname: '',
       dogbio: '',
+      profileUrl: '',
     }
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -27,6 +28,7 @@ class UserProfile extends Component{
           address: res.data.address,
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
+          profileUrl: res.data.profileUrl
         })
         console.log('Pre-fetching user data... \nServer response:', res)
       })
@@ -57,7 +59,7 @@ class UserProfile extends Component{
       info: this.state,
       email: this.props.currentUser.email,
     }
-    axios.post('/users/update', payload)
+    axios.put('/users/update', payload)
       .then((response) => {
         console.log('User data updating... \nServer response:', response.data);
         this.showToast();
@@ -137,6 +139,19 @@ class UserProfile extends Component{
                   onChange={this.onChangeHandler}
                 ></textarea>
                 <label htmlFor="dogbio">Dog Bio</label>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="input-field col s12">
+                <input
+                  placeholder='Insert link to profile url'
+                  name="profileUrl"
+                  type="text"
+                  className="validate"
+                  onChange={this.onChangeHandler}
+                />
+                <label htmlFor="profileUrl">Profile Image</label>
               </div>
             </div>
 

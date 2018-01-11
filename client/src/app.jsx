@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       users: [],
-      user: null,
+      user: '',
       events: [],
       currentEventID: "",
       currentEvent: [],
@@ -29,17 +29,17 @@ class App extends Component {
     this.onSubmitPost = this.onSubmitPost.bind(this);
   }
 
-  //To initialize socketio, we will place it in componentDidMount 
+  //To initialize socketio, we will place it in componentDidMount
   // and not in constructor because it is an network event
   // WHY? because constructor is gonna happen initially,
   // and CDM is something that happens asynchronously
-  
+
   componentDidMount() {
     //this will trigger the on connection event in server/index.js
     // now socket.io is connecting server/client
     // this.socket = io('/') <-- unable to pass this shit down to childen;
     const socket = io('/');
-    // solution for that is ^^ 
+    // solution for that is ^^
 
     // sends someData to the server thru join listener event
     socket.emit('join', 'someDATA')
@@ -48,7 +48,7 @@ class App extends Component {
       console.log(data);
     })
 
-    //check postcontroller.js for createPost
+    //check createPost.js for fetchPostbyEventID
     //listens on posts event and setstate the data!
     //look at onPostSubmit
     socket.on('posts', posts => {
@@ -153,7 +153,7 @@ class App extends Component {
 
     axios.post('posts/createPost', payload)
       .then(response => {
-        // NO NEED FOR THIS SETSTATE HERE 
+        // NO NEED FOR THIS SETSTATE HERE
         // console.log(response);
       })
       .catch(err => {
@@ -195,6 +195,7 @@ class App extends Component {
                       submit={this.onSubmitPost}
                       change={this.onChangePost}
                       socket={socket}
+                      user={this.state.user}
                     />
                   </div>
                 </div>

@@ -41,11 +41,13 @@ export default class EditEvent extends Component {
     return (
       <div id="editEvent">
         <h1 className="header center teal-text text-lighten-2">Edit Event Page</h1>
+        <button>Show State</button>
+        <button>Select</button>
 
         <div className="row">
-          <div className="input-field col s6">
+
+          <div className="col s4">
             <select>
-              <option value="" disabled selected>Choose your option</option>
               <option value="1">Coffee Meets Fido</option>
               <option value="2">Paint Your Dog</option>
               <option value="3">Long Beach Grand Prix</option>
@@ -53,26 +55,21 @@ export default class EditEvent extends Component {
             <label>Select Event To Edit</label>
           </div>
 
-          <button>Select</button>
-        </div>
+          <div className="col s7 offset-s1">
+            <form>
+                <div className="input-field">
+                  <input
+                    placeholder={this.state.title}
+                    name="eventname"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="eventname">Event Name</label>
+                </div>
+            </form>
+          </div>
 
-        <div className="row">
-          <form className="col s12">
-            <div className="row">
-
-              <div className="input-field col s6">
-                <input
-                  placeholder={this.state.title}
-                  name="eventname"
-                  type="text"
-                  className="validate"
-                  onChange={this.onChangeHandler}
-                />
-                <label htmlFor="eventname">Event Name</label>
-              </div>
-
-            </div>
-          </form>
         </div>
       </div>
     )

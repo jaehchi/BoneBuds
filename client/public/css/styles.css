@@ -67,18 +67,14 @@
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
-#signupForm {
-  position: fixed;
-  float: left;
-  width: 60%;
-}
+
 .signupButton {
   float: right;
+  border: 5px solid green;
 }
 /* button styling */
 .emailBtn {
   display: inline;
-  float: left;
   position: relative;
   margin: 5px;
   top: -30px;
@@ -95,6 +91,7 @@
   transform: translateY(3px);
   box-shadow: 1px 1px #999;
 }
+
 
 /* Profile Page */
 #profPic {

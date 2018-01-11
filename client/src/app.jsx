@@ -230,6 +230,7 @@ class App extends Component {
                       change={this.onChangePost}
                       socket={socket}
                       user={this.state.user}
+                      username={this.state.username}
                       userData={this.state.userData}
                     />
                   </div>

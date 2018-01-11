@@ -48,7 +48,7 @@ class EventProfile extends Component {
     const payload = {
       eventID: this.props.eventID,
       text: this.state.post,
-      username: this.props.currentUser.displayName
+      username: this.props.username
     }
     this.props.submit(payload);
     e.target.reset()
@@ -138,6 +138,7 @@ class EventProfile extends Component {
                           postID={post.postID}
                           post={post}
                           user={this.props.currentUser.displayName}
+                          username={this.props.username}
                           //dont need user ^ when  username is working on userData
                           socket={this.props.socket}
                           userData={this.props.userData}

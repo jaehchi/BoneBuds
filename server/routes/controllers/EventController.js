@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { users, events, posts, comments } = require("../../sql/models");
+const { users, events, posts, comments } = require("../../SQL/models");
 
 const EventController = {
   createEvent: (req, res) => {

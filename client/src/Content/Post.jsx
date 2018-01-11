@@ -46,7 +46,7 @@ class Post extends Component {
     const payload = {
       postID: this.props.postID,
       text: this.state.comment,
-      username: this.props.user
+      username: this.props.username
     }
 
     axios.post('/comments/createComment', payload)

@@ -32,6 +32,7 @@ class ContentContainer extends Component {
             render={() => (
               <UserPage
                 currentUser={this.props.currentUser}
+                username={this.props.username}
                 setName={this.props.setName}
                 isLoggedIn={this.isLoggedIn}
               />
@@ -51,6 +52,7 @@ class ContentContainer extends Component {
             path="/eventprofile"
             render={() => (
               <EventProfile
+                username={this.props.username}
                 eventID={this.props.eventID}
                 event={this.props.event}
                 posts={this.props.posts}
@@ -68,11 +70,11 @@ class ContentContainer extends Component {
           />
           <Route
             path="/createEvent"
-            render={() => <CreateEvent owner={this.props.user} userData={this.props.userData}/>} />
+            render={() => <CreateEvent owner={this.props.user} username={this.props.username} userData={this.props.userData}/>} />
 
           <Route
             path="/userEvents"
-            render={() => <UserEvents user={this.props.currentUser} socket={this.props.socket}/>} />
+            render={() => <UserEvents user={this.props.currentUser} username={this.props.username} socket={this.props.socket}/>} />
         </Switch>
       </main>
     )

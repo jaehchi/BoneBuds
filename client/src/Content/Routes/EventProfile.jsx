@@ -48,7 +48,7 @@ class EventProfile extends Component {
     const payload = {
       eventID: this.props.eventID,
       text: this.state.post,
-      userID: this.props.userData.uid,
+      userID: this.props.userData.userID,
       username: this.props.userData.username
     }
 
@@ -61,7 +61,7 @@ class EventProfile extends Component {
     // console.log(this.props.currentUser.displayName, 'eventprofile')
     
     // console.log('state for event profile,', this.state)
-    // console.log('state for event props', this.props)
+    // console.log('props for event profile', this.props)
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">

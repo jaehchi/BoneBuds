@@ -47,7 +47,7 @@ class Post extends Component {
       postID: this.props.postID,
       text: this.state.comment,
       username: this.props.userData.username,
-      userID: this.props.userData.uid
+      userID: this.props.userData.userID
 
     }
 
@@ -71,7 +71,7 @@ class Post extends Component {
   }
 
   render () {
-    console.log('comments props', this.props)
+    // console.log('comments props', this.props)
     return (
       <div> 
         <div id="profile-page-wall-post" className="card blue lighten-5 ">

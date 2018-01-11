@@ -45,6 +45,19 @@ const PostController = {
       .catch( err => {
         res.status(500).send(err);
       })
+  },
+  fetchUserFromPost: (req, res) => {
+    users.find({
+      where: {
+        userID: req.body.userID
+      }
+    })
+      .then( results => {
+        res.status(201).send(results);
+      })
+      .catch( err => {
+        res.send(500).send(err);
+      })
   }
   
 }

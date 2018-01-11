@@ -61,6 +61,10 @@ router.route('/fetchEventsByUser')
 //Fetch User Data
 router.route('/getUserData')
   .post(UserController.getUserData);
+
+// Fetch User from Post
+router.route('/findUserFromPost')
+  .post(PostController.fetchUserFromPost);
   
 // Pre-fetches events data
 // router.route('/fetchUsersEventsData/:owner')

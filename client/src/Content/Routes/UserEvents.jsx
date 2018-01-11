@@ -5,7 +5,6 @@ import axios from 'axios'
 class UserEvents extends Component {
   constructor() {
     super();
-
     this.state = {
       events: []
     }
@@ -13,9 +12,7 @@ class UserEvents extends Component {
 
   componentDidMount () {
     const socket = this.props.socket;
-
     const userID = this.props.user.uid;
-
     const payload = {
       userID: userID
     }
@@ -26,26 +23,23 @@ class UserEvents extends Component {
         events: eventsByUser
       });
     });
-    console.log('payload', payload)
 
     axios.post('/events/fetchEventsByUser', payload)
-      .then( response => {
-        console.log('herrro' ,response);
+      .then(response => {
+        console.log('post:/fetchEventByUser', response.data);
       })
       .catch( err => {
         console.log(err);
       })
-
   }
-
 
   render() {
     console.log('props for userEvents', this.props);
     return (
       <div className="scrollable">
-        {this.state.events.map(event => {
+        {this.state.events.map((event, index) => {
           return (
-            <UserEventTile event={event}/>
+            <UserEventTile event={event} key={index}/>
           );
         })}
       </div>

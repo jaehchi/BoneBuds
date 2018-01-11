@@ -98,7 +98,7 @@ class Post extends Component {
           </div>
 
           <div className="card-content">
-            <p>{this.props.post.text}</p>
+            <p>{this.state.post.text}</p>
           </div>
 
           <div className="card-action row">
@@ -106,7 +106,7 @@ class Post extends Component {
               <a href="#"><i className="material-icons left">thumb_up</i></a>                          
             </div>
             
-              <div className="input-field col s10 margin right action">
+              <div className="input-field col s10 margin right">
                 <form onSubmit={this.onSubmitComment} >
                   <input
                     id="profile-comments"

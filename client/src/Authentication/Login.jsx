@@ -8,7 +8,6 @@ class Login extends Component {
     super(props)
     this.state = {
       email: '',
-      username: '',
       password: '',
 
     }
@@ -26,7 +25,7 @@ class Login extends Component {
     const password = this.state.password;
     firebase.auth().signInWithEmailAndPassword(email, password)
       .catch(() => {
-        console.error('error creating user');
+        console.error('error validating user with email and password');
       })
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -40,11 +39,11 @@ class Login extends Component {
         const usersRef = firebase.database().ref('users');
         const user = result.user;
         const dbUser = {
-          userName: user.displayName,
+          username: user.displayName,
           email: user.email
         }
         const payload = {
-          userName: user.email,
+          username: user.email,
           email: user.email,
           userId: user.uid
         }
@@ -56,7 +55,7 @@ class Login extends Component {
             this.props.handleUserToken();
           })
           .catch(() => {
-            console.error('error signing up user');
+            console.error('error signing up user in google login');
           })
       });
   }

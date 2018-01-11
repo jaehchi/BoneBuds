@@ -7,6 +7,7 @@ import Login from "./Authentication/Login";
 import LoginLanding from "./Authentication/LoginLanding";
 import firebase, { auth } from "./Authentication/firebase";
 import io from 'socket.io-client';
+import { Link } from 'react-router-dom';
 
 const socket = io('/');
 
@@ -82,15 +83,15 @@ class App extends Component {
         });
       }
 
-      axios.post('/users/getUserData', { userID: this.state.user.uid } )
-        .then( response => {
+      axios.post('/users/getUserData', { userID: this.state.user.uid })
+        .then(response => {
 
           this.setState({
             userData: response.data,
             users: newState
           })
         })
-        .catch( err => {
+        .catch(err => {
           console.log(err)
         })
     });

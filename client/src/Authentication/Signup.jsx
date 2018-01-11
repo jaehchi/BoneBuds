@@ -24,7 +24,6 @@ class Signup extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
-    console.log(this.state);
   }
   emailSignup() {
     const email = this.state.email;
@@ -58,13 +57,13 @@ class Signup extends Component {
                 this.props.handleUserToken();
               })
               .catch(() => {
-                console.error('error signing up user');
+                console.error('error signing up user in sql db after firebase email auth');
               })
           }
         })
       })
       .catch(() => {
-        console.error('error creating user');
+        console.error('error creating user in firebase email signup');
       })
   }
   render() {

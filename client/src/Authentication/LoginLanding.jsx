@@ -16,13 +16,13 @@ class LoginLanding extends Component {
           <Route
             exact path="/"
             render={() => (
-              <Login />
+              <Login  handleUserToken={this.props.handleUserToken}/>
             )}
           />
           <Route
             path="/signup"
             render={() => (
-              <Signup />
+              <Signup handleUserToken={this.props.handleUserToken}/>
             )}
           />
         </Switch>

@@ -31,6 +31,7 @@ const EventController = {
                 io.emit('fetchAllEvents', allEvents);
                 res.status(201).send(allEvents);
               })
+          })
           .catch(err => {
             res.status(500).send(err);
           });
@@ -95,11 +96,11 @@ const EventController = {
   },
   fetchEventsByUser: (req, res) => {
     let io = req.app.get('socketio');
-    const userID = req.body.userID
+    const owner = req.params.owner
 
     events.findAll({
       where : {
-        userID: req.body.userID
+        userID: owner,
       }
     })
       .then( events => {

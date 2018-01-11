@@ -5,14 +5,15 @@ class CreateEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      description: "",
-      tag: "",
-      location: "",
-      date: "",
-      time: "",
-      image: "",
-      owner: ""
+      title: '',
+      description: '',
+      tag: '',
+      location: '',
+      date: '',
+      time: '',
+      image: '',
+      userID: '',
+      owner: '',
     };
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -40,8 +41,10 @@ class CreateEvent extends Component {
   }
 
   componentWillMount() {
+    console.log(this.props.owner, 'need to set owner as username')
     this.setState({
-      owner: this.props.owner.uid,
+      owner: '',
+      userID: this.props.owner.uid
     })
   }
 

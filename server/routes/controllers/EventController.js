@@ -15,7 +15,7 @@ const EventController = {
         description: event.description,
         tag: event.tag,
         image: event.image,
-        userID: ''
+        userID: event.userID,
       })
       .then(results => {
         console.log(results)

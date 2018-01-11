@@ -27,7 +27,6 @@ app.get('/userpage', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
 
-//
 app.get('/eventprofile', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
@@ -37,6 +36,10 @@ app.get('/createEvent', (req, res) => {
 })
 
 app.get('/editEvent', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
+})
+
+app.get('/userEvents', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
 

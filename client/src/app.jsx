@@ -21,7 +21,7 @@ class App extends Component {
       currentEventID: "",
       currentEvent: [],
       posts: [],
-      usersEvents: []
+      userData: null
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
@@ -82,9 +82,18 @@ class App extends Component {
           last: "",
         });
       }
-      this.setState({
-        users: newState
-      });
+
+      axios.post('/users/getUserData', { userID: this.state.user.uid } )
+        .then( response => {
+  
+          this.setState({
+            userData: response.data,
+            users: newState
+          })
+        })
+        .catch( err => {
+          console.log(err)
+        })
     });
     auth.onAuthStateChanged(user => {
       if (user) {
@@ -102,6 +111,8 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
+
+  
   }
 
   handleUserToken() {
@@ -178,7 +189,7 @@ class App extends Component {
 
 
   render() {
-    // console.log('this.state for app: ', this.state);
+    console.log('this.state for app: ', this.state);
     return (
       <div>
         {!this.state.user ? (
@@ -211,6 +222,7 @@ class App extends Component {
                       change={this.onChangePost}
                       socket={socket}
                       user={this.state.user}
+                      userData={this.state.userData}
                     />
                   </div>
                 </div>

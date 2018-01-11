@@ -14,6 +14,7 @@ class CreateEvent extends Component {
       image: '',
       userID: '',
       owner: '',
+      ownerUrl: ''
     };
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -43,8 +44,9 @@ class CreateEvent extends Component {
   componentWillMount() {
     console.log(this.props.owner, 'need to set owner as username')
     this.setState({
-      owner: '',
-      userID: this.props.owner.uid
+      owner: this.props.userData.username,
+      userID: this.props.owner.uid,
+      ownerUrl: this.props.userData.profileUrl
     })
   }
 
@@ -79,6 +81,7 @@ class CreateEvent extends Component {
   }
 
   render() {
+    console.log(this.props, 'asdfasdfadsf')
     return (
       <div className="row scrollable">
         <button onClick={this.consoleState}>Console State</button>

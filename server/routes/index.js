@@ -61,6 +61,11 @@ router.route('/editEvent')
 //Fetches All Events for a User
 router.route('/fetchEventsByUser')
   .post(EventController.fetchEventsByUser);
+
+//Fetch User Data
+router.route('/getUserData')
+  .post(UserController.getUserData);
+  
 // Pre-fetches events data
 // router.route('/fetchUsersEventsData/:owner')
 //   .get(EventController.fetchEventData)

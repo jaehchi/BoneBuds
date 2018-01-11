@@ -64,6 +64,7 @@ class ContentContainer extends Component {
                 change={this.props.change}
                 submit={this.props.submit}
                 socket={this.props.socket}
+                userData={this.props.userData}
               />
             )}
           />
@@ -73,7 +74,7 @@ class ContentContainer extends Component {
           />
           <Route
             path="/createEvent"
-            render={() => <CreateEvent owner={this.props.user}/>} />
+            render={() => <CreateEvent owner={this.props.user} userData={this.props.userData}/>} />
 
           <Route
             path="/userEvents"

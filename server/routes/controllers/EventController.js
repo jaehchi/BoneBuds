@@ -3,7 +3,8 @@ const { users, events, posts, comments } = require("../../sql/models");
 const EventController = {
   createEvent: (req, res) => {
     let io = req.app.get('socketio');
-    const event = req.body.info;
+    const event = req.body;
+
 
     events
       .create({
@@ -18,6 +19,7 @@ const EventController = {
         tag: event.tag,
         image: event.image,
         userID: event.userID,
+        ownerUrl: event.ownerUrl
       })
       .then(results => {
         events.findAll()

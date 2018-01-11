@@ -5,13 +5,13 @@ const UserController = {
     users.create({
       userID: `${req.body.userId}`,
       username: `${req.body.username}`,
-      firstname: '',
-      lastname: '',
-      address: '',
+      firstname: `${req.body.firstname}`,
+      lastname: `${req.body.lastname}`,
+      address: `${req.body.address}`,
       email: `${req.body.email}`,
-      dogname: '',
-      dogbio: '',
-      profileUrl: ''
+      dogname: `${req.body.dogname}`,
+      dogbio: `${req.body.dogbio}`,
+      profileUrl: `${req.body.profileUrl}`
     })
       .then((results) => {
         console.log('sqlite user created');

@@ -98,8 +98,7 @@ export class MapContainer extends Component {
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
             <div id="popupInfo">
-              <h5>{this.state.selectedPlace.name}</h5>
-              {this.state.eventInfo}
+              <h5 className="header center teal-text text-lighten-2">{this.state.selectedPlace.name}</h5>
             </div>
         </InfoWindow>
       </Map>

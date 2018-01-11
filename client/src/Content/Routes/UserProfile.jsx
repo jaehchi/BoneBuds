@@ -88,7 +88,7 @@ class UserProfile extends Component{
                   className="validate"
                   onChange={this.onChangeHandler}
                 />
-                <label htmlFor="firstname">First Name</label>
+                <label htmlFor="firstname" className="active">First Name</label>
               </div>
 
               <div className="input-field col s6">
@@ -99,7 +99,7 @@ class UserProfile extends Component{
                   className="validate"
                   onChange={this.onChangeHandler}
                 />
-                <label htmlFor="lastname">Last Name</label>
+                <label htmlFor="lastname" className="active">Last Name</label>
               </div>
             </div>
 
@@ -112,7 +112,7 @@ class UserProfile extends Component{
                   className="validate"
                   onChange={this.onChangeHandler}
                 />
-                <label htmlFor="address">Address</label>
+                <label htmlFor="address" className="active">Address</label>
               </div>
             </div>
 
@@ -125,7 +125,7 @@ class UserProfile extends Component{
                   className="validate"
                   onChange={this.onChangeHandler}
                 />
-                <label htmlFor="dogname">Dog Name</label>
+                <label htmlFor="dogname" className="active">Dog Name</label>
               </div>
             </div>
 
@@ -138,7 +138,7 @@ class UserProfile extends Component{
                   className="materialize-textarea"
                   onChange={this.onChangeHandler}
                 ></textarea>
-                <label htmlFor="dogbio">Dog Bio</label>
+                <label htmlFor="dogbio" className="active">Dog Bio</label>
               </div>
             </div>
 
@@ -151,7 +151,7 @@ class UserProfile extends Component{
                   className="validate"
                   onChange={this.onChangeHandler}
                 />
-                <label htmlFor="profileUrl">Profile Image</label>
+                <label htmlFor="profileUrl" className="active">Profile Image</label>
               </div>
             </div>
 

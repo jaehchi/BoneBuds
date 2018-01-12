@@ -133,12 +133,19 @@ class App extends Component {
   }
 
   logout() {
-    auth.signOut().then(() => {
-      this.setState({
-        user: '',
+    let confirmLogout = () => {
+      confirm('Logout?');
+    }
+    confirmLogout();
+    if (confirmLogout) {
+      auth.signOut().then(() => {
+        this.setState({
+          user: '',
+        });
       });
-      alert("logout successful");
-    });
+    } else {
+      console.log('user chooses to stay. user chooses wisely.');
+    }
   }
 
   setName(first, last) {
@@ -208,11 +215,12 @@ class App extends Component {
         ) : (
             <div>
               <Nav logout={this.logout} />
-              <h3>
+              {/* <h3>
                 Welcome,{" "}
                 {this.state.username ||
+                  this.state.user.displayName ||
                   this.state.user.email}
-              </h3>
+              </h3> */}
               <div className="container">
                 <div className="row">
                   <div className="col s3">

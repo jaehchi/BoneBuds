@@ -12,7 +12,7 @@ class UserProfile extends Component {
       dogname: '',
       dogbio: '',
       profileUrl: '',
-      username: 'jae'
+      username: ''
     }
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);

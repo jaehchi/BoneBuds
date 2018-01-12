@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 class Comment extends Component {
   constructor (props) {
@@ -48,7 +49,7 @@ class Comment extends Component {
             <a href="#"><i className="material-icons left">thumb_up</i></a>    
           </div>
           <div className="col s10 card-action-share right">
-            <span className="grey-text text-darken-1 ultra-small">{this.props.comment.createdAt}</span>                      
+            <span className="grey-text text-darken-1 ultra-small">{moment(this.props.comment.createdAt).fromNow()}</span>                      
           </div>
         </div>
       </div>

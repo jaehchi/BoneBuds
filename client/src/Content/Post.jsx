@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
 import axios from 'axios'
+import moment from 'moment';
 
 class Post extends Component {
   constructor (props) {

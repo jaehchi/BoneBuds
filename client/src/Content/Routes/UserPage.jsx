@@ -67,9 +67,9 @@ class UserPage extends Component {
     if (this.state.profileUrl) {
       profilePic = this.state.profileUrl
     } else if (this.props.currentUser.photoURL) {
-      profilePic = this.props.currentUser.photoURL;
+      profilePic = "/logo.png"
     } else {
-      profilePic = (path.resolve(__dirname, '/logo.png'))
+      profilePic = this.props.currentUser.photoURL;
     }
     return (
       <div id="userPage">

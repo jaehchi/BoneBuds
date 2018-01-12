@@ -29,10 +29,10 @@ class Comment extends Component {
         <div className="card-profile-title">
           <div className="row">
             <div className="col s1">
-              <img src={this.state.comment.profileUrl} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
+              <img src={this.state.comment.profileUrl || "/logo.svg"} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
             </div>
             <div className="col s10">
-              <p className="grey-text text-darken-4 margin">{this.state.comment.username}</p>
+              <p className="grey-text text-darken-4 margin">{this.state.comment.username || 'Anonymous'}</p>
             </div>
             <div className="col s1 right-align">
               <i className="mdi-navigation-expand-more"></i>

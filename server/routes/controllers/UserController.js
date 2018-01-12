@@ -41,6 +41,7 @@ const UserController = {
       address: user.address,
       dogname: user.dogname,
       dogbio: user.dogbio,
+      username: user.username,
       profileUrl: user.profileUrl,
     }, { where: { email: req.body.email }, returning: true, plain: true })
       .then(() => {

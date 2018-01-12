@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-class UserProfile extends Component{
+class UserProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,6 +28,7 @@ class UserProfile extends Component{
           address: res.data.address,
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
+          username: res.data.username,
           profileUrl: res.data.profileUrl
         })
         console.log('Pre-fetching user data... \nServer response:', res)
@@ -72,7 +73,7 @@ class UserProfile extends Component{
   render() {
     return (
       <div id="userProfile" className="scrollable">
-      <h1 className="header center teal-text text-lighten-2">User Profile</h1>
+        <h1 className="header center teal-text text-lighten-2">User Profile</h1>
         <button onClick={this.consoleState}>Show State</button>
         <Link to='/userpage'><button onClick={this.updateUserInfo}>Update user info</button></Link>
 
@@ -101,6 +102,16 @@ class UserProfile extends Component{
                 />
                 <label htmlFor="lastname" className="active">Last Name</label>
               </div>
+            </div>
+            <div className="input-field col s6">
+              <input
+                placeholder={this.state.username}
+                name="username"
+                type="text"
+                className="validate"
+                onChange={this.onChangeHandler}
+              />
+              <label htmlFor="username" className="active">User Name</label>
             </div>
 
             <div className="row">

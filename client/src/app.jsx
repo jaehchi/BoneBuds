@@ -133,11 +133,7 @@ class App extends Component {
   }
 
   logout() {
-    let confirmLogout = () => {
-      confirm('Logout?');
-    }
-    confirmLogout();
-    if (confirmLogout) {
+    if (confirm('Confirm logout?')) {
       auth.signOut().then(() => {
         this.setState({
           user: '',

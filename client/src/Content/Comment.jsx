@@ -1,8 +1,25 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Comment extends Component {
   constructor (props) {
     super(props);
+
+    this.state = {
+      comment: ''
+    }
+  }
+
+  componentDidMount () {
+    axios.post('/comments/findUserFromComment', { userID: this.props.comment.userID})
+    .then( commentResponse => {
+      this.setState({
+        comment: commentResponse.data
+      })
+    })
+    .catch( e => {
+      console.log(e);
+    })
   }
 
   render () {
@@ -11,10 +28,10 @@ class Comment extends Component {
         <div className="card-profile-title">
           <div className="row">
             <div className="col s1">
-              <img src={this.props.userData.profileUrl} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
+              <img src={this.state.comment.profileUrl} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
             </div>
             <div className="col s10">
-              <p className="grey-text text-darken-4 margin">{this.props.comment.username}</p>
+              <p className="grey-text text-darken-4 margin">{this.state.comment.username}</p>
             </div>
             <div className="col s1 right-align">
               <i className="mdi-navigation-expand-more"></i>

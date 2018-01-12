@@ -7,6 +7,7 @@ const CommentController = {
     comments.create({
       username: req.body.username,
       text: req.body.text,
+      userID: req.body.userID,
       postID: req.body.postID
     })
       .then( results => {
@@ -39,6 +40,19 @@ const CommentController = {
       })
       .catch( err => {
         res.status(500).send(err);
+      })
+  },
+  fetchUserFromComment: (req, res) => {
+    users.find({
+      where: {
+        userID: req.body.userID
+      }
+    })
+      .then( results => {
+        res.status(201).send(results);
+      })
+      .catch( err => {
+        res.send(500).send(err);
       })
   }
   

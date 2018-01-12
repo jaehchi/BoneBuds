@@ -7,6 +7,7 @@ class Post extends Component {
     super(props);
   
     this.state = {
+      post: '',
       comments: [],
       comment: ''
     }
@@ -27,16 +28,23 @@ class Post extends Component {
     const payload = {
       postID: this.props.postID
     }
-
-    axios.post('/comments/fetchAllCommentsByPost', payload)
-      .then( commentResponse => {
-        this.setState({
-          comments: commentResponse.data
+  
+  axios.post('/posts/findUserFromPost', { userID: this.props.post.userID})
+    .then( postResult => {
+      axios.post('/comments/fetchAllCommentsByPost', payload)
+        .then( commentResponse => {
+          this.setState({
+            comments: commentResponse.data,
+            post: postResult.data
+          })
         })
-      })
-      .catch( err => {
-        console.log(err);
-      })
+        .catch( err => {
+          console.log(err);
+        })
+    })
+    .catch( e => {
+      console.log(e);
+    })
   }
 
   onSubmitComment (e) {
@@ -46,7 +54,9 @@ class Post extends Component {
     const payload = {
       postID: this.props.postID,
       text: this.state.comment,
-      username: this.props.username
+      username: this.props.userData.username,
+      userID: this.props.userData.userID
+
     }
 
     axios.post('/comments/createComment', payload)
@@ -69,17 +79,17 @@ class Post extends Component {
   }
 
   render () {
-
+    // console.log('this is state for post component', this.props)
     return (
       <div> 
         <div id="profile-page-wall-post" className="card blue lighten-5 ">
           <div className="card-profile-title">
             <div className="row">
               <div className="col s1">
-                <img src={this.props.userData.profileUrl} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
+                <img src={this.state.post.profileUrl} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
               </div>
               <div className="col s10">
-                <p className="grey-text text-darken-4 margin">{this.props.post.username}</p>
+                <p className="grey-text text-darken-4 margin">{this.state.post.username}</p>
                 <span className="grey-text text-darken-1 ultra-small">{this.props.post.createdAt}</span>
               </div>
               <div className="col s1 right-align">

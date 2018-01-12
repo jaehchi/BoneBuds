@@ -63,9 +63,15 @@ class UserPage extends Component {
   }
 
   render() {
+    let profPic = '';
+    if (this.state.profileUrl === undefined) {
+      profPic = "/logo.svg"
+    } else {
+      profPic = this.state.profileUrl;
+    }
     return (
       <div id="userPage">
-        <img id="profPic" src={this.state.profileUrl || "/logo.svg"} />
+        <img id="profPic" src={profPic || "/logo.svg"} />
         <div>Username: {this.state.username}</div>
         <div>Dog: {this.state.dogname}</div>
         <div>Dog Bio: {this.state.dogbio}</div>

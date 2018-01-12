@@ -36,7 +36,7 @@ class Signup extends Component {
             console.log(user);
             const usersRef = firebase.database().ref('users');
             const dbUser = {
-              username: user.email,
+              username: this.state.username,
               email: user.email
             }
             const payload = {

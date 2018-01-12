@@ -7,7 +7,7 @@ const events = db.define('events', {
     autoIncrement: true,
     primaryKey: true
   },
-  title: Sequelize.STRING,
+  title: Sequelize.STRING(60),
   date: Sequelize.STRING,
   time: Sequelize.STRING,
   owner: Sequelize.STRING,

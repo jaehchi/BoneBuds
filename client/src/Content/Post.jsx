@@ -87,10 +87,10 @@ class Post extends Component {
           <div className="card-profile-title">
             <div className="row">
               <div className="col s1">
-                <img src={this.state.post.profileUrl} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
+                <img src={this.state.post.profileUrl || "/logo.svg"} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
               </div>
               <div className="col s10">
-                <p className="grey-text text-darken-4 margin">{this.state.post.username}</p>
+                <p className="grey-text text-darken-4 margin">{this.state.post.username || "Anonymous"}</p>
                 <span className="grey-text text-darken-1 ultra-small">{moment(this.props.post.createdAt).fromNow()}</span>
               </div>
               <div className="col s1 right-align">

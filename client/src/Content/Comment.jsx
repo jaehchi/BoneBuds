@@ -23,7 +23,6 @@ class Comment extends Component {
   }
 
   render () {
-
     return (
       <div id="profile-page-wall-post" className="card">
         <div className="card-profile-title">
@@ -41,7 +40,7 @@ class Comment extends Component {
         </div>
 
         <div className="card-content">
-          <p>{this.state.comment.text}</p>
+          <p>{this.props.comment.text}</p>
         </div>
 
         <div className="card-action row">
@@ -49,7 +48,7 @@ class Comment extends Component {
             <a href="#"><i className="material-icons left">thumb_up</i></a>    
           </div>
           <div className="col s10 card-action-share right">
-            <span className="grey-text text-darken-1 ultra-small">{this.state.comment.createdAt}</span>                      
+            <span className="grey-text text-darken-1 ultra-small">{this.props.comment.createdAt}</span>                      
           </div>
         </div>
       </div>

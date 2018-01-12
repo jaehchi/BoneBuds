@@ -22,7 +22,7 @@ class EventProfile extends Component {
 
   componentDidMount () {
     const payload =  {
-      userID: this.props.userData.userID
+      userID: this.props.event.userID
     };
     axios.post('/users/getUserData', payload)
       .then( response => {
@@ -58,10 +58,6 @@ class EventProfile extends Component {
   }
 
   render() {
-    // console.log(this.props.currentUser.displayName, 'eventprofile')
-    
-    console.log('state for event profile,', this.state)
-    console.log('props for event profile', this.props)
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">
@@ -75,7 +71,7 @@ class EventProfile extends Component {
                   <div className="row">
                     <div className="col s1">
                       <img
-                        src={this.props.event.ownerUrl}
+                        src={this.state.owner.profileUrl}
                         alt=""
                         className="circle responsive-img valign profile-post-uer-image"
                       />

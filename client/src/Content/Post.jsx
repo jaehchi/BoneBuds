@@ -79,6 +79,7 @@ class Post extends Component {
   }
 
   render () {
+    // console.log('this is state for post component', this.props)
     return (
       <div> 
         <div id="profile-page-wall-post" className="card blue lighten-5 ">
@@ -98,7 +99,7 @@ class Post extends Component {
           </div>
 
           <div className="card-content">
-            <p>{this.state.post.text}</p>
+            <p>{this.props.post.text}</p>
           </div>
 
           <div className="card-action row">

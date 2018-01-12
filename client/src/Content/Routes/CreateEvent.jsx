@@ -15,7 +15,7 @@ class CreateEvent extends Component {
       image: '',
       userID: '',
       owner: '',
-      ownerUrl: ''
+
     };
     this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -47,7 +47,6 @@ class CreateEvent extends Component {
     this.setState({
       owner: this.props.userData.username,
       userID: this.props.owner.uid,
-      ownerUrl: this.props.userData.profileUrl
     })
   }
 

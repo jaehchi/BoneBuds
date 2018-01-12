@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
 import axios from 'axios'
+import moment from 'moment';
 
 class Post extends Component {
   constructor (props) {
@@ -90,7 +91,7 @@ class Post extends Component {
               </div>
               <div className="col s10">
                 <p className="grey-text text-darken-4 margin">{this.state.post.username}</p>
-                <span className="grey-text text-darken-1 ultra-small">{this.props.post.createdAt}</span>
+                <span className="grey-text text-darken-1 ultra-small">{moment(this.props.post.createdAt).fromNow()}</span>
               </div>
               <div className="col s1 right-align">
                 <i className="mdi-navigation-expand-more"></i>

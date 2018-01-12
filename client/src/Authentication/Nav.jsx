@@ -9,7 +9,7 @@ class Nav extends Component {
     return (
       <nav>
         <div className="nav-wrapper blue darken-1">
-          <a href="/" className="left brand-logo"><img src="logo.png"/>BoneBuds</a>
+          <Link to="/"><span className="left brand-logo"><img src="logo.png"/>BoneBuds</span></Link>
           <ul className="right">
             <li><Link to='/userEvents'><i className="material-icons">pregnant_woman</i></Link></li>
             <li><Link to='/createEvent'><i className="material-icons">fingerprint</i></Link></li>

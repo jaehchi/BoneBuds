@@ -103,7 +103,7 @@ class App extends Component {
       axios.get(`/users/update/${user.uid}`)
         .then((res) => {
           this.setState({
-            username: res.data.username
+            username: res.data.username || 'pleae fill out a username'
           })
         })
         .catch((error) => {
@@ -209,8 +209,7 @@ class App extends Component {
               <Nav logout={this.logout} />
               <h3>
                 Welcome,{" "}
-                {this.state.user.displayName ||
-                  this.state.username ||
+                {this.state.username ||
                   this.state.user.email}
               </h3>
               <div className="container">

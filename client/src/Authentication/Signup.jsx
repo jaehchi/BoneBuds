@@ -24,6 +24,7 @@ class Signup extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+    console.log(this.state);
   }
   emailSignup() {
     const email = this.state.email;
@@ -79,7 +80,8 @@ class Signup extends Component {
                   name="username"
                   type="text"
                   className="validate"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.username}
                 />
                 <label htmlFor="username" className="active">User Name</label>
               </div>
@@ -89,7 +91,8 @@ class Signup extends Component {
                   name="email"
                   type="text"
                   className="validate"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.email}
                 />
                 <label htmlFor="email" className="active">Email</label>
               </div>
@@ -99,7 +102,8 @@ class Signup extends Component {
                   name="password"
                   type="password"
                   className="validate"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.password}
                 />
                 <label htmlFor="password" className="active">Password</label>
               </div>
@@ -109,7 +113,8 @@ class Signup extends Component {
                   name="firstname"
                   type="text"
                   className="validate"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.firstname}
                 />
                 <label htmlFor="firstname" className="active">First Name</label>
               </div>
@@ -120,7 +125,8 @@ class Signup extends Component {
                   name="lastname"
                   type="text"
                   className="validate"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.lastname}
                 />
                 <label htmlFor="lastname" className="active">Last Name</label>
               </div>
@@ -133,7 +139,8 @@ class Signup extends Component {
                 name="profileUrl"
                 type="text"
                 className="validate"
-                onChange={this.onChangeHandler}
+                onChange={this.handleChange}
+                value={this.state.profileUrl}
               />
               <label htmlFor="profileUrl" className="active">Profile Image</label>
             </div>
@@ -145,7 +152,8 @@ class Signup extends Component {
                   name="address"
                   type="text"
                   className="validate"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.address}
                 />
                 <label htmlFor="address" className="active">Address</label>
               </div>
@@ -158,7 +166,8 @@ class Signup extends Component {
                   name="dogname"
                   type="text"
                   className="validate"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.dogname}
                 />
                 <label htmlFor="dogname" className="active">Dog Name</label>
               </div>
@@ -168,7 +177,8 @@ class Signup extends Component {
                   name="dogbio"
                   type="text"
                   className="materialize-textarea"
-                  onChange={this.onChangeHandler}
+                  onChange={this.handleChange}
+                  value={this.state.dogbio}
                 ></input>
                 <label htmlFor="dogbio" className="active">Dog Bio</label>
               </div>

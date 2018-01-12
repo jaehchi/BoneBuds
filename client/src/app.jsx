@@ -22,7 +22,7 @@ class App extends Component {
       currentEventID: "",
       currentEvent: [],
       posts: [],
-      userData: ''
+      userData: '',
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
@@ -136,9 +136,10 @@ class App extends Component {
     if (confirm('Confirm logout?')) {
       auth.signOut().then(() => {
         this.setState({
-          user: '',
+          user: ''
         });
       });
+      document.location.href="/";
     } else {
       console.log('user chooses to stay. user chooses wisely.');
     }

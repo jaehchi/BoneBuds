@@ -71,100 +71,102 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <div id="userProfile" className="scrollable">
-        <h1 className="header center teal-text text-lighten-2">User Profile</h1>
-        <Link to='/userpage' className="waves-effect waves-light btn" onClick={this.updateUserInfo}><i className="material-icons left">cloud</i>Update user info</Link>
+      <div className="card card-panel hoverable sticky-action userProfileMain" >
+        <div className="userProfile"  className="scrollable">
+          <h1 className="header center teal-text text-lighten-2">User Profile</h1>
+          <Link to='/userpage' className="waves-effect waves-light btn" onClick={this.updateUserInfo}><i className="material-icons left">cloud</i>Update user info</Link>
 
-        <div className="row">
-          <form className="col s12">
-            <div className="row">
+          <div className="row">
+            <form className="col s12">
+              <div className="row">
 
+                <div className="input-field col s6">
+                  <input
+                    placeholder={this.state.firstname}
+                    name="firstname"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="firstname" className="active">First Name</label>
+                </div>
+
+                <div className="input-field col s6">
+                  <input
+                    placeholder={this.state.lastname}
+                    name="lastname"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="lastname" className="active">Last Name</label>
+                </div>
+              </div>
               <div className="input-field col s6">
                 <input
-                  placeholder={this.state.firstname}
-                  name="firstname"
+                  placeholder={this.state.username}
+                  name="username"
                   type="text"
                   className="validate"
                   onChange={this.onChangeHandler}
                 />
-                <label htmlFor="firstname" className="active">First Name</label>
+                <label htmlFor="username" className="active">User Name</label>
               </div>
 
-              <div className="input-field col s6">
-                <input
-                  placeholder={this.state.lastname}
-                  name="lastname"
-                  type="text"
-                  className="validate"
-                  onChange={this.onChangeHandler}
-                />
-                <label htmlFor="lastname" className="active">Last Name</label>
+              <div className="row">
+                <div className="input-field col s6">
+                  <input
+                    placeholder={this.state.address}
+                    name="address"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="address" className="active">Address</label>
+                </div>
               </div>
-            </div>
-            <div className="input-field col s6">
-              <input
-                placeholder={this.state.username}
-                name="username"
-                type="text"
-                className="validate"
-                onChange={this.onChangeHandler}
-              />
-              <label htmlFor="username" className="active">User Name</label>
-            </div>
 
-            <div className="row">
-              <div className="input-field col s6">
-                <input
-                  placeholder={this.state.address}
-                  name="address"
-                  type="text"
-                  className="validate"
-                  onChange={this.onChangeHandler}
-                />
-                <label htmlFor="address" className="active">Address</label>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    placeholder={this.state.dogname}
+                    name="dogname"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="dogname" className="active">Dog Name</label>
+                </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="input-field col s12">
-                <input
-                  placeholder={this.state.dogname}
-                  name="dogname"
-                  type="text"
-                  className="validate"
-                  onChange={this.onChangeHandler}
-                />
-                <label htmlFor="dogname" className="active">Dog Name</label>
+              <div className="row">
+                <div className="input-field col s12">
+                  <textarea
+                    placeholder={this.state.dogbio}
+                    name="dogbio"
+                    type="text"
+                    className="materialize-textarea"
+                    onChange={this.onChangeHandler}
+                  ></textarea>
+                  <label htmlFor="dogbio" className="active">Dog Bio</label>
+                </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="input-field col s12">
-                <textarea
-                  placeholder={this.state.dogbio}
-                  name="dogbio"
-                  type="text"
-                  className="materialize-textarea"
-                  onChange={this.onChangeHandler}
-                ></textarea>
-                <label htmlFor="dogbio" className="active">Dog Bio</label>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    placeholder='Insert link to profile url'
+                    name="profileUrl"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="profileUrl" className="active">Profile Image</label>
+                </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="input-field col s12">
-                <input
-                  placeholder='Insert link to profile url'
-                  name="profileUrl"
-                  type="text"
-                  className="validate"
-                  onChange={this.onChangeHandler}
-                />
-                <label htmlFor="profileUrl" className="active">Profile Image</label>
-              </div>
-            </div>
-
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     )

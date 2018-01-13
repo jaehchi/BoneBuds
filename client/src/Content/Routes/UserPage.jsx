@@ -63,19 +63,15 @@ class UserPage extends Component {
   }
 
   render() {
-    let profPic = '';
-    if (this.state.profileUrl === undefined) {
-      profPic = "/logo.svg"
-    } else {
-      profPic = this.state.profileUrl;
-    }
     return (
-      <div id="userPage">
-        <img id="profPic" src={profPic || "/logo.svg"} />
-        <div>Username: {this.state.username}</div>
-        <div>Dog: {this.state.dogname}</div>
-        <div>Dog Bio: {this.state.dogbio}</div>
-        <Link to="userprofile"><i>Edit Profile</i></Link>
+      <div className="card card-panel hoverable sticky-action" id="userPage">
+        <div >
+          <img className="card card-panel hoverable sticky-action" id="profPic" src={this.state.profileUrl || "/logo.svg"} />
+          <div>Username: {this.state.username}</div>
+          <div>Dog: {this.state.dogname}</div>
+          <div>Dog Bio: {this.state.dogbio}</div>
+          <Link to="userprofile"><i>Edit Profile</i></Link>
+        </div>
       </div>
     )
   }

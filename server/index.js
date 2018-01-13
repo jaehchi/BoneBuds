@@ -59,9 +59,9 @@ io.on('connection', (socket) => {
   console.log('New user has connected');
 
   //sets a listener event for join from client
-  socket.on('join', (data) => {
-    console.log(data)
-  })
+  // socket.on('join', (data) => {
+  //   console.log(data)
+  // })
 
   //on 'yo' event, the client will be sent 'fuck you' check app.jsx
   socket.emit('yo', 'fuck you');

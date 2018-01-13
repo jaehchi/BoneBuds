@@ -143,11 +143,20 @@ const EventController = {
   },
   deleteEvent: (req, res) => {
     console.log('about to delete event with id:', req.params.id);
+    let io = req.app.get('socketio');
     events.destroy({
       where: { eventID: req.params.id }
     })
     .then((result) => {
       console.log('Number of events deleted:', result);
+      events.findAll()
+        .then((response) => {
+          io.emit('getAllMapEvents', response);
+          io.emit('fetchAllEvents', response);
+        })
+        .catch((e) => {
+          console.log('could not get all event data');
+        })
       res.send('event deleted');
     })
     .catch((e) => {

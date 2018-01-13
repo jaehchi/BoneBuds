@@ -72,11 +72,11 @@ router.route('/findUserFromComment')
 
 // Update event information
 router.route('/updateEventInfo')
-  .post(EventController.updateEventInfo);
+  .put(EventController.updateEventInfo);
 
-// // fetches user's events' data
-// router.route('/fetchUsersEventsData/:owner')
-//   .get(EventController.fetchEventsData)
+// Deletes an event
+router.route('/deleteEvent/:id')
+  .get(EventController.deleteEvent)
 
 
 module.exports = router;

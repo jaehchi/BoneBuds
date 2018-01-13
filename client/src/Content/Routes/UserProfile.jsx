@@ -73,8 +73,7 @@ class UserProfile extends Component {
     return (
       <div id="userProfile" className="scrollable">
         <h1 className="header center teal-text text-lighten-2">User Profile</h1>
-        <button onClick={this.consoleState}>Show State</button>
-        <Link to='/userpage'><button onClick={this.updateUserInfo}>Update user info</button></Link>
+        <Link to='/userpage' className="waves-effect waves-light btn" onClick={this.updateUserInfo}><i className="material-icons left">cloud</i>Update user info</Link>
 
         <div className="row">
           <form className="col s12">

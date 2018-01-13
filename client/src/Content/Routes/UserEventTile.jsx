@@ -25,7 +25,7 @@ class UserEventTile extends Component {
           </div>
           <div className="card-content">
             <h5><strong>{this.props.event.title}</strong></h5>
-            <p>{this.props.event.description} I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+            <p>{this.props.event.description}</p>
           </div>
         </div>
       </div>

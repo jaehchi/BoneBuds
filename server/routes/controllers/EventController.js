@@ -41,6 +41,7 @@ const EventController = {
       res.status(500);
     })
   },
+  // do we need this edit Event fn? prob not...
   editEvent: (req, res) => {
     console.log('edit event. req.body.info:', req.body.info);
     const event = req.body.info
@@ -128,8 +129,9 @@ const EventController = {
           image: event.image,
           tag: event.tag,
         }, { where: { eventID: req.body.id}, returning: true, plain: true })
-        .then((res) => {
-          console.log('updated', res)
+        .then(() => {
+          console.log('Event has been updated');
+          res.send('Event was updated')
         })
         .catch((e) => {
           console.log('users event was not updated', e)
@@ -139,6 +141,19 @@ const EventController = {
         console.log('users event was not updated')
       })
   },
+  deleteEvent: (req, res) => {
+    console.log('about to delete event with id:', req.params.id);
+    events.destroy({
+      where: { eventID: req.params.id }
+    })
+    .then((result) => {
+      console.log('Number of events deleted:', result);
+      res.send('event deleted');
+    })
+    .catch((e) => {
+      console.log('event was not destroyed', e);
+    })
+  }
 };
 
 module.exports = EventController;

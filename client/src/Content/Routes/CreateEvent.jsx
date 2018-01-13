@@ -81,8 +81,7 @@ class CreateEvent extends Component {
   render() {
     return (
       <div className="row scrollable">
-        <button onClick={this.consoleState}>Console State</button>
-        <button onClick={this.createEvent}>Create Event</button>
+        <Link to='/' onClick={this.createEvent} className="waves-effect waves-light btn"><i className="material-icons left">cloud</i>Create Event</Link>
 
         <form className="col s12">
           <div className="row">
@@ -99,7 +98,7 @@ class CreateEvent extends Component {
                 id="icon_prefix"
                 type="text"
                 className="validate"
-                data-length="35"
+                data-length="25"
                 onChange={this.onChangeHandler}
               />
               <label htmlFor="icon_prefix" className="active" data-error="Event title too long!" data-success="WOW! Much Creative!">Event Title</label>

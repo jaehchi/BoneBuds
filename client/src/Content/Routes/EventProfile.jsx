@@ -52,7 +52,7 @@ class EventProfile extends Component {
       username: this.props.userData.username
     }
 
- 
+
     this.props.submit(payload);
     e.target.reset()
   }

@@ -25,7 +25,7 @@ class UserEvents extends Component {
 
     axios.post('/events/fetchEventsByUser', payload)
       .then(response => {
-        console.log('socket works. result:', response.data);
+        console.log('Pre-fetching event data... \nServer response:', response.data);
       })
       .catch( err => {
         console.log(err);

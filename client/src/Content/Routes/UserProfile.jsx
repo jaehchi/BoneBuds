@@ -26,6 +26,7 @@ class UserProfile extends Component {
         this.setState({
           firstname: res.data.firstname,
           lastname: res.data.lastname,
+          username: res.data.username,
           address: res.data.address,
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
@@ -33,9 +34,6 @@ class UserProfile extends Component {
           // username: res.data.username
         })
         console.log('Pre-fetching user data... \nServer response:', res)
-      })
-      .then(() => {
-        this.props.setName(this.state.firstname, this.state.lastname);
       })
       .catch((e) => {
         console.error('Could not fetch user data...', e);
@@ -116,7 +114,7 @@ class UserProfile extends Component {
             </div>
 
             <div className="row">
-              <div className="input-field col s12">
+              <div className="input-field col s6">
                 <input
                   placeholder={this.state.address}
                   name="address"

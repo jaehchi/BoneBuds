@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 import UserEventTile from "./UserEventTile.jsx";
-import axios from 'axios'
+import axios from 'axios';
+import io from 'socket.io-client';
 
 class UserEvents extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
+      emit: [],
     }
+
   }
 
   componentDidMount () {
     this.setState({
-      events: this.props.events.filter(event => event.userID === this.props.user.uid)
+      events: this.props.events.filter(event => event.userID === this.props.user.uid),
+    })
+    const socket = io('/');
+    socket.on('fetchAllEvents', data => {
+      this.setState({
+        events: data.filter(event => event.userID === this.props.user.uid)
+      })
     })
   }
 

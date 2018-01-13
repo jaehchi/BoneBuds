@@ -43,7 +43,7 @@ class App extends Component {
     // solution for that is ^^
 
     // sends someData to the server thru join listener event
-    socket.emit('join', 'someDATA')
+    // socket.emit('join', 'someDATA')
     //set a 'yo' event listener and console.logs data sent from server
     socket.on('yo', (data) => {
       console.log(data);

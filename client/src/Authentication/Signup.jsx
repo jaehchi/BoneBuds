@@ -68,7 +68,7 @@ class Signup extends Component {
   }
   render() {
     return (
-      <div  className="scrollable">
+      <div className="mainSignup scrollable card card-panel hoverable sticky-action">
         <h4 className="header center teal-text text-lighten-2">User Signup</h4>
         <div className="row">
           <form className="col s12">
@@ -122,7 +122,7 @@ class Signup extends Component {
                   required
                   
                 />
-                <label data-success="Your parents named you that? Tough break." data-error="First Name Required, Idiot!" htmlFor="firstname" className="active">First Name</label>
+                <label data-success="Your parents named you that? Tough break, kid." data-error="First Name Required, Idiot!" htmlFor="firstname" className="active">First Name</label>
               </div>
 
               <div className="input-field col s6">
@@ -169,7 +169,7 @@ class Signup extends Component {
             </div>
 
             <div className="row">
-              <div className="input-field col s3">
+              <div className="input-field col s6">
                 <input
                   placeholder={this.state.dogname}
                   name="dogname"
@@ -180,7 +180,7 @@ class Signup extends Component {
                 />
                 <label htmlFor="dogname" className="active">Dog Name</label>
               </div>
-              <div className="input-field col s3">
+              <div className="input-field col s6">
                 <input
                   placeholder={this.state.dogbio}
                   name="dogbio"
@@ -195,7 +195,7 @@ class Signup extends Component {
           </form>
         </div>
         <div>
-          <Link to="/"><button className="teal-text text-lighten-2 emailBtn" onClick={this.emailSignup}>Sign Up!</button></Link>
+          <Link to="/"><button className="teal-text text-lighten-2 emailBtn signUpBtn" onClick={this.emailSignup}>Sign Up!</button></Link>
         </div>
       </div>
     )

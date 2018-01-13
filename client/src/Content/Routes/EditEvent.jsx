@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class EditEvent extends Component {
   constructor(props) {
@@ -16,10 +17,22 @@ export default class EditEvent extends Component {
       events: [],
       currentEvent: '',
     }
-    this.showState = this.showState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.submitEventUpdate = this.submitEventUpdate.bind(this);
     this.getUserEventInfo = this.getUserEventInfo.bind(this);
+    this.showToast = this.showToast.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
+  }
+
+  deleteEvent() {
+    axios.get('/events/deleteEvent/' + this.props.currentEvent.eventID)
+      .then((res) => {
+        console.log('Event has beed deleted. \nServer response', res.data);
+        this.showToast('delete')
+      })
+      .catch((e) => {
+        console.log('Event was not deleted', e);
+      })
   }
 
   getUserEventInfo(id) {
@@ -33,6 +46,7 @@ export default class EditEvent extends Component {
           title: res.data.title,
           description: res.data.description,
           location: res.data.location,
+          owner: res.data.owner,
           image: res.data.image,
           tag: res.data.tag,
         })
@@ -48,20 +62,28 @@ export default class EditEvent extends Component {
     })
   }
 
-  showState() {
-    this.setState({
-      eventID: this.props.currentEvent.eventID,
-    })
-    console.log(this.state, 'current state');
+  showToast(a) {
+    if (a === 'update') {
+      Materialize.toast('Event Info Updated!', 3000, 'rounded');
+    }
+    if (a === 'delete') {
+      Materialize.toast('Event DELETED!', 3000, 'rounded');
+    }
   }
-
 
   submitEventUpdate() {
     const payload = {
       event: this.state,
       id: this.props.currentEvent.eventID,
     }
-    axios.post('/events/updateEventInfo', payload)
+    axios.put('/events/updateEventInfo', payload)
+      .then((res) => {
+        console.log("Event was updated. Server response:", res.data);
+        this.showToast('update');
+      })
+      .catch((e) => {
+        console.log('Event was not updated', e);
+      })
   }
 
   render() {
@@ -71,16 +93,25 @@ export default class EditEvent extends Component {
     return (
       <div id="editEvent">
         <h1 className="header center teal-text text-lighten-2">Editing: {this.props.currentEvent.title}</h1>
-        <button onClick={this.showState}>Show State</button>
-        <button onClick={this.submitEventUpdate}>Update Event</button>
+
+        <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.deleteEvent}><i className="material-icons left">delete</i>Delete Event</Link>
+
+        <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.submitEventUpdate}><i className="material-icons left">create</i>Update Event</Link>
 
         <div className="row">
 
           <div className="col s4">
             <select>
-              <option value="1">Coffee Meets Fido</option>
-              <option value="2">Paint Your Dog</option>
-              <option value="3">Long Beach Grand Prix</option>
+              {
+                this.props.events
+                  .filter(event => {
+                    return event.owner === this.state.owner && event.eventID !== this.state.eventID;
+                  })
+                  .map((match, index) => (
+                    <option key={index} value={match.eventID}>{match.title}</option>
+                    )
+                  )
+              }
             </select>
             <label>Select Event To Edit</label>
           </div>

@@ -13,11 +13,11 @@ class ContentContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      usersEvent: '',
     }
   }
 
   render() {
-    // console.log('props for content container', this.props);
     return (
       <main>
         <Switch>
@@ -33,7 +33,6 @@ class ContentContainer extends Component {
               <UserPage
                 currentUser={this.props.currentUser}
                 username={this.props.username}
-                setName={this.props.setName}
                 isLoggedIn={this.isLoggedIn}
               />
             )}
@@ -43,7 +42,6 @@ class ContentContainer extends Component {
             render={() => (
               <UserProfile
                 currentUser={this.props.currentUser}
-                setName={this.props.setName}
                 isLoggedIn={this.isLoggedIn}
               />
             )}
@@ -66,7 +64,7 @@ class ContentContainer extends Component {
           />
           <Route
             path="/editEvent"
-            render={() => <EditEvent eventID={this.props.eventID} />}
+            render={() => <EditEvent currentEvent={this.props.currentEvent} />}
           />
           <Route
             path="/createEvent"
@@ -74,7 +72,7 @@ class ContentContainer extends Component {
 
           <Route
             path="/userEvents"
-            render={() => <UserEvents user={this.props.currentUser} username={this.props.username} socket={this.props.socket}/>} />
+            render={() => <UserEvents user={this.props.currentUser} username={this.props.username} events={this.props.events} socket={this.props.socket} identifyEvent={this.props.identifyEvent} />} />
         </Switch>
       </main>
     )

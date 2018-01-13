@@ -111,7 +111,23 @@ const EventController = {
         console.log(err);
       })
 
-  }
+  },
+  updateEventInfo: (req, res) => {
+    const event = req.body.event;
+    events.update({
+      title: event.title,
+      description: event.description,
+      location: event.location,
+      image: event.image,
+      tag: event.tag,
+    }, { where: { eventID: req.body.id}, returning: true, plain: true })
+    .then((res) => {
+      console.log('updated', res)
+    })
+    .catch((e) => {
+      console.log('users event was not updated', e)
+    })
+  },
 };
 
 module.exports = EventController;

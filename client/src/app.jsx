@@ -26,7 +26,6 @@ class App extends Component {
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
-    this.setName = this.setName.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onSubmitPost = this.onSubmitPost.bind(this);
   }
@@ -120,8 +119,6 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
-
-
   }
 
   handleUserToken() {
@@ -143,13 +140,6 @@ class App extends Component {
     } else {
       console.log('user chooses to stay. user chooses wisely.');
     }
-  }
-
-  setName(first, last) {
-    this.setState({
-      first,
-      last,
-    });
   }
 
   onClick(id) {
@@ -226,7 +216,6 @@ class App extends Component {
                   <div className="col s9">
                     <ContentContainer
                       currentUser={this.state.user}
-                      setName={this.setName}
                       users={this.state.users}
                       eventID={this.state.currentEventID}
                       event={this.state.currentEvent}
@@ -237,6 +226,9 @@ class App extends Component {
                       user={this.state.user}
                       username={this.state.username}
                       userData={this.state.userData}
+                      events={this.state.events}
+                      currentEvent={this.state.currentEvent}
+                      identifyEvent={this.onClick}
                     />
                   </div>
                 </div>

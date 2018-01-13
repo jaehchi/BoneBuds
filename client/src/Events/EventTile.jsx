@@ -22,7 +22,6 @@ class EventTile extends Component {
   }
 
   render () {
-    console.log(this.props.event)
     return (
 
       <div className="card card-panel hoverable sticky-action">

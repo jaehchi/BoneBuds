@@ -68,7 +68,7 @@ class Signup extends Component {
   }
   render() {
     return (
-      <div id="userProfile" className="scrollable">
+      <div className="mainSignup scrollable card card-panel hoverable sticky-action">
         <h4 className="header center teal-text text-lighten-2">User Signup</h4>
         <div className="row">
           <form className="col s12">
@@ -81,8 +81,9 @@ class Signup extends Component {
                   className="validate"
                   onChange={this.handleChange}
                   value={this.state.username}
+                  required
                 />
-                <label htmlFor="username" className="active">User Name</label>
+                <label data-success="Super original username! Babes will love you now." data-error="Username Required, Idiot!" htmlFor="username" className="active">User Name</label>
               </div>
               <div className="input-field col s6">
                 <input
@@ -92,8 +93,10 @@ class Signup extends Component {
                   className="validate"
                   onChange={this.handleChange}
                   value={this.state.email}
+                  required
+                  
                 />
-                <label htmlFor="email" className="active">Email</label>
+                <label data-error="Email Required, Idiot!" htmlFor="email" className="active">Email</label>
               </div>
               <div className="input-field col s6">
                 <input
@@ -103,8 +106,10 @@ class Signup extends Component {
                   className="validate"
                   onChange={this.handleChange}
                   value={this.state.password}
+                  required
+                  
                 />
-                <label htmlFor="password" className="active">Password</label>
+                <label data-error="Password Required, Idiot!" htmlFor="password" className="active">Password</label>
               </div>
               <div className="input-field col s6">
                 <input
@@ -114,8 +119,10 @@ class Signup extends Component {
                   className="validate"
                   onChange={this.handleChange}
                   value={this.state.firstname}
+                  required
+                  
                 />
-                <label htmlFor="firstname" className="active">First Name</label>
+                <label data-success="Your parents named you that? Tough break, kid." data-error="First Name Required, Idiot!" htmlFor="firstname" className="active">First Name</label>
               </div>
 
               <div className="input-field col s6">
@@ -126,8 +133,10 @@ class Signup extends Component {
                   className="validate"
                   onChange={this.handleChange}
                   value={this.state.lastname}
+                  required
+                  
                 />
-                <label htmlFor="lastname" className="active">Last Name</label>
+                <label data-error="Last Name Required, Idiot!" htmlFor="lastname" className="active">Last Name</label>
               </div>
             </div>
 
@@ -140,6 +149,7 @@ class Signup extends Component {
                 className="validate"
                 onChange={this.handleChange}
                 value={this.state.profileUrl}
+                
               />
               <label htmlFor="profileUrl" className="active">Profile Image</label>
             </div>
@@ -159,7 +169,7 @@ class Signup extends Component {
             </div>
 
             <div className="row">
-              <div className="input-field col s3">
+              <div className="input-field col s6">
                 <input
                   placeholder={this.state.dogname}
                   name="dogname"
@@ -170,7 +180,7 @@ class Signup extends Component {
                 />
                 <label htmlFor="dogname" className="active">Dog Name</label>
               </div>
-              <div className="input-field col s3">
+              <div className="input-field col s6">
                 <input
                   placeholder={this.state.dogbio}
                   name="dogbio"
@@ -182,42 +192,12 @@ class Signup extends Component {
                 <label htmlFor="dogbio" className="active">Dog Bio</label>
               </div>
             </div>
-
-
-
-
-
           </form>
         </div>
         <div>
-          <Link to="/"><button onClick={this.emailSignup}>Sign Up!</button></Link>
+          <Link to="/"><button className="teal-text text-lighten-2 emailBtn signUpBtn" onClick={this.emailSignup}>Sign Up!</button></Link>
         </div>
       </div>
-      // <div>
-      //   <div className="signupForm">
-      //     Username:
-      //     <input type="text" name="username" onChange={this.handleChange} value={this.state.username} />
-      //     Email:
-      //     <input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
-      //     Password:
-      //     <input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
-      //     Firstname:
-      //     <input type="text" name="firstname" onChange={this.handleChange} value={this.state.firstname} />
-      //     Lastname:
-      //     <input type="text" name="lastname" onChange={this.handleChange} value={this.state.lastname} />
-      //     Address:
-      //     <input type="text" name="address" onChange={this.handleChange} value={this.state.address} />
-      //     Your Dog's Name:
-      //     <input type="text" name="dogname" onChange={this.handleChange} value={this.state.dogname} />
-      //     Your Dog's Bio:
-      //     <input type="text" name="dogbio" onChange={this.handleChange} value={this.state.dogbio} />
-      //     Profile Pic Url:
-      //     <input type="text" name="profileUrl" onChange={this.handleChange} value={this.state.profileUrl} />
-      //     <div>
-      //       <Link to="/"><button onClick={this.emailSignup}>Sign Up!</button></Link>
-      //     </div>
-      //   </div>
-      // </div>
     )
   }
 }

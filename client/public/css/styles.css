@@ -1,3 +1,6 @@
+body {
+  background-color: #d9d9d9;
+}
 .loginBtn {
   box-sizing: border-box;
   position: relative;
@@ -50,7 +53,10 @@
 /* Google */
 .loginBtn--google {
   /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+  margin: 10px 0 -5px 0;
   background: #DD4B39;
+  box-shadow: 2px 3px #d9d9d9;
+  border-radius: 3px;
 }
 .loginBtn--google:before {
   border-right: #BB3F30 1px solid;
@@ -60,39 +66,57 @@
 .loginBtn--google:focus {
   background: #E74B37;
 }
-.loginLanding {
+.loginBtn--google:active {
+  transform: translateY(3px);
+  box-shadow: 1px 1px #d9d9d9;
+}
+#loginLanding {
+  text-align: center;
+  width: 40%;
+  height: 50%;
   position: fixed;
   top: 50%;
   left: 50%;
+  border-radius: 5px;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
 }
 
-.signupButton {
-  float: right;
-  border: 5px solid green;
-}
 /* button styling */
 .emailBtn {
-  display: inline;
-  position: relative;
-  margin: 5px;
-  top: -30px;
-  right: -35px;
+  margin: 5px 0 10px 0;
   background-color: #fff;
-  color: #0ae;
-  box-shadow: 2px 3px #999;
+  box-shadow: 2px 3px #d9d9d9;
+  border-radius: 3px;
+}
+.signUpBtn {
+  height: 50px;
+  width: 150px;
+  font-size: 28px;
 }
 .emailBtn:hover {
-  background-color: #0ae;
-  color: #fff;
+  background-color: #009688;
+  color: #fff!important;
 }
 .emailBtn:active {
   transform: translateY(3px);
-  box-shadow: 1px 1px #999;
+  box-shadow: 1px 1px #d9d9d9;
 }
-
-
+.emailLogin {
+  display: inline-block;
+}
+.password {
+  clear: both;
+  float: left;
+}
+.mainSignup {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+}
 /* Profile Page */
 #userPage {
   position: fixed;

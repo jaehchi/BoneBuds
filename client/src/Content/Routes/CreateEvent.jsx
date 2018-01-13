@@ -99,10 +99,10 @@ class CreateEvent extends Component {
                 id="icon_prefix"
                 type="text"
                 className="validate"
-                data-length="45"
+                data-length="35"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix" className="active" data-error="Event title too long!" data-success="Ohh Much Creative!">Event Title</label>
+              <label htmlFor="icon_prefix" className="active" data-error="Event title too long!" data-success="WOW! Much Creative!">Event Title</label>
             </div>
           </div>
 
@@ -114,7 +114,6 @@ class CreateEvent extends Component {
                 name="description"
                 id="textarea1"
                 className="materialize-textarea"
-                data-length="120"
                 onChange={this.onChangeHandler}
               />
               <label htmlFor="textarea1" className="active">Description</label>
@@ -129,7 +128,6 @@ class CreateEvent extends Component {
                 id="icon_prefix"
                 type="text"
                 className="validate"
-                data-length="25"
                 onChange={this.onChangeHandler}
               />
               <label htmlFor="icon_prefix" className="active">Location</label>
@@ -144,7 +142,6 @@ class CreateEvent extends Component {
                 id="icon_prefix"
                 type="text"
                 className="validate"
-                data-length="255"
                 onChange={this.onChangeHandler}
               />
               <label htmlFor="icon_prefix" className="active">Image Url</label>
@@ -159,7 +156,6 @@ class CreateEvent extends Component {
                 id="icon_prefix"
                 type="text"
                 className="validate"
-                data-length="25"
                 onChange={this.onChangeHandler}
               />
               <label htmlFor="icon_prefix">Tags</label>

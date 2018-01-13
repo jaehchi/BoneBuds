@@ -23,6 +23,7 @@ export default class EditEvent extends Component {
 
   componentWillMount() {
     if (this.state.eventsWereLoaded === false) {
+      console.log(this.props, 'event id');
       axios.get('/events/fetchUsersEventsData/' + this.state.owner)
         .then((res) => {
           console.log('Pre-fetching event data... \nServer response:', res)
@@ -40,7 +41,7 @@ export default class EditEvent extends Component {
   render() {
     return (
       <div id="editEvent">
-        <h1 className="header center teal-text text-lighten-2">Edit Event Page</h1>
+        <h1 className="header center teal-text text-lighten-2">Edit Event</h1>
         <button>Show State</button>
         <button>Select</button>
 
@@ -57,7 +58,9 @@ export default class EditEvent extends Component {
 
           <div className="col s7 offset-s1">
             <form>
+
                 <div className="input-field">
+                  <i className="material-icons prefix">title</i>
                   <input
                     placeholder={this.state.title}
                     name="eventname"
@@ -65,8 +68,57 @@ export default class EditEvent extends Component {
                     className="validate"
                     onChange={this.onChangeHandler}
                   />
-                  <label htmlFor="eventname">Event Name</label>
+                  <label htmlFor="eventname">Event Title</label>
                 </div>
+
+                <div className="input-field">
+                  <i className="material-icons prefix">description</i>
+                  <input
+                    placeholder={this.state.title}
+                    name="description"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="description">Description</label>
+                </div>
+
+                <div className="input-field">
+                  <i className="material-icons prefix">map</i>
+                  <input
+                    placeholder={this.state.title}
+                    name="location"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="location">Location</label>
+                </div>
+
+                <div className="input-field">
+                  <i className="material-icons prefix">image</i>
+                  <input
+                    placeholder={this.state.title}
+                    name="image"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="image">Image Url</label>
+                </div>
+
+                <div className="input-field">
+                  <i className="material-icons prefix">gesture</i>
+                  <input
+                    placeholder={this.state.title}
+                    name="tags"
+                    type="text"
+                    className="validate"
+                    onChange={this.onChangeHandler}
+                  />
+                  <label htmlFor="tags">Tags</label>
+                </div>
+
             </form>
           </div>
 

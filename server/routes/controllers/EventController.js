@@ -113,20 +113,31 @@ const EventController = {
 
   },
   updateEventInfo: (req, res) => {
+    const location = req.body.event.location;
+    const swapped = location.replace(/\s/g, '+');
     const event = req.body.event;
-    events.update({
-      title: event.title,
-      description: event.description,
-      location: event.location,
-      image: event.image,
-      tag: event.tag,
-    }, { where: { eventID: req.body.id}, returning: true, plain: true })
-    .then((res) => {
-      console.log('updated', res)
-    })
-    .catch((e) => {
-      console.log('users event was not updated', e)
-    })
+
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json?address=' + swapped + '&key=AIzaSyBsL7VlcbDZTbz2CvN6moCFIQOR27U1t6s')
+      .then((response) => {
+        events.update({
+          title: event.title,
+          description: event.description,
+          location: event.location,
+          latitude: response.data.results[0].geometry.location.lat,
+          longitude: response.data.results[0].geometry.location.lng,
+          image: event.image,
+          tag: event.tag,
+        }, { where: { eventID: req.body.id}, returning: true, plain: true })
+        .then((res) => {
+          console.log('updated', res)
+        })
+        .catch((e) => {
+          console.log('users event was not updated', e)
+        })
+      })
+      .catch((e) => {
+        console.log('users event was not updated')
+      })
   },
 };
 

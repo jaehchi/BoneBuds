@@ -33,6 +33,7 @@ export default class EditEvent extends Component {
           title: res.data.title,
           description: res.data.description,
           location: res.data.location,
+          owner: res.data.owner,
           image: res.data.image,
           tag: res.data.tag,
         })
@@ -49,10 +50,8 @@ export default class EditEvent extends Component {
   }
 
   showState() {
-    this.setState({
-      eventID: this.props.currentEvent.eventID,
-    })
     console.log(this.state, 'current state');
+    console.log(this.props, 'current props')
   }
 
 
@@ -78,9 +77,16 @@ export default class EditEvent extends Component {
 
           <div className="col s4">
             <select>
-              <option value="1">Coffee Meets Fido</option>
-              <option value="2">Paint Your Dog</option>
-              <option value="3">Long Beach Grand Prix</option>
+              {
+                this.props.events
+                  .filter(event => {
+                    return event.owner === this.state.owner && event.eventID !== this.state.eventID;
+                  })
+                  .map((match, index) => (
+                    <option key={index} value={match.eventID}>{match.title}</option>
+                    )
+                  )
+              }
             </select>
             <label>Select Event To Edit</label>
           </div>

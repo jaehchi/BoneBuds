@@ -64,7 +64,7 @@ class ContentContainer extends Component {
           />
           <Route
             path="/editEvent"
-            render={() => <EditEvent currentEvent={this.props.currentEvent} />}
+            render={() => <EditEvent currentEvent={this.props.currentEvent} events={this.props.events}/>}
           />
           <Route
             path="/createEvent"

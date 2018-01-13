@@ -26,7 +26,6 @@ class App extends Component {
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
-    this.setName = this.setName.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onSubmitPost = this.onSubmitPost.bind(this);
   }
@@ -143,13 +142,6 @@ class App extends Component {
     } else {
       console.log('user chooses to stay. user chooses wisely.');
     }
-  }
-
-  setName(first, last) {
-    this.setState({
-      first,
-      last,
-    });
   }
 
   onClick(id) {

@@ -61,30 +61,76 @@ class Login extends Component {
   }
   render() {
     return (
-      <div className="loginBG">
-        <div className="loginLanding">
-          <div >
-            Email:<br />
-            <input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
-            <br />
-            Password:<br />
-            <input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
-            <br /><br />
-            <div>
-              <button className="emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+      <div className="card card-panel hoverable sticky-action" id="loginLanding">
+        <h4 className="header center teal-text text-lighten-2">Login</h4>
+        <div className="emailLogin">
+          <div className="row">
+            <div className="input-field col s12">
+              <input
+                placeholder={this.state.email}
+                name="email"
+                type="text"
+                className="validate"
+                onChange={this.handleChange}
+                value={this.state.email}
+                required
+
+              />
+              <label data-error="Email Required, Idiot!" htmlFor="email" className="active">Email</label>
             </div>
           </div>
-          <div>
-            <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
-          </div>
-          <br />
-          <div>
-            <Link to="/signup"><button>Not a user? Sign Up!</button></Link>
+          <div className="row">
+            <div className="input-field col s12 password">
+              <input
+                placeholder={this.state.password}
+                name="password"
+                type="password"
+                className="validate"
+                onChange={this.handleChange}
+                value={this.state.password}
+                required
+
+              />
+              <label data-error="Password Required, Idiot!" htmlFor="password" className="active">Password</label>
+            </div>
           </div>
         </div>
+        <div className="row">
+          <button className="teal-text text-lighten-2 emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+        </div>
+        <div className="row">
+          <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
+        </div>
+        <br />
+        <div>
+          <Link to="/signup"><button className="teal-text text-lighten-2 emailBtn">Not a user? Sign Up!</button></Link>
+        </div>
+
       </div>
     )
   }
 }
+{/* <div className="loginLanding card card-panel sticky-action">
+<div >
+<div >
+Email:<br />
+<input type="text" name="email" onChange={this.handleChange} value={this.state.email} />
+<br />
+Password:<br />
+<input type="password" name="password" onChange={this.handleChange} value={this.state.password} />
+<br /><br />
+<div>
+<button className="emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+</div>
+</div>
+<div>
+<button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
+</div>
+<br />
+<div>
+<Link to="/signup"><button>Not a user? Sign Up!</button></Link>
+</div>
+</div>
+</div> */}
 
 export default Login;

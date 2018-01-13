@@ -36,6 +36,7 @@
     "nodemon": "^1.14.7",
     "path": "^0.12.7",
     "react": "^16.2.0",
+    "react-body-backgroundcolor": "^1.0.1",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "sequelize": "^4.29.0",

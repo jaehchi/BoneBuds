@@ -218,7 +218,6 @@ class App extends Component {
                   <div className="col s9">
                     <ContentContainer
                       currentUser={this.state.user}
-                      setName={this.setName}
                       users={this.state.users}
                       eventID={this.state.currentEventID}
                       event={this.state.currentEvent}

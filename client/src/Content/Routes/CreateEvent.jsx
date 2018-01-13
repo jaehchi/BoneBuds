@@ -43,7 +43,6 @@ class CreateEvent extends Component {
   }
 
   componentWillMount() {
-    console.log(this.props.username, 'need to set owner as username')
     this.setState({
       owner: this.props.userData.username,
       userID: this.props.owner.uid,
@@ -100,10 +99,10 @@ class CreateEvent extends Component {
                 id="icon_prefix"
                 type="text"
                 className="validate"
-                data-length="25"
+                data-length="45"
                 onChange={this.onChangeHandler}
               />
-              <label htmlFor="icon_prefix" className="active">Event Title</label>
+              <label htmlFor="icon_prefix" className="active" data-error="Event title too long!" data-success="Ohh Much Creative!">Event Title</label>
             </div>
           </div>
 

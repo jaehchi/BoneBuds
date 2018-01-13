@@ -33,7 +33,6 @@ class ContentContainer extends Component {
               <UserPage
                 currentUser={this.props.currentUser}
                 username={this.props.username}
-                setName={this.props.setName}
                 isLoggedIn={this.isLoggedIn}
               />
             )}
@@ -43,7 +42,6 @@ class ContentContainer extends Component {
             render={() => (
               <UserProfile
                 currentUser={this.props.currentUser}
-                setName={this.props.setName}
                 isLoggedIn={this.isLoggedIn}
               />
             )}

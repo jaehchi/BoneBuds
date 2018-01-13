@@ -119,8 +119,6 @@ class App extends Component {
       .catch(err => {
         console.log(err);
       });
-
-
   }
 
   handleUserToken() {
@@ -228,6 +226,9 @@ class App extends Component {
                       user={this.state.user}
                       username={this.state.username}
                       userData={this.state.userData}
+                      events={this.state.events}
+                      currentEvent={this.state.currentEvent}
+                      identifyEvent={this.onClick}
                     />
                   </div>
                 </div>

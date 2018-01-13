@@ -90,7 +90,6 @@ class EventProfile extends Component {
                     </div>
                     <div className="col s3 right-align">
                       {/* <i className="mdi-navigation-expand-more" /> */}
-                      <Link to="/editEvent" className="waves-effect waves-light btn"><i className="material-icons right">mode_edit</i>Edit Event</Link>
                     </div>
                   </div>
                 </div>
@@ -104,6 +103,7 @@ class EventProfile extends Component {
                     <span className="card-title">{this.props.event.tag}</span>
                   </div>
                   <div className="card-content col s6">
+                    <p><strong>{this.props.event.location}</strong></p>
                     <p>{this.props.event.description}</p>
                   </div>
                 </div>

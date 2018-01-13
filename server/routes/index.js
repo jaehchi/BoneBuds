@@ -69,10 +69,14 @@ router.route('/findUserFromPost')
 // Fetch User from Comment
 router.route('/findUserFromComment')
   .post(CommentController.fetchUserFromComment);
-  
-// Pre-fetches events data
+
+// Update event information
+router.route('/updateEventInfo')
+  .post(EventController.updateEventInfo);
+
+// // fetches user's events' data
 // router.route('/fetchUsersEventsData/:owner')
-//   .get(EventController.fetchEventData)
+//   .get(EventController.fetchEventsData)
 
 
 module.exports = router;

@@ -11,35 +11,18 @@ class UserEvents extends Component {
   }
 
   componentDidMount () {
-    const socket = this.props.socket;
-    const userID = this.props.user.uid;
-    const payload = {
-      userID: this.props.user.uid
-    }
-
-    socket.on(`eventsByUser ${userID}`, eventsByUser => {
-      this.setState({
-        events: eventsByUser
-      });
-    });
-
-    axios.post('/events/fetchEventsByUser', payload)
-      .then(response => {
-        console.log('Pre-fetching event data... \nServer response:', response.data);
-      })
-      .catch( err => {
-        console.log(err);
-      })
+    this.setState({
+      events: this.props.events.filter(event => event.userID === this.props.user.uid)
+    })
   }
 
   render() {
-    // this.props.user.uid works
     return (
       <div className="wrapper">
         <div className="scrollable">
           {this.state.events.map((event, index) => {
             return (
-              <UserEventTile event={event} key={index}/>
+              <UserEventTile event={event} key={index} identifyEvent={this.props.identifyEvent}/>
             );
           })}
         </div>

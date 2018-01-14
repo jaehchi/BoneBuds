@@ -9,6 +9,7 @@ class Comment extends Component {
     this.state = {
       comment: ''
     }
+    this.likeComment = this.likeComment.bind(this);
   }
 
   componentDidMount () {
@@ -22,7 +23,18 @@ class Comment extends Component {
       console.log(e);
     })
   }
-
+  likeComment(e) {
+    console.log('clicked', this.props);
+    let liked = ++this.props.comment.likes
+    const payload = {
+      ID: this.props.comment.commentID,
+      likes: liked
+    }
+    axios.put('/comments/likeComment', payload)
+      .then((res) => {
+        console.log(res);
+      })
+  }
   render () {
     let pic = '';
     if (this.state.comment.profileUrl === 'undefined') {
@@ -52,7 +64,7 @@ class Comment extends Component {
 
         <div className="card-action row">
           <div className="col s2 card-action-share">
-            <a href="#"><i className="material-icons left">thumb_up</i></a>    
+            <a onClick={this.likeComment} value={this.props.ID} href="#"><i className="material-icons left">thumb_up</i></a>    
           </div>
           <div className="col s10 card-action-share right">
             <span className="grey-text text-darken-1 ultra-small">{moment(this.props.comment.createdAt).fromNow()}</span>                      

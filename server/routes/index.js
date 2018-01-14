@@ -78,5 +78,7 @@ router.route('/updateEventInfo')
 router.route('/deleteEvent/:id')
   .get(EventController.deleteEvent)
 
-
+// Likes a comment
+router.route('/likeComment')
+  .put(CommentController.addLikeToComment);
 module.exports = router;

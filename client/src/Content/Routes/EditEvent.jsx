@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 export default class EditEvent extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ export default class EditEvent extends Component {
     this.getUserEventInfo = this.getUserEventInfo.bind(this);
     this.showToast = this.showToast.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
+    this.sweetAlert = this.sweetAlert.bind(this);
   }
 
   deleteEvent() {
@@ -103,7 +105,34 @@ export default class EditEvent extends Component {
         console.log('Event was not updated', e);
         this.showToast('error');
       })
-    }
+  }
+
+  sweetAlert() {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        axios.get('/events/deleteEvent/' + this.props.currentEvent.eventID)
+          .then((res) => {
+            console.log('Event has beed deleted. \nServer response:', res.data);
+            swal("Poof! Your imaginary file has been deleted!", {
+              icon: "success",
+            });
+          })
+          .catch((e) => {
+            console.log('Event was not deleted', e);
+          })
+
+      } else {
+        swal("Your event is safe!");
+      }
+    });
+  }
 
   render() {
     if (this.state.eventID === 'undefined') {
@@ -117,7 +146,7 @@ export default class EditEvent extends Component {
         </div>
 
         <div className="center-align">
-          <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.deleteEvent}><i className="material-icons left">delete</i>Delete Event</Link>
+          <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.sweetAlert}><i className="material-icons left">delete</i>Delete Event</Link>
           <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.submitEventUpdate}><i className="material-icons left">create</i>Update Event</Link>
         </div>
 
@@ -139,7 +168,7 @@ export default class EditEvent extends Component {
             <label>Select Event To Edit</label>
           </div>
 
-          <div className="col s7 offset-s1">
+          <div className="col s7 offset-s1 z-depth-2 hoverable">
             <form>
 
                 <div className="input-field">

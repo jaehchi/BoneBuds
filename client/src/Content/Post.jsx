@@ -81,13 +81,19 @@ class Post extends Component {
 
   render () {
     // console.log('this is state for post component', this.props)
+    let pic = '';
+    if (this.state.post.profileUrl === 'undefined') {
+      pic = '/logo.svg';
+    } else {
+      pic = this.state.post.profileUrl;
+    }
     return (
       <div> 
         <div id="profile-page-wall-post" className="card blue lighten-5 ">
           <div className="card-profile-title">
             <div className="row">
               <div className="col s1">
-                <img src={this.state.post.profileUrl || "/logo.svg"} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
+                <img src={pic} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
               </div>
               <div className="col s10">
                 <p className="grey-text text-darken-4 margin">{this.state.post.username || "Anonymous"}</p>

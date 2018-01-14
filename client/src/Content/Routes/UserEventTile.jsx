@@ -9,7 +9,9 @@ class UserEventTile extends Component {
     }
     this.identifyEvent = this.identifyEvent.bind(this);
   }
-
+  componentDidMount() {
+    console.log('propers', this.props);
+  }
   identifyEvent() {
     this.props.identifyEvent(this.props.event.eventID);
   }
@@ -20,7 +22,7 @@ class UserEventTile extends Component {
       <div className="col s4">
         <div className="card">
           <div className="card-image">
-            <img src="https://rs1107.pbsrc.com/albums/h398/DMNYK1000/LevyTran.gif~c200"/>
+            <img src={this.props.event.image}/>
             <Link to='/editEvent' className="btn-floating halfway-fab waves-effect waves-light red" onClick={this.identifyEvent}><i className="material-icons">edit</i></Link>
           </div>
           <div className="card-content">

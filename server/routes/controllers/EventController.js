@@ -41,33 +41,6 @@ const EventController = {
       res.status(500);
     })
   },
-  // do we need this edit Event fn? prob not...
-  editEvent: (req, res) => {
-    console.log('edit event. req.body.info:', req.body.info);
-    const event = req.body.info
-    events.update({
-      title: event.title,
-      date: event.date,
-      time: event.time,
-      owner: event.owner,
-      location: event.location,
-      latitude: event.latitude,
-      longitude: event.longitude,
-      description: event.description,
-      tag: event.tag,
-      image: event.image,
-      userID: event.userID,
-    }, { where: { owner: event.owner }, returning: true, plain: true })
-      .then(() => {
-        console.log('Event is updated!');
-        res.send(`${event.title} has been updated`);
-      })
-      .catch((e) => {
-        console.log('DB could not find:', event.title);
-        console.log(e);
-        res.status(500);
-      })
-  },
   fetchAllEvents: (req, res) => {
     let io = req.app.get('socketio');
 

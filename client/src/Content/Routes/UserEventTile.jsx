@@ -18,7 +18,6 @@ class UserEventTile extends Component {
 
   render () {
     return (
-      <div className="wrapper">
       <div className="col s4">
         <div className="card">
           <div className="card-image">
@@ -31,9 +30,6 @@ class UserEventTile extends Component {
           </div>
         </div>
       </div>
-    </div>
-
-
     )
   }
 }

@@ -50,10 +50,6 @@ router.route('/createComment')
 router.route('/fetchAllCommentsByPost')
   .post(CommentController.fetchAllCommentsByPost);
 
-// Edits Event Data
-router.route('/editEvent')
-  .put(EventController.editEvent)
-
 //Fetches All Events for a User
 router.route('/fetchEventsByUser')
   .post(EventController.fetchEventsByUser);
@@ -78,9 +74,12 @@ router.route('/updateEventInfo')
 router.route('/deleteEvent/:id')
   .get(EventController.deleteEvent)
 
+<<<<<<< HEAD
 // Likes a comment
 router.route('/likeComment')
   .put(CommentController.addLikeToComment);
 router.route('/likePost')
   .put(PostController.addLikeToPost);
+=======
+>>>>>>> [ clean up ] - delete unused controller event
 module.exports = router;

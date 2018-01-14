@@ -58,8 +58,24 @@ const PostController = {
       .catch( err => {
         res.send(500).send(err);
       })
-  }
-  
+  },
+  addLikeToPost: (req, res) => {
+    console.log('comment liker', req.body.likes);
+    posts.update({
+      likes: req.body.likes
+    }, {
+      where: {
+        postID: req.body.ID
+      }
+      })
+      .then((result) => {
+        res.send(result)
+      })
+      .catch(() => {
+        res.send(500);
+      })
+
+  }  
 }
 
 module.exports = PostController;

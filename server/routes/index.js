@@ -74,12 +74,9 @@ router.route('/updateEventInfo')
 router.route('/deleteEvent/:id')
   .get(EventController.deleteEvent)
 
-<<<<<<< HEAD
 // Likes a comment
 router.route('/likeComment')
   .put(CommentController.addLikeToComment);
 router.route('/likePost')
   .put(PostController.addLikeToPost);
-=======
->>>>>>> [ clean up ] - delete unused controller event
 module.exports = router;

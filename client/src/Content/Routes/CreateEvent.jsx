@@ -12,7 +12,7 @@ class CreateEvent extends Component {
       location: '',
       date: '',
       time: '',
-      image: '',
+      image: '/logo.svg',
       userID: '',
       owner: '',
 

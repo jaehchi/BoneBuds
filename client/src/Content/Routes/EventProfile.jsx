@@ -71,7 +71,7 @@ class EventProfile extends Component {
                   <div className="row">
                     <div className="col s1">
                       <img
-                        src={this.state.owner.profileUrl}
+                        src={this.state.owner.profileUrl || '/logo.svg'}
                         alt=""
                         className="circle responsive-img valign profile-post-uer-image"
                       />

@@ -24,6 +24,12 @@ class UserPage extends Component {
     // console.log(this.props.currentUser)
     axios.get('/users/update/' + this.props.currentUser.uid)
       .then((res) => {
+        let pic = '';
+        if (res.data.profileUrl === 'undefined') {
+          pic = '/logo.svg';
+        } else {
+          pic = res.data.profileUrl;
+        }
         this.setState({
           firstname: res.data.firstname,
           lastname: res.data.lastname,
@@ -31,7 +37,7 @@ class UserPage extends Component {
           dogname: res.data.dogname,
           dogbio: res.data.dogbio,
           username: res.data.username,
-          profileUrl: res.data.profileUrl,
+          profileUrl: pic,
         })
         console.log('Pre-fetched user info:', res.data)
       })

@@ -15,6 +15,7 @@ class Post extends Component {
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onSubmitComment = this.onSubmitComment.bind(this);  
+    this.likePost = this.likePost.bind(this);
   }
 
   componentDidMount () {
@@ -78,9 +79,26 @@ class Post extends Component {
       [e.target.name]: e.target.value,
     })
   }
-
+  likePost(e) {
+    console.log('clicked', this.props.post);
+    let liked = ++this.props.post.likes
+    const payload = {
+      ID: this.props.post.postID,
+      likes: liked
+    }
+    axios.put('/posts/likePost', payload)
+      .then((res) => {
+        console.log(res);
+      })
+  }
   render () {
     // console.log('this is state for post component', this.props)
+    let liked = '';
+    if (this.props.post.likes === 1) {
+      liked = `${this.props.post.likes} person likes this`;
+    } else {
+      liked = `${this.props.post.likes} people like this`
+    }
     let pic = '';
     if (this.state.post.profileUrl === 'undefined') {
       pic = '/logo.svg';
@@ -111,7 +129,7 @@ class Post extends Component {
 
           <div className="card-action row">
             <div className="col s2 card-action-share">
-              <a href="#"><i className="material-icons left">thumb_up</i></a>                          
+              <a onClick={this.likePost} value={this.props.postID} href="#"><i className="material-icons left">thumb_up</i>{liked}</a>                          
             </div>
             
               <div className="input-field col s10 margin right">

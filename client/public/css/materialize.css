@@ -5,8 +5,8 @@
  */
 
  .scrollable {
-  overflow-y: scroll;
-  height: 80vh;
+  overflow-y: auto;
+  height: 90vh;
  }
 
 .materialize-red {

@@ -10,7 +10,7 @@ class UserEventTile extends Component {
     this.identifyEvent = this.identifyEvent.bind(this);
   }
   componentDidMount() {
-    console.log('propers', this.props);
+    // console.log('propers', this.props);
   }
   identifyEvent() {
     this.props.identifyEvent(this.props.event.eventID);
@@ -18,7 +18,6 @@ class UserEventTile extends Component {
 
   render () {
     return (
-      <div className="wrapper">
       <div className="col s4">
         <div className="card">
           <div className="card-image">
@@ -31,9 +30,6 @@ class UserEventTile extends Component {
           </div>
         </div>
       </div>
-    </div>
-
-
     )
   }
 }

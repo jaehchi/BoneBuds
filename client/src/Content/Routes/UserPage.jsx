@@ -16,7 +16,6 @@ class UserPage extends Component {
       username: '',
       profileUrl: '',
     }
-    this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.updateUserInfo = this.updateUserInfo.bind(this);
   }
@@ -39,13 +38,7 @@ class UserPage extends Component {
           username: res.data.username,
           profileUrl: pic,
         })
-        console.log('Pre-fetched user info:', res.data)
       })
-  }
-
-  consoleState() {
-    console.log('info being sent to db:', this.state)
-    console.log('passed down props:', this.props.currentUser)
   }
 
   onChangeHandler(e) {

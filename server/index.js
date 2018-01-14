@@ -63,8 +63,8 @@ io.on('connection', (socket) => {
   //   console.log(data)
   // })
 
-  //on 'yo' event, the client will be sent 'fuck you' check app.jsx
-  socket.emit('yo', 'fuck you');
+  //on 'yo' event, the client will be sent 'something awesome' check app.jsx
+  socket.emit('yo', 'Close the console and enter the konami code...');
 })
 
 

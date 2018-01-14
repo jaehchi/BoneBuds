@@ -14,7 +14,6 @@ class UserProfile extends Component {
       profileUrl: '',
       username: ''
     }
-    this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.updateUserInfo = this.updateUserInfo.bind(this);
     this.showToast = this.showToast.bind(this);
@@ -33,15 +32,10 @@ class UserProfile extends Component {
           profileUrl: res.data.profileUrl,
           // username: res.data.username
         })
-        console.log('Pre-fetching user data... \nServer response:', res)
       })
       .catch((e) => {
         console.error('Could not fetch user data...', e);
       })
-  }
-
-  consoleState() {
-    console.log('info being sent to db:', this.state);
   }
 
   onChangeHandler(e) {

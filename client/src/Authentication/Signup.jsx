@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import firebase, { auth, facebookProvider, googleProvider } from './firebase.js';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 class Signup extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class Signup extends Component {
               .then(() => {
                 usersRef.child(user.uid).set(dbUser)
                 this.props.handleUserToken();
+                swal("Awesome! You're signed up.", "Check out all of the meet ups happening in you area!", "success");
               })
               .catch(() => {
                 console.error('error signing up user in sql db after firebase email auth');
@@ -94,7 +96,7 @@ class Signup extends Component {
                   onChange={this.handleChange}
                   value={this.state.email}
                   required
-                  
+
                 />
                 <label data-error="Email Required, Idiot!" htmlFor="email" className="active">Email</label>
               </div>
@@ -107,7 +109,7 @@ class Signup extends Component {
                   onChange={this.handleChange}
                   value={this.state.password}
                   required
-                  
+
                 />
                 <label data-error="Password Required, Idiot!" htmlFor="password" className="active">Password</label>
               </div>
@@ -120,7 +122,7 @@ class Signup extends Component {
                   onChange={this.handleChange}
                   value={this.state.firstname}
                   required
-                  
+
                 />
                 <label data-success="Your parents named you that? Tough break, kid." data-error="First Name Required, Idiot!" htmlFor="firstname" className="active">First Name</label>
               </div>
@@ -134,7 +136,7 @@ class Signup extends Component {
                   onChange={this.handleChange}
                   value={this.state.lastname}
                   required
-                  
+
                 />
                 <label data-error="Last Name Required, Idiot!" htmlFor="lastname" className="active">Last Name</label>
               </div>
@@ -149,7 +151,7 @@ class Signup extends Component {
                 className="validate"
                 onChange={this.handleChange}
                 value={this.state.profileUrl}
-                
+
               />
               <label htmlFor="profileUrl" className="active">Profile Image</label>
             </div>

@@ -43,9 +43,7 @@ const EventController = {
   },
   fetchAllEvents: (req, res) => {
     let io = req.app.get('socketio');
-
-    events
-      .findAll()
+    events.findAll()
       .then(results => {
         io.emit('fetchAllEvents', results);
         res.status(200).send(results);
@@ -87,6 +85,7 @@ const EventController = {
 
   },
   updateEventInfo: (req, res) => {
+    let io = req.app.get('socketio');
     const location = req.body.event.location;
     const swapped = location.replace(/\s/g, '+');
     const event = req.body.event;
@@ -107,11 +106,12 @@ const EventController = {
           res.send('Event was updated')
         })
         .catch((e) => {
-          console.log('users event was not updated', e)
+          console.log('users event was not updated')
         })
       })
       .catch((e) => {
         console.log('users event was not updated')
+        res.send(e);
       })
   },
   deleteEvent: (req, res) => {

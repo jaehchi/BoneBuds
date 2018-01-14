@@ -19,7 +19,7 @@ class UserEventTile extends Component {
   render () {
     return (
       <div className="col s4">
-        <div className="card">
+        <div className="card hoverable">
           <div className="card-image">
             <img src={this.props.event.image}/>
             <Link to='/editEvent' className="btn-floating halfway-fab waves-effect waves-light red" onClick={this.identifyEvent}><i className="material-icons">edit</i></Link>

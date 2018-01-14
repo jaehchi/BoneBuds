@@ -698,7 +698,7 @@
 }
 
 .blue.darken-1 {
-  background-color: #1E88E5 !important;
+  background: linear-gradient(45deg, #303f9f 0%, #1976D2 100%) !important;
 }
 
 .blue-text.text-darken-1 {
@@ -3485,6 +3485,10 @@ nav ul a span.badge {
   margin-left: auto;
   left: auto;
   right: auto;
+  margin-top:.5em;
+  border-radius: 4px;
+  background:white;
+  padding: 2em;
 }
 
 .row .col.s8 {
@@ -4863,11 +4867,12 @@ small {
 }
 
 .card .card-content {
-  padding: 24px;
+  padding: 12px 24px;
   border-radius: 0 0 2px 2px;
 }
 
 .card .card-content p {
+  padding: 12px 24px;
   margin: 0;
   color: inherit;
 }
@@ -4963,7 +4968,7 @@ small {
   min-height: 48px;
   line-height: 1.5em;
   word-break: break-all;
-  background-color: #2196F3;
+  background: linear-gradient(45deg, #d500f9 0%, #ffa000 100%);
   padding: 10px 25px;
   font-size: 1.1rem;
   font-weight: 300;
@@ -5140,6 +5145,8 @@ small {
 
 .btn, .btn-large,
 .btn-flat {
+  background: linear-gradient(45deg, #3949ab 0%, #4fc3f7 100%);
+  margin-left: .5em;
   border: none;
   border-radius: 2px;
   display: inline-block;

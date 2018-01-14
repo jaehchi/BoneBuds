@@ -53,7 +53,7 @@ class Comment extends Component {
         <div className="card-profile-title">
           <div className="row">
             <div className="col s1">
-              <img src={pic} alt="" className="circle responsive-img valign profile-post-uer-image"/>                        
+              <img src={pic} alt="" className="circle responsive-img valign profile-post-uer-image"/>
             </div>
             <div className="col s10">
               <p className="grey-text text-darken-4 margin">{this.state.comment.username || 'Anonymous'}</p>
@@ -69,11 +69,11 @@ class Comment extends Component {
         </div>
 
         <div className="card-action row">
-          <div className="col s2 card-action-share">
+          <div className="col s8 card-action-share">
             <a onClick={this.likeComment} value={this.props.ID} href="#"><i className="material-icons left">thumb_up </i>{liked}</a>
           </div>
-          <div className="col s10 card-action-share right">
-            <span className="grey-text text-darken-1 ultra-small">{moment(this.props.comment.createdAt).fromNow()}</span>                      
+          <div className="col s4 card-action-share right-align">
+            <span className="grey-text text-darken-1 ultra-small">{moment(this.props.comment.createdAt).fromNow()}</span>
           </div>
         </div>
       </div>

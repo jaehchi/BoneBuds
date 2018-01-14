@@ -17,7 +17,6 @@ class CreateEvent extends Component {
       owner: '',
 
     };
-    this.consoleState = this.consoleState.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.showToast = this.showToast.bind(this);
     this.createEvent = this.createEvent.bind(this);
@@ -49,18 +48,18 @@ class CreateEvent extends Component {
     })
   }
 
-  consoleState() {
-    console.log("info being sent to database:", this.state);
-  }
-
   onChangeHandler(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
 
-  showToast() {
-    Materialize.toast("Event created!", 3000, "rounded");
+  showToast(response) {
+    if (response === 'good') {
+      Materialize.toast('Event created!', 3000, 'rounded');
+    } else {
+      Materialize.toast('Error... Event was not created', 3000, 'rounded');
+    }
   }
 
   createEvent() {
@@ -71,10 +70,11 @@ class CreateEvent extends Component {
       .post("/events/createEvent", payload)
       .then(res => {
         console.log("Creating event... \nServer response:", res.data);
-        this.showToast();
+        this.showToast('good');
       })
-      .catch(e => {
-        console.log("Event data was not created", e);
+      .catch(() => {
+        console.log("Event data was not created. Invalid request.");
+        this.showToast('error');
       });
   }
 

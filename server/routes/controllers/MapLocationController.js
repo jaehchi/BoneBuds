@@ -7,7 +7,7 @@ const MapLocationController = {
     Events.findAll()
       .then((response) =>{
         console.log('Event location data sent to client');
-        io.emit('getAllMapEvents', response)
+        io.emit('fetchAllEvents', response)
         res.send(response);
       })
       .catch((e) => {

@@ -18,26 +18,20 @@ export class MapContainer extends Component {
     this.onMapClicked = this.onMapClicked.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    axios.get('users/popups')
+      .then(() => {
+      })
+      .catch((e) => {
+        console.log('Was not able to fetch longitude / latitude data', e);
+      });
+
     const socket = io('/');
-    socket.on('getAllMapEvents', events => {
+    socket.on('fetchAllEvents', events => {
       this.setState({
         events,
       })
     })
-  }
-
-  componentDidMount() {
-    axios.get('users/popups')
-      .then((response) => {
-        console.log('Pre-fetching coordinates data... \nserver response:', response);
-        this.setState({
-          events: response.data,
-        })
-      })
-      .catch((e) => {
-        console.log('Was Not Able to GET latLong info from db', e);
-      });
   }
 
 
@@ -61,7 +55,7 @@ export class MapContainer extends Component {
   render() {
     const style = {
       width:'75%',
-      height: '80vh',
+      height: '90vh',
     }
 
     return (
@@ -92,7 +86,7 @@ export class MapContainer extends Component {
 
         <Marker
           title={'Why don\'t ya click and find out?'}
-          name={'Hack Reactor LA ya bish!'}
+          name={'Hack Reactor LA!!'}
           position={{lat: 33.976796, lng: -118.392161}}
           onClick={this.onMarkerClick}
         />

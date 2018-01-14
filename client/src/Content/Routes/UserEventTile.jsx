@@ -10,7 +10,7 @@ class UserEventTile extends Component {
     this.identifyEvent = this.identifyEvent.bind(this);
   }
   componentDidMount() {
-    console.log('propers', this.props);
+    // console.log('propers', this.props);
   }
   identifyEvent() {
     this.props.identifyEvent(this.props.event.eventID);

@@ -8,12 +8,10 @@ class UserEvents extends Component {
     super(props);
     this.state = {
       events: [],
-      emit: [],
     }
-
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.setState({
       events: this.props.events.filter(event => event.userID === this.props.user.uid),
     })

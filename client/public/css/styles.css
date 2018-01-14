@@ -74,12 +74,12 @@ body {
   text-align: center;
   width: 40%;
   height: 50%;
-  position: fixed;
+  position: relative;
   top: 50%;
   left: 50%;
   border-radius: 5px;
   /* bring your own prefixes */
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 30%);
 }
 
 /* button styling */

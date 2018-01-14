@@ -8,6 +8,7 @@ import LoginLanding from "./Authentication/LoginLanding";
 import firebase, { auth } from "./Authentication/firebase";
 import io from 'socket.io-client';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const socket = io('/');
 
@@ -130,16 +131,22 @@ class App extends Component {
   }
 
   logout() {
-    if (confirm('Confirm logout?')) {
-      auth.signOut().then(() => {
-        this.setState({
-          user: ''
-        });
-      });
-      document.location.href="/";
-    } else {
-      console.log('user chooses to stay. user chooses wisely.');
-    }
+    swal("Are you sure you want to logout?", {
+      buttons: ["Nope!", true],
+    })
+      .then((value) => {
+          if (value) {
+            auth.signOut().then(() => {
+              this.setState({
+                user: ''
+              });
+            });
+            document.location.href="/";
+          } else {
+
+          }
+        })
+
   }
 
   onClick(id) {

@@ -57,7 +57,7 @@ class CreateEvent extends Component {
   showToast(response) {
     if (response === 'good') {
       Materialize.toast('Event created!', 3000, 'rounded');
-    } else if (response === 'error') {
+    } else {
       Materialize.toast('Error... Event was not created', 3000, 'rounded');
     }
   }
@@ -70,11 +70,14 @@ class CreateEvent extends Component {
       .post("/events/createEvent", payload)
       .then(res => {
         console.log("Creating event... \nServer response:", res.data);
-        this.showToast('good');
+        if (res === 'Invalid API Request') {
+          this.showToast('good');
+        } else {
+          this.showToast()
+        }
       })
-      .catch(() => {
-        console.log("Event data was not created. Invalid api request.");
-        this.showToast('error');
+      .catch((e) => {
+        console.log("Event data was not created. Invalid api request.", e);
       });
   }
 
@@ -87,7 +90,7 @@ class CreateEvent extends Component {
         </div>
 
         <div className="center-align">
-          <Link to='/userEvents' onClick={this.createEvent} className="waves-effect waves-light btn"><i className="material-icons left">cloud</i>Create Event</Link>
+          <Link to='/userEvents' onClick={this.createEvent} className="waves-effect waves-light btn"><i className="material-icons left">event_note</i>Create Event</Link>
         </div>
 
           <div className="row">

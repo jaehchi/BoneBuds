@@ -110,7 +110,7 @@ export default class EditEvent extends Component {
   sweetAlert() {
     swal({
       title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this file!",
+      text: "Once deleted, you will not be able to recover this event!",
       icon: "warning",
       buttons: true,
       dangerMode: true,
@@ -120,7 +120,7 @@ export default class EditEvent extends Component {
         axios.get('/events/deleteEvent/' + this.props.currentEvent.eventID)
           .then((res) => {
             console.log('Event has beed deleted. \nServer response:', res.data);
-            swal("Poof! Your imaginary file has been deleted!", {
+            swal("Poof! Your event has been deleted!", {
               icon: "success",
             });
           })

@@ -36,9 +36,9 @@ const EventController = {
             res.send('Could not create event', err).status(500);
           });
     })
-    .catch((err) => {
-      console.log('Not able to fetch api data for latLong', err)
-      res.send(err);
+    .catch(() => {
+      console.log('Not able to fetch api data for latLong')
+      res.send('Invalid API Request');
     })
   },
   fetchAllEvents: (req, res) => {

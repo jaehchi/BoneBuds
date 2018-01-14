@@ -80,17 +80,16 @@ class CreateEvent extends Component {
 
   render() {
     return (
-      <div className="row scrollable">
+      <div className="card card-panel hoverable scrollable">
 
         <div className="row">
-          <h1 className="header center teal-text text-lighten-2">
-          Create an Event!
-          </h1>
+          <h1 className="header center blue-text text-darken-4">Create an Event!</h1>
         </div>
 
-        <Link to='/' onClick={this.createEvent} className="waves-effect waves-light btn"><i className="material-icons left">cloud</i>Create Event</Link>
+        <div className="center-align">
+          <Link to='/' onClick={this.createEvent} className="waves-effect waves-light btn"><i className="material-icons left">cloud</i>Create Event</Link>
+        </div>
 
-        <form className="col s12">
           <div className="row">
             <div className="input-field col s12">
               <i className="material-icons prefix">title</i>
@@ -191,7 +190,7 @@ class CreateEvent extends Component {
               </div>
             </div>
           </div>
-        </form>
+
       </div>
     );
   }

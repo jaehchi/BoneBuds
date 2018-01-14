@@ -67,7 +67,7 @@ class UserProfile extends Component {
     return (
       <div className="card card-panel hoverable sticky-action userProfileMain" >
         <div className="userProfile"  className="scrollable">
-          <h1 className="header center teal-text text-lighten-2">User Profile</h1>
+          <h1 className="header center blue-text text-darken-4">User Profile</h1>
           <Link to='/userpage' className="waves-effect waves-light btn" onClick={this.updateUserInfo}><i className="material-icons left">cloud</i>Update user info</Link>
 
           <div className="row">

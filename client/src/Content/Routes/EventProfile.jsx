@@ -66,7 +66,9 @@ class EventProfile extends Component {
               <div id="profile-page-wall-post" className="card">
                 <div className="card-profile-title">
                   <div className="row">
-                    <h3>{this.props.event.title}</h3>
+                    <div className="col s12 offset-s1">
+                      <h3>{this.props.event.title}</h3>
+                    </div>
                   </div>
                   <div className="row">
                     <div className="col s1">
@@ -124,7 +126,7 @@ class EventProfile extends Component {
                         onChange={this.onChange}
                       />
                     </form>
-                    <label htmlFor="profile-comments" className="">
+                    <label htmlFor="profile-comments" className="active">
                       Posts
                     </label>
                   </div>

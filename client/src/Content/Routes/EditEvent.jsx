@@ -18,6 +18,7 @@ export default class EditEvent extends Component {
       currentEvent: '',
     }
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onKeyup = this.onKeyUp.bind(this);
     this.submitEventUpdate = this.submitEventUpdate.bind(this);
     this.getUserEventInfo = this.getUserEventInfo.bind(this);
     this.showToast = this.showToast.bind(this);
@@ -62,12 +63,29 @@ export default class EditEvent extends Component {
     })
   }
 
-  showToast(a) {
-    if (a === 'update') {
-      Materialize.toast('Event Info Updated!', 3000, 'rounded');
+  onKeyUp(e) {
+    if (e.keyCode === 13) {
+      const payload = {
+        event: this.state,
+        id: this.props.currentEvent.eventID,
+      }
+      axios.put('/events/updateEventInfo', payload)
+        .then((res) => {
+          console.log("Event was updated. Server response:", res.data);
+          this.showToast('message');
+        })
+        .catch((e) => {
+          console.log('Event was not updated', e);
+          this.showToast('error');
+        })
     }
-    if (a === 'delete') {
-      Materialize.toast('Event DELETED!', 3000, 'rounded');
+  }
+
+  showToast(message) {
+    if (message === 'message') {
+      Materialize.toast('Event Info Updated!', 3000, 'rounded');
+    } else if (message === 'error') {
+      Materialize.toast('DENIED!', 3000, 'rounded');
     }
   }
 
@@ -79,12 +97,13 @@ export default class EditEvent extends Component {
     axios.put('/events/updateEventInfo', payload)
       .then((res) => {
         console.log("Event was updated. Server response:", res.data);
-        this.showToast('update');
+        this.showToast('message');
       })
       .catch((e) => {
         console.log('Event was not updated', e);
+        this.showToast('error');
       })
-  }
+    }
 
   render() {
     if (this.state.eventID === 'undefined') {
@@ -92,11 +111,15 @@ export default class EditEvent extends Component {
     }
     return (
       <div id="editEvent">
-        <h1 className="header center teal-text text-lighten-2">Editing: {this.props.currentEvent.title}</h1>
 
-        <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.deleteEvent}><i className="material-icons left">delete</i>Delete Event</Link>
+        <div className="row">
+          <h1 className="header center blue-text text-darken-4">{this.props.currentEvent.title}</h1>
+        </div>
 
-        <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.submitEventUpdate}><i className="material-icons left">create</i>Update Event</Link>
+        <div className="center-align">
+          <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.deleteEvent}><i className="material-icons left">delete</i>Delete Event</Link>
+          <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.submitEventUpdate}><i className="material-icons left">create</i>Update Event</Link>
+        </div>
 
         <div className="row">
 
@@ -127,6 +150,7 @@ export default class EditEvent extends Component {
                     type="text"
                     className="validate"
                     onChange={this.onChangeHandler}
+                    onKeyUp={this.onKeyup}
                   />
                   <label htmlFor="eventname" className="active">Event Title</label>
                 </div>
@@ -139,6 +163,7 @@ export default class EditEvent extends Component {
                     type="text"
                     className="validate"
                     onChange={this.onChangeHandler}
+                    onKeyUp={this.onKeyup}
                   />
                   <label htmlFor="description" className="active">Description</label>
                 </div>
@@ -151,6 +176,7 @@ export default class EditEvent extends Component {
                     type="text"
                     className="validate"
                     onChange={this.onChangeHandler}
+                    onKeyUp={this.onKeyup}
                   />
                   <label htmlFor="location" className="active">Location</label>
                 </div>
@@ -162,6 +188,7 @@ export default class EditEvent extends Component {
                     type="text"
                     className="validate"
                     onChange={this.onChangeHandler}
+                    onKeyUp={this.onKeyup}
                   />
                   <label htmlFor="image" className="active">Image Url</label>
                 </div>
@@ -174,6 +201,7 @@ export default class EditEvent extends Component {
                     type="text"
                     className="validate"
                     onChange={this.onChangeHandler}
+                    onKeyUp={this.onKeyup}
                   />
                   <label htmlFor="tag" className="active">Tags</label>
                 </div>

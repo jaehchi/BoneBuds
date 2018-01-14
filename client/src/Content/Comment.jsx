@@ -36,6 +36,12 @@ class Comment extends Component {
       })
   }
   render () {
+    let liked = '';
+    if (this.props.comment.likes === 1) {
+      liked = `${this.props.comment.likes} person likes this`;
+    } else {
+      liked = `${this.props.comment.likes} people like this`
+    }
     let pic = '';
     if (this.state.comment.profileUrl === 'undefined') {
       pic = '/logo.svg';
@@ -64,7 +70,7 @@ class Comment extends Component {
 
         <div className="card-action row">
           <div className="col s2 card-action-share">
-            <a onClick={this.likeComment} value={this.props.ID} href="#"><i className="material-icons left">thumb_up</i></a>    
+            <a onClick={this.likeComment} value={this.props.ID} href="#"><i className="material-icons left">thumb_up </i>{liked}</a>
           </div>
           <div className="col s10 card-action-share right">
             <span className="grey-text text-darken-1 ultra-small">{moment(this.props.comment.createdAt).fromNow()}</span>                      

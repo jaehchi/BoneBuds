@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Comment from './Comment';
 import axios from 'axios'
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class Post extends Component {
   constructor (props) {
@@ -16,6 +17,8 @@ class Post extends Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.onSubmitComment = this.onSubmitComment.bind(this);
     this.likePost = this.likePost.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.userNameClick = this.userNameClick.bind(this);
   }
 
   componentDidMount () {
@@ -73,11 +76,13 @@ class Post extends Component {
 
       e.target.reset();
   }
-
   onChangeHandler(e) {
     this.setState({
       [e.target.name]: e.target.value,
     })
+  }
+  handleClick() {
+    console.log(this.props.post.userID);
   }
   likePost(e) {
     let liked = ++this.props.post.likes
@@ -89,6 +94,9 @@ class Post extends Component {
       .then((res) => {
         console.log(res);
       })
+  }
+  userNameClick() {
+    this.props.clickUserID(this.props.post.userID);
   }
   render () {
     // console.log('this is state for post component', this.props)
@@ -113,9 +121,9 @@ class Post extends Component {
                 <img src={pic} alt="" className="circle responsive-img valign profile-post-uer-image"/>
               </div>
               <div className="col s10">
-                  <p className="grey-text text-darken-4 margin">{this.state.post.username || "Anonymous"}{' '}
+                  <Link to="/friendPage"><p onClick={this.userNameClick}   value={this.props.post.username} className="grey-text text-darken-4 margin">{this.state.post.username || "Anonymous"}{' '}
                     <small className="grey-text text-darken-1 ultra-small">{moment(this.props.post.createdAt).fromNow()}</small>
-                  </p>
+                  </p></Link>
               </div>
               <div className="col s1 right-align">
                 <i className="mdi-navigation-expand-more"></i>
@@ -149,7 +157,7 @@ class Post extends Component {
 
             <div className="row col s10 small right">
               {this.state.comments.map( comment => {
-                return  ( <Comment key={comment.commentID} ID={comment.commentID} comment={comment} userData={this.props.userData}/> )
+                return  ( <Comment clickUserID={this.props.clickUserID} key={comment.commentID} ID={comment.commentID} comment={comment} userData={this.props.userData}/> )
               })}
             </div>
           </div>

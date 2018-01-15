@@ -8,6 +8,7 @@ import EditEvent from "./Routes/EditEvent";
 import UserPage from "./Routes/UserPage";
 import UserEvents from "./Routes/UserEvents";
 import SearchBar from "./Routes/SearchBar";
+import FriendPage from "./Routes/FriendPage";
 
 class ContentContainer extends Component {
   constructor(props) {
@@ -29,6 +30,14 @@ class ContentContainer extends Component {
                 currentUser={this.props.currentUser}
                 username={this.props.username}
                 isLoggedIn={this.isLoggedIn}
+              />
+            )}
+          />
+          <Route
+            path="/friendPage"
+            render={() => (
+              <FriendPage
+                userID={this.props.clickedUser}
               />
             )}
           />
@@ -55,6 +64,7 @@ class ContentContainer extends Component {
                 socket={this.props.socket}
                 userData={this.props.userData}
                 owner={this.props.currentEventOwnerInfo}
+                clickUserID={this.props.clickUserID}
               />
             )}
           />

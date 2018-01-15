@@ -161,6 +161,7 @@ class EventProfile extends Component {
                             //dont need user ^ when  username is working on userData
                             socket={this.props.socket}
                             userData={this.props.userData}
+                            clickUserID={this.props.clickUserID}
                           />
                         );
                       })

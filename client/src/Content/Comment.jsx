@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class Comment extends Component {
   constructor (props) {
@@ -10,6 +11,7 @@ class Comment extends Component {
       comment: ''
     }
     this.likeComment = this.likeComment.bind(this);
+    this.userNameClick = this.userNameClick.bind(this);
   }
 
   componentDidMount () {
@@ -34,6 +36,9 @@ class Comment extends Component {
         console.log(res);
       })
   }
+  userNameClick() {
+    this.props.clickUserID(this.props.comment.userID);
+  }
   render () {
     let liked = '';
     if (this.props.comment.likes === 1) {
@@ -55,7 +60,7 @@ class Comment extends Component {
               <img src={pic} alt="" className="circle responsive-img valign profile-post-uer-image"/>
             </div>
             <div className="col s10">
-              <p className="grey-text text-darken-4 margin">{this.state.comment.username || 'Anonymous'}</p>
+              <Link to='friendPage'><p onClick={this.userNameClick} className="grey-text text-darken-4 margin">{this.state.comment.username || 'Anonymous'}</p></Link>
             </div>
             <div className="col s1 right-align">
               <i className="mdi-navigation-expand-more"></i>

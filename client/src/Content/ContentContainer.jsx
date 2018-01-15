@@ -5,28 +5,23 @@ import UserProfile from "./Routes/UserProfile";
 import EventProfile from "./Routes/EventProfile";
 import CreateEvent from "./Routes/CreateEvent";
 import EditEvent from "./Routes/EditEvent";
-import UserPage from './Routes/UserPage';
-import UserEvents from './Routes/UserEvents';
-
+import UserPage from "./Routes/UserPage";
+import UserEvents from "./Routes/UserEvents";
+import SearchBar from "./Routes/SearchBar";
 
 class ContentContainer extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      usersEvent: '',
-    }
+      usersEvent: ""
+    };
   }
 
   render() {
     return (
       <main>
         <Switch>
-          <Route
-            exact path="/"
-            render={() => (
-              <MapContainer />
-            )}
-          />
+          <Route exact path="/" render={() => <MapContainer />} />
           <Route
             path="/userpage"
             render={() => (
@@ -59,23 +54,50 @@ class ContentContainer extends Component {
                 submit={this.props.submit}
                 socket={this.props.socket}
                 userData={this.props.userData}
+                owner={this.props.currentEventOwnerInfo}
               />
             )}
           />
           <Route
             path="/editEvent"
-            render={() => <EditEvent currentEvent={this.props.currentEvent} events={this.props.events}/>}
+            render={() => (
+              <EditEvent
+                currentEvent={this.props.currentEvent}
+                events={this.props.events}
+              />
+            )}
           />
           <Route
             path="/createEvent"
-            render={() => <CreateEvent owner={this.props.user} username={this.props.username} userData={this.props.userData}/>} />
+            render={() => (
+              <CreateEvent
+                owner={this.props.user}
+                username={this.props.username}
+                userData={this.props.userData}
+              />
+            )}
+          />
 
           <Route
             path="/userEvents"
-            render={() => <UserEvents user={this.props.currentUser} username={this.props.username} events={this.props.events} socket={this.props.socket} identifyEvent={this.props.identifyEvent} />} />
+            render={() => (
+              <UserEvents
+                user={this.props.currentUser}
+                username={this.props.username}
+                events={this.props.events}
+                socket={this.props.socket}
+                identifyEvent={this.props.identifyEvent}
+              />
+            )}
+          />
+
+          <Route
+            path="/searchBar"
+            render={() => <SearchBar click={this.props.click} />}
+          />
         </Switch>
       </main>
-    )
+    );
   }
 }
 

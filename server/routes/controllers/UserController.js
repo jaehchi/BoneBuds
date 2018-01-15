@@ -1,4 +1,4 @@
-const { users } = require('../../SQL/models');
+const { users, events, posts, coomments } = require('../../SQL/models');
 
 const UserController = {
   checkIfUserExists: (req, res) => {
@@ -65,6 +65,40 @@ const UserController = {
         res.status(201).send(results);
       })
       .catch( err => {
+        console.log(err);
+      })
+  },
+  allUsers: (req, res) => {
+    users.findAll({})
+      .then( users => {
+        const result = users.map( user => {
+          return Object.assign({}, {
+            userID : user.userID,
+            username : user.username,
+            profileUrl: user.profileUrl,
+            })
+          });
+
+          events.findAll()
+            .then( events => {
+              let results = events.map( event => {
+                return Object.assign({}, {
+                  eventID: event.eventID,
+                  title: event.title,
+                  location: event.location,
+                  description: event.description,
+                  tag: event.tag,
+                  image: event.image
+                })
+              })
+              res.status(200).send(result.concat(results));
+            })
+            .catch( e => {
+              console.log(e);
+            })
+
+      })
+      .catch(err => {
         console.log(err);
       })
   }

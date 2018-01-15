@@ -77,6 +77,11 @@ router.route('/deleteEvent/:id')
 // Likes a comment
 router.route('/likeComment')
   .put(CommentController.addLikeToComment);
+
 router.route('/likePost')
   .put(PostController.addLikeToPost);
+
+router.route('/allUsers')
+  .get(UserController.allUsers);
+
 module.exports = router;

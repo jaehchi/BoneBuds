@@ -8,6 +8,10 @@ const db = require('./SQL/db');
 
 const app = express();
 
+// file compression
+var compression = require('compression');
+app.use(compression())
+
 
 //creates an http server and serving app
 const server = require('http').createServer(app);

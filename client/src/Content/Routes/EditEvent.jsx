@@ -7,13 +7,14 @@ export default class EditEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eventID: 'undefined',
+      eventID: '',
       title: '',
       date: '',
       time: '',
       owner: '',
       description: '',
       tag: '',
+      location: '',
       image: '',
       events: [],
       currentEvent: '',
@@ -25,6 +26,11 @@ export default class EditEvent extends Component {
     this.showToast = this.showToast.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.sweetAlert = this.sweetAlert.bind(this);
+  }
+
+  componentWillMount() {
+    // gets specific information for event
+    this.getUserEventInfo(this.props.currentEvent.eventID);
   }
 
   deleteEvent() {
@@ -135,23 +141,21 @@ export default class EditEvent extends Component {
   }
 
   render() {
-    if (this.state.eventID === 'undefined') {
-      this.getUserEventInfo(this.props.currentEvent.eventID);
-    }
     return (
       <div id="editEvent">
 
+        {/* event title and buttons */}
         <div className="row">
           <h1 className="header center blue-text text-darken-4">{this.props.currentEvent.title}</h1>
         </div>
-
         <div className="center-align">
           <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.sweetAlert}><i className="material-icons left">delete</i>Delete Event</Link>
           <Link to="/userEvents" className="waves-effect waves-light btn" onClick={this.submitEventUpdate}><i className="material-icons left">create</i>Update Event</Link>
         </div>
+        {/* end of event title and buttons */}
 
+        {/* event selector */}
         <div className="row">
-
           <div className="col s4">
             <select>
               {
@@ -167,10 +171,13 @@ export default class EditEvent extends Component {
             </select>
             <label>Select Event To Edit</label>
           </div>
+          {/* end of event selector */}
 
+          {/* Edit event form */}
           <div className="col s7 offset-s1 z-depth-2 hoverable">
             <form>
 
+                {/* title */}
                 <div className="input-field">
                   <i className="material-icons prefix">title</i>
                   <input
@@ -184,6 +191,7 @@ export default class EditEvent extends Component {
                   <label htmlFor="eventname" className="active">Event Title</label>
                 </div>
 
+                {/* description */}
                 <div className="input-field">
                   <i className="material-icons prefix">description</i>
                   <input
@@ -197,6 +205,7 @@ export default class EditEvent extends Component {
                   <label htmlFor="description" className="active">Description</label>
                 </div>
 
+                {/* location */}
                 <div className="input-field">
                   <i className="material-icons prefix">map</i>
                   <input
@@ -210,6 +219,7 @@ export default class EditEvent extends Component {
                   <label htmlFor="location" className="active">Location</label>
                 </div>
 
+                {/* image */}
                 <div className="input-field">
                   <i className="material-icons prefix">image</i>
                   <input
@@ -222,6 +232,7 @@ export default class EditEvent extends Component {
                   <label htmlFor="image" className="active">Image Url</label>
                 </div>
 
+                {/* tags */}
                 <div className="input-field">
                   <i className="material-icons prefix">gesture</i>
                   <input
@@ -237,6 +248,7 @@ export default class EditEvent extends Component {
 
             </form>
           </div>
+          {/* end of Edit Event Form */}
 
         </div>
       </div>

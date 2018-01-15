@@ -12,9 +12,12 @@ class UserEvents extends Component {
   }
 
   componentDidMount() {
+    // sets state to user's events passed from content container
     this.setState({
       events: this.props.events.filter(event => event.userID === this.props.user.uid),
-    })
+    });
+
+    // on every db update, set state to new information
     const socket = io('/');
     socket.on('fetchAllEvents', data => {
       this.setState({

@@ -157,7 +157,7 @@ class Post extends Component {
 
             <div className="row col s10 small right">
               {this.state.comments.map( comment => {
-                return  ( <Comment key={comment.commentID} ID={comment.commentID} comment={comment} userData={this.props.userData}/> )
+                return  ( <Comment clickUserID={this.props.clickUserID} key={comment.commentID} ID={comment.commentID} comment={comment} userData={this.props.userData}/> )
               })}
             </div>
           </div>

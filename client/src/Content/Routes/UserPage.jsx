@@ -54,7 +54,7 @@ class UserPage extends Component {
     }
     axios.post('/users/update', payload)
       .then((response) => {
-        console.log('User data sent to db for update. \nServer response:', response)
+        // console.log('User data sent to db for update. \nServer response:', response)
       })
       .catch((e) => {
         console.log('User data was not sent to db for update', e)

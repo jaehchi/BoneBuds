@@ -69,7 +69,7 @@ class CreateEvent extends Component {
     axios
       .post("/events/createEvent", payload)
       .then(res => {
-        console.log("Creating event... \nServer response:", res.data);
+        // console.log("Creating event... \nServer response:", res.data);
         if (res.data === 'Invalid API Request') {
           this.showToast();
         } else {
@@ -84,7 +84,7 @@ class CreateEvent extends Component {
   render() {
     return (
 
-      <div className="card card-panel hoverable scrollable" id="createEvent">
+      <div className="card card-panel hoverable scrollable" id="padding">
 
         {/* Title and buttom */}
         <div className="row">

@@ -100,24 +100,24 @@ const EventController = {
           longitude: response.data.results[0].geometry.location.lng,
           image: event.image,
           tag: event.tag,
-        }, { where: { eventID: req.body.id }, returning: true, plain: true })
-          .then(() => {
-            events.findAll()
-              .then((results) => {
-                io.emit('fetchAllEvents', results)
-              })
-              .catch(() => {
-                console.log('could not fetch all events')
-              })
-            console.log('all event data')
-          })
-          .then(() => {
-            console.log('Event has been updated');
-            res.send('Event was updated')
-          })
-          .catch((e) => {
-            console.log('users event was not updated', e)
-          })
+        }, { where: { eventID: req.body.id}, returning: true, plain: true })
+        .then(() => {
+          console.log('Event has been updated');
+          res.send('Event was updated')
+        })
+        .then(() => {
+          events.findAll()
+            .then((results) => {
+              io.emit('fetchAllEvents', results)
+            })
+            .catch(() => {
+              console.log('could not fetch all events')
+            })
+          console.log('all event data')
+        })
+        .catch((e) => {
+          console.log('users event was not updated', e)
+        })
       })
       .catch((e) => {
         console.log('users event was not updated', e)

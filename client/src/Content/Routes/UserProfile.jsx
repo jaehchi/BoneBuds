@@ -55,7 +55,7 @@ class UserProfile extends Component {
     }
     axios.put('/users/update', payload)
       .then((response) => {
-        console.log('User data updating... \nServer response:', response.data);
+        // console.log('User data updating... \nServer response:', response.data);
         this.showToast();
       })
       .catch((e) => {
@@ -72,10 +72,10 @@ class UserProfile extends Component {
           <Link to='/userpage' className="waves-effect waves-light btn" onClick={this.updateUserInfo}><i className="material-icons left">cloud</i>Update user info</Link>
           {/* end of title and button */}
 
-          <div className="row">
+          <div className="row" id="padding">
 
             {/* Update user info form */}
-            <form className="col s12">
+            <form className="col s12 scrollable">
               <div className="row">
 
                 <div className="input-field col s6">

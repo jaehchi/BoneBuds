@@ -26,9 +26,10 @@ export default class EditEvent extends Component {
     this.showToast = this.showToast.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.sweetAlert = this.sweetAlert.bind(this);
+    this.selectorChange = this.selectorChange.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // gets specific information for event
     this.getUserEventInfo(this.props.currentEvent.eventID);
   }
@@ -89,6 +90,10 @@ export default class EditEvent extends Component {
     }
   }
 
+  selectorChange(e) {
+    console.log('selector changed. Events id is:', e.target.value);
+  }
+
   showToast(message) {
     if (message === 'message') {
       Materialize.toast('Event Info Updated!', 3000, 'rounded');
@@ -125,7 +130,7 @@ export default class EditEvent extends Component {
       if (willDelete) {
         axios.get('/events/deleteEvent/' + this.props.currentEvent.eventID)
           .then((res) => {
-            console.log('Event has beed deleted. \nServer response:', res.data);
+            // console.log('Event has beed deleted. \nServer response:', res.data);
             swal("Poof! Your event has been deleted!", {
               icon: "success",
             });
@@ -157,7 +162,7 @@ export default class EditEvent extends Component {
         {/* event selector */}
         <div className="row">
           <div className="col s4">
-            <select>
+            <select onChange={this.selectorChange}>
               {
                 this.props.events
                   .filter(event => {

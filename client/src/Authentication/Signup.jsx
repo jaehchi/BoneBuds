@@ -70,8 +70,8 @@ class Signup extends Component {
   }
   render() {
     return (
-      <div className="mainSignup scrollable card card-panel hoverable sticky-action">
-        <h4 className="header center teal-text text-lighten-2">User Signup</h4>
+      <div className="mainSignup scrollable card card-panel hoverable sticky-action" id="padding">
+        <h4 className="header center blue-text text-darken-4">User Signup</h4>
         <div className="row">
           <form className="col s12">
             <div className="row">
@@ -197,7 +197,7 @@ class Signup extends Component {
           </form>
         </div>
         <div>
-          <Link to="/"><button className="teal-text text-lighten-2 emailBtn signUpBtn" onClick={this.emailSignup}>Sign Up!</button></Link>
+          <Link to="/"><button className="blue-text text-darken-4 emailBtn signUpBtn" onClick={this.emailSignup}>Sign Up!</button></Link>
         </div>
       </div>
     )

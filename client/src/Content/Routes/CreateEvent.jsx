@@ -84,7 +84,7 @@ class CreateEvent extends Component {
   render() {
     return (
 
-      <div className="card card-panel hoverable scrollable" id="createEvent">
+      <div className="card card-panel hoverable scrollable" id="padding">
 
         {/* Title and buttom */}
         <div className="row">

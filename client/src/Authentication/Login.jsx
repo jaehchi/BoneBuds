@@ -62,7 +62,7 @@ class Login extends Component {
   render() {
     return (
       <div className="card card-panel hoverable sticky-action" id="loginLanding">
-        <h4 className="header center teal-text text-lighten-2">Login</h4>
+        <h4 className="header center blue-text text-darken-4">Login</h4>
         <div className="emailLogin">
           <div className="row">
             <div className="input-field col s12">
@@ -96,14 +96,14 @@ class Login extends Component {
           </div>
         </div>
         <div className="row">
-          <button className="teal-text text-lighten-2 emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+          <button className="blue-text text-darken-4 emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
         </div>
         <div className="row">
           <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
         </div>
         <br />
         <div>
-          <Link to="/signup"><button className="teal-text text-lighten-2 emailBtn">Not a user? Sign Up!</button></Link>
+          <Link to="/signup"><button className="blue-text text-darken-4 emailBtn">Not a user? Sign Up!</button></Link>
         </div>
 
       </div>

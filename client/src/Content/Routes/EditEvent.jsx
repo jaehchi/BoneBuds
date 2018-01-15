@@ -163,16 +163,16 @@ export default class EditEvent extends Component {
         {/* event selector */}
         <div className="row">
           <div className="col s4">
-          <ul class="collapsible" data-collapsible="expandable">
+          <ul className="collapsible" data-collapsible="expandable">
             {
               this.props.events
                 .filter(event => {
                   return event.owner === this.state.owner && event.eventID !== this.state.eventID;
                 })
                 .map((match, index) => (
-                  <li>
-                    <div class="collapsible-header"><i class="material-icons">event_note</i>{match.title}</div>
-                    <div class="collapsible-body"><span>{match.description}</span></div>
+                  <li key={index}>
+                    <div className="collapsible-header"><i className="material-icons">event_note</i>{match.title}</div>
+                    <div className="collapsible-body"><span>{match.description}</span></div>
                   </li>
                   )
                 )

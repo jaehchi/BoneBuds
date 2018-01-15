@@ -81,7 +81,17 @@ body {
   /* bring your own prefixes */
   transform: translate(-50%, 30%);
 }
-
+#signupLanding {
+  text-align: center;
+  width: 40%;
+  height: 50%;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  border-radius: 5px;
+  /* bring your own prefixes */
+  transform: translate(-50%, 10%);
+}
 /* button styling */
 .emailBtn {
   margin: 5px 0 10px 0;
@@ -92,14 +102,15 @@ body {
 .signUpBtn {
   height: 50px;
   width: 150px;
-  font-size: 28px;
+  font-size: 20px;
 }
 .emailBtn:hover {
-  background-color: #009688;
+  background-color: #0D47A1;
   color: #fff!important;
 }
 .emailBtn:active {
   transform: translateY(3px);
+  transition-duration: 0.3s;
   box-shadow: 1px 1px #d9d9d9;
 }
 .emailLogin {

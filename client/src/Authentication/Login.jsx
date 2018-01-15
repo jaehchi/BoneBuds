@@ -96,14 +96,14 @@ class Login extends Component {
           </div>
         </div>
         <div className="row">
-          <button className="blue-text text-darken-4 emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
+          <button className="waves-effect waves-light btn emailBtn" type="submit" value="Login" onClick={this.emailLogin}><span className="button__inner">LogIn</span> </button>
         </div>
         <div className="row">
           <button className="loginBtn loginBtn--google" onClick={this.googleLogin}>Log In with Google</button>
         </div>
         <br />
         <div>
-          <Link to="/signup"><button className="blue-text text-darken-4 emailBtn">Not a user? Sign Up!</button></Link>
+          <Link to="/signup"><button className="waves-effect waves-light btn emailBtn">Not a user? Sign Up!</button></Link>
         </div>
 
       </div>

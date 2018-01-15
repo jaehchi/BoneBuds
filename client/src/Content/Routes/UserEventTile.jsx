@@ -10,8 +10,10 @@ class UserEventTile extends Component {
     this.identifyEvent = this.identifyEvent.bind(this);
   }
   componentDidMount() {
-    // console.log('propers', this.props);
   }
+
+  // passes up this specific event's ID
+  // to render correct information
   identifyEvent() {
     this.props.identifyEvent(this.props.event.eventID);
   }
@@ -20,10 +22,12 @@ class UserEventTile extends Component {
     return (
       <div className="col s4">
         <div className="card hoverable">
+
           <div className="card-image">
             <img src={this.props.event.image}/>
             <Link to='/editEvent' className="btn-floating halfway-fab waves-effect waves-light red" onClick={this.identifyEvent}><i className="material-icons">edit</i></Link>
           </div>
+
           <div className="card-content">
             <h5><strong>{this.props.event.title}</strong></h5>
             <p>{this.props.event.description}</p>

@@ -19,6 +19,7 @@ export class MapContainer extends Component {
   }
 
   componentDidMount() {
+    // on mount, calls db to broadcast all map locations
     axios.get('users/popups')
       .then(() => {
       })
@@ -26,6 +27,7 @@ export class MapContainer extends Component {
         console.log('Was not able to fetch longitude / latitude data', e);
       });
 
+    // updates events if there was a change in the db
     const socket = io('/');
     socket.on('fetchAllEvents', events => {
       this.setState({
@@ -34,7 +36,7 @@ export class MapContainer extends Component {
     })
   }
 
-
+  // helps set InfoWindow information
   onMarkerClick(props, marker, e) {
     this.setState({
       selectedPlace: props,
@@ -43,6 +45,7 @@ export class MapContainer extends Component {
     });
   }
 
+  // helps set InfoWindow information
   onMapClicked() {
     if (this.state.showingInfoWindow) {
       this.setState({
@@ -53,6 +56,7 @@ export class MapContainer extends Component {
   }
 
   render() {
+    // sets height of map
     const style = {
       width:'75%',
       height: '90vh',

@@ -70,10 +70,10 @@ class CreateEvent extends Component {
       .post("/events/createEvent", payload)
       .then(res => {
         console.log("Creating event... \nServer response:", res.data);
-        if (res === 'Invalid API Request') {
-          this.showToast('good');
+        if (res.data === 'Invalid API Request') {
+          this.showToast();
         } else {
-          this.showToast()
+          this.showToast('good')
         }
       })
       .catch((e) => {
@@ -83,8 +83,10 @@ class CreateEvent extends Component {
 
   render() {
     return (
+
       <div className="card card-panel hoverable scrollable" id="createEvent">
 
+        {/* Title and buttom */}
         <div className="row">
           <h1 className="header center blue-text text-darken-4">Create an Event!</h1>
         </div>
@@ -92,7 +94,9 @@ class CreateEvent extends Component {
         <div className="center-align">
           <Link to='/userEvents' onClick={this.createEvent} className="waves-effect waves-light btn"><i className="material-icons left">event_note</i>Create Event</Link>
         </div>
+        {/* end of Title and buttom */}
 
+          {/* Title form */}
           <div className="row">
             <div className="input-field col s12">
               <i className="material-icons prefix">title</i>
@@ -108,7 +112,7 @@ class CreateEvent extends Component {
             </div>
           </div>
 
-          {/* <form className="col s12"> */}
+          {/* description */}
           <div className="row">
             <div className="input-field col s12">
               <i className="material-icons prefix">description</i>
@@ -122,6 +126,7 @@ class CreateEvent extends Component {
             </div>
           </div>
 
+          {/* location */}
           <div className="row">
             <div className="input-field col s12">
               <i className="material-icons prefix">map</i>
@@ -136,6 +141,7 @@ class CreateEvent extends Component {
             </div>
           </div>
 
+          {/* image */}
           <div className="row">
             <div className="input-field col s12">
               <i className="material-icons prefix">image</i>
@@ -150,6 +156,7 @@ class CreateEvent extends Component {
             </div>
           </div>
 
+          {/* tags */}
           <div className="row">
             <div className="input-field col s12">
               <i className="material-icons prefix">gesture</i>
@@ -163,7 +170,8 @@ class CreateEvent extends Component {
               <label htmlFor="icon_prefix">Tags</label>
             </div>
           </div>
-          {/* </form> */}
+
+          {/* date */}
           <div className="row">
             <div className="col s6">
               <div id="date-picker" className="section scrollspy col s12">
@@ -179,6 +187,7 @@ class CreateEvent extends Component {
               </div>
             </div>
 
+            {/* time */}
             <div className="col s6">
               <div id="time-picker" className="section scrollspy col s12">
                 <i className="material-icons prefix">access_time</i>

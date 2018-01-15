@@ -69,7 +69,7 @@ class CreateEvent extends Component {
     axios
       .post("/events/createEvent", payload)
       .then(res => {
-        console.log("Creating event... \nServer response:", res.data);
+        // console.log("Creating event... \nServer response:", res.data);
         if (res.data === 'Invalid API Request') {
           this.showToast();
         } else {

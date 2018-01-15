@@ -32,6 +32,7 @@ export default class EditEvent extends Component {
   componentDidMount() {
     // gets specific information for event
     this.getUserEventInfo(this.props.currentEvent.eventID);
+    $('.collapsible').collapsible();
   }
 
   deleteEvent() {
@@ -162,7 +163,23 @@ export default class EditEvent extends Component {
         {/* event selector */}
         <div className="row">
           <div className="col s4">
-            <select onChange={this.selectorChange}>
+          <ul class="collapsible" data-collapsible="expandable">
+            {
+              this.props.events
+                .filter(event => {
+                  return event.owner === this.state.owner && event.eventID !== this.state.eventID;
+                })
+                .map((match, index) => (
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">event_note</i>{match.title}</div>
+                    <div class="collapsible-body"><span>{match.description}</span></div>
+                  </li>
+                  )
+                )
+            }
+          </ul>
+
+            {/* <select onChange={this.selectorChange}>
               {
                 this.props.events
                   .filter(event => {
@@ -173,7 +190,7 @@ export default class EditEvent extends Component {
                     )
                   )
               }
-            </select>
+            </select> */}
             <label>Select Event To Edit</label>
           </div>
           {/* end of event selector */}

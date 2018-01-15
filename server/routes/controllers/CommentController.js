@@ -56,7 +56,6 @@ const CommentController = {
       })
   },
   addLikeToComment: (req, res) => {
-    console.log('comment liker', req.body.likes);
     comments.update({
       likes: req.body.likes
     }, {

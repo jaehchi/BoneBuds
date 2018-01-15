@@ -27,7 +27,7 @@ const EventController = {
           })
           .then(results => {
             events.findAll()
-              .then( allEvents => {
+              .then(allEvents => {
                 io.emit('fetchAllEvents', allEvents);
                 res.status(201).send(allEvents);
               })
@@ -35,11 +35,11 @@ const EventController = {
           .catch(err => {
             res.send('Could not create event', err).status(500);
           });
-    })
-    .catch(() => {
-      console.log('Not able to fetch api data for latLong')
-      res.send('Invalid API Request');
-    })
+      })
+      .catch(() => {
+        console.log('Not able to fetch api data for latLong')
+        res.send('Invalid API Request');
+      })
   },
   fetchAllEvents: (req, res) => {
     let io = req.app.get('socketio');
@@ -59,10 +59,10 @@ const EventController = {
         eventID: req.body.eventID
       }
     })
-      .then( result => {
+      .then(result => {
         res.status(201).send(result);
       })
-      .catch( err => {
+      .catch(err => {
         res.status(500).send(err);
       })
   },
@@ -71,15 +71,15 @@ const EventController = {
     const owner = req.body.userID
     // onwer is the user's uid
     events.findAll({
-      where : {
+      where: {
         userID: owner,
       }
     })
-      .then( events => {
+      .then(events => {
         io.emit(`eventsByUser ${owner}`, events);
         res.status(201).send(events);
       })
-      .catch( err => {
+      .catch(err => {
         console.log(err);
       })
 
@@ -100,24 +100,24 @@ const EventController = {
           longitude: response.data.results[0].geometry.location.lng,
           image: event.image,
           tag: event.tag,
-        }, { where: { eventID: req.body.id}, returning: true, plain: true })
-        .then(() => {
-          events.findAll()
-            .then((results) => {
-              io.emit('fetchAllEvents', results)
-            })
-            .catch(() => {
-              console.log('could not fetch all events')
-            })
-          console.log('all event data')
-        })
-        .then(() => {
-          console.log('Event has been updated');
-          res.send('Event was updated')
-        })
-        .catch((e) => {
-          console.log('users event was not updated', e)
-        })
+        }, { where: { eventID: req.body.id }, returning: true, plain: true })
+          .then(() => {
+            events.findAll()
+              .then((results) => {
+                io.emit('fetchAllEvents', results)
+              })
+              .catch(() => {
+                console.log('could not fetch all events')
+              })
+            console.log('all event data')
+          })
+          .then(() => {
+            console.log('Event has been updated');
+            res.send('Event was updated')
+          })
+          .catch((e) => {
+            console.log('users event was not updated', e)
+          })
       })
       .catch((e) => {
         console.log('users event was not updated', e)
@@ -130,21 +130,37 @@ const EventController = {
     events.destroy({
       where: { eventID: req.params.id }
     })
-    .then((result) => {
-      console.log('Number of events deleted:', result);
-      events.findAll()
-        .then((response) => {
-          io.emit('getAllMapEvents', response);
-          io.emit('fetchAllEvents', response);
-        })
-        .catch((e) => {
-          console.log('could not get all event data');
-        })
-      res.send('event deleted');
-    })
-    .catch((e) => {
-      console.log('event was not destroyed', e);
-    })
+      .then((result) => {
+        console.log('Number of events deleted:', result);
+        events.findAll()
+          .then((response) => {
+            io.emit('getAllMapEvents', response);
+            io.emit('fetchAllEvents', response);
+          })
+          .catch((e) => {
+            console.log('could not get all event data');
+          })
+        res.send('event deleted');
+      })
+      .catch((e) => {
+        console.log('event was not destroyed', e);
+      })
+  },
+  addLikeToEvent: (req, res) => {
+    events.update({
+      likes: req.body.likes
+    }, {
+        where: {
+          eventID: req.body.ID
+        }
+      })
+      .then((result) => {
+        res.send(result)
+      })
+      .catch(() => {
+        res.send(500);
+      })
+
   }
 };
 

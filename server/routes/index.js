@@ -80,6 +80,8 @@ router.route('/likeComment')
 
 router.route('/likePost')
   .put(PostController.addLikeToPost);
+router.route('/likeEvent')
+  .put(EventController.addLikeToEvent);
 
 router.route('/allUsers')
   .get(UserController.allUsers);

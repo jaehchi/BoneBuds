@@ -14,13 +14,14 @@ class EventProfile extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.likeEvent = this.likeEvent.bind(this);
   }
 
   componentWillMount() {
     console.log('fetch all data from this post');
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // const payload =  {
     //   userID: this.props.event.userID
     // };
@@ -42,7 +43,7 @@ class EventProfile extends Component {
     });
   }
 
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault()
 
     const payload = {
@@ -56,8 +57,24 @@ class EventProfile extends Component {
     this.props.submit(payload);
     e.target.reset()
   }
-
+  likeEvent() {
+    let liked = ++this.props.event.likes
+    const payload = {
+      ID: this.props.eventID,
+      likes: liked
+    }
+    axios.put('/events/likeEvent', payload)
+      .then((res) => {
+        console.log(res);
+      })
+  }
   render() {
+    let liked = '';
+    if (this.props.event.likes === 1) {
+      liked = `${this.props.event.likes} person likes this`;
+    } else {
+      liked = `${this.props.event.likes} people like this`
+    }
     return (
       <div id="eventProfile">
         <div id="profile-page-wall-posts" className="row">
@@ -111,8 +128,8 @@ class EventProfile extends Component {
                 </div>
                 <div className="card-action row">
                   <div className="col s2 card-action-share">
-                    <a href="#">
-                      <i className="material-icons left">thumb_up</i>
+                    <a onClick={this.likeEvent} value={this.props.eventID} href="#">
+                      <i className="material-icons left">thumb_up</i>{liked}
                     </a>
                   </div>
 
@@ -134,20 +151,20 @@ class EventProfile extends Component {
                   <div className="row small right">
                     {
                       this.props.posts.map(post => {
-                      return (
-                        <Post
-                          key={post.postID}
-                          postID={post.postID}
-                          post={post}
-                          user={this.props.currentUser.displayName}
-                          username={this.props.username}
-                          //dont need user ^ when  username is working on userData
-                          socket={this.props.socket}
-                          userData={this.props.userData}
-                        />
-                      );
-                    })
-                  }
+                        return (
+                          <Post
+                            key={post.postID}
+                            postID={post.postID}
+                            post={post}
+                            user={this.props.currentUser.displayName}
+                            username={this.props.username}
+                            //dont need user ^ when  username is working on userData
+                            socket={this.props.socket}
+                            userData={this.props.userData}
+                          />
+                        );
+                      })
+                    }
                   </div>
                 </div>
               </div>

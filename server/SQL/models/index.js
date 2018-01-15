@@ -35,17 +35,17 @@ events.hasMany(posts, {
   foreignKey: 'eventID'
 });
 
-users.sync()
+users.sync({force:true})
   .then( () => {
     console.log('Users tables has been synced succesfully');
 
-    events.sync()
+    events.sync({force:true})
       .then( () => {
         console.log('Events tables has been synced succesfully');
-        posts.sync()
+        posts.sync({force:true})
           .then( () => {
             console.log('Posts tables has been synced succesfully');
-            comments.sync()
+            comments.sync({force:true})
               .then( () => {
                 console.log('Comments tables has been synced succesfully');
               })

@@ -80,7 +80,6 @@ class Post extends Component {
     })
   }
   likePost(e) {
-    console.log('clicked', this.props.post);
     let liked = ++this.props.post.likes
     const payload = {
       ID: this.props.post.postID,

@@ -24,7 +24,6 @@ class Comment extends Component {
     })
   }
   likeComment(e) {
-    console.log('clicked', this.props);
     let liked = ++this.props.comment.likes
     const payload = {
       ID: this.props.comment.commentID,

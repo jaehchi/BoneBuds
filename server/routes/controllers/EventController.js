@@ -147,6 +147,7 @@ const EventController = {
       })
   },
   addLikeToEvent: (req, res) => {
+    let io = req.app.get('socketio');
     events.update({
       likes: req.body.likes
     }, {
@@ -154,8 +155,12 @@ const EventController = {
           eventID: req.body.ID
         }
       })
-      .then((result) => {
-        res.send(result)
+      .then(() => {
+        events.findAll()
+          .then((result) => {
+            io.emit('fetchAllEvents', result);
+            res.send(result)
+          })
       })
       .catch(() => {
         res.send(500);

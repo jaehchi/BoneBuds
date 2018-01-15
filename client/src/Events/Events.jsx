@@ -7,15 +7,19 @@ class Events extends Component {
   }
 
   render() {
+    let sortedEvents = this.props.events.sort((a, b) => {
+      return b.likes - a.likes;
+    })
     return (
       <div className="scrollable">
-        {this.props.events.map(event => {
+        {sortedEvents.map(event => {
           return (
             <EventTile
               key={event.eventID}
               id={event.eventID}
               value={event.eventID}
               event={event}
+              likes={event.likes}
               click={this.props.click}
             />
           );

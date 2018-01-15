@@ -60,7 +60,6 @@ const PostController = {
       })
   },
   addLikeToPost: (req, res) => {
-    console.log('comment liker', req.body.likes);
     posts.update({
       likes: req.body.likes
     }, {

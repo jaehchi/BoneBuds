@@ -49,6 +49,9 @@ app.get('/userEvents', (req, res) => {
 app.get('/signup', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
+app.get('/searchBar', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
+})
 
 app.use('/events', router);
 app.use('/users', router);

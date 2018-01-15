@@ -95,8 +95,8 @@ class SearchBar extends Component {
                 <ul className="collection">
                   { 
                   this.state.searched ? 
-                    this.state.searched.map(item => {
-                      return <SearchList item={item}  click={this.props.click}/>
+                    this.state.searched.map((item, i) => {
+                      return <SearchList key={i} item={item}  click={this.props.click}/>
                     })
                     : 
                     null

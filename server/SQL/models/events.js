@@ -17,6 +17,7 @@ const events = db.define('events', {
   description : Sequelize.STRING,
   tag: Sequelize.STRING,
   image: Sequelize.STRING,
+  likes: { type: Sequelize.INTEGER, allowNull: false, defaultValue: 0 }
 });
 
 module.exports = events;

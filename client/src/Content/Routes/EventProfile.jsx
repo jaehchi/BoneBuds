@@ -79,9 +79,9 @@ class EventProfile extends Component {
                       />
                     </div>
                     <div className="col s8">
-                      <p className="grey-text text-darken-4 margin">
+                      <h5 className="grey-text text-darken-4 margin">
                         {this.props.event.owner}
-                      </p>
+                      </h5>
                       <span className="grey-text text-darken-1 ultra-small">
                         {this.props.event.date}
                       </span>

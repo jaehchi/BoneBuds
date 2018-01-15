@@ -148,3 +148,11 @@ body {
   height: 200px;
   border-radius: 50%;
 }
+
+#createEvent {
+  padding: 4em;
+}
+
+p {
+  margin-top: .5em;
+}

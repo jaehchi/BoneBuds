@@ -3,6 +3,10 @@
  * Copyright 2014-2017 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+ /* hides scroll bar for Chrome ONLY */
+ ::-webkit-scrollbar {
+  display: none;
+}
 
  .scrollable {
   overflow-y: auto;

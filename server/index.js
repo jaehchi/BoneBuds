@@ -52,7 +52,9 @@ app.get('/signup', (req, res) => {
 app.get('/searchBar', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
 })
-
+app.get('/friendPage', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../client/public/index.html'))
+})
 app.use('/events', router);
 app.use('/users', router);
 app.use('/posts', router);

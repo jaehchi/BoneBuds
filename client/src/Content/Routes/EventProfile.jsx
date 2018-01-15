@@ -15,6 +15,7 @@ class EventProfile extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.likeEvent = this.likeEvent.bind(this);
+    this.userNameClick = this.userNameClick.bind(this);
   }
 
   componentWillMount() {
@@ -68,6 +69,9 @@ class EventProfile extends Component {
         console.log(res);
       })
   }
+  userNameClick() {
+    this.props.clickUserID(this.props.owner.userID);
+  }
   render() {
     let liked = '';
     if (this.props.event.likes === 1) {
@@ -96,8 +100,8 @@ class EventProfile extends Component {
                       />
                     </div>
                     <div className="col s8">
-                      <h5 className="grey-text text-darken-4 margin">
-                        {this.props.event.owner}
+                      <h5 onClick={this.userNameClick} className="grey-text text-darken-4 margin">
+                        <Link to='friendPage'>{this.props.event.owner}</Link>
                       </h5>
                       <span className="grey-text text-darken-1 ultra-small">
                         {this.props.event.date}

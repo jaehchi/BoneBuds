@@ -25,11 +25,13 @@ class App extends Component {
       currentEvent: [],
       posts: [],
       userData: '',
+      clickUserID: ''
     };
     this.handleUserToken = this.handleUserToken.bind(this);
     this.logout = this.logout.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onSubmitPost = this.onSubmitPost.bind(this);
+    this.clickUserID = this.clickUserID.bind(this);
   }
 
   //To initialize socketio, we will place it in componentDidMount
@@ -130,7 +132,12 @@ class App extends Component {
       }
     });
   }
-
+  clickUserID(val) {
+    console.log('clicked', val)
+    this.setState({
+      clickUserID: val
+    })
+  }
   logout() {
     swal("Are you sure you want to logout?", {
       buttons: ["Nope!", true],
@@ -256,6 +263,8 @@ class App extends Component {
                       identifyEvent={this.onClick}
                       click={this.onClick}
                       currentEventOwnerInfo={this.state.currentEventOwnerInfo}
+                      clickUserID={this.clickUserID}
+                      clickedUser={this.state.clickUserID}
                     />
                   </div>
                 </div>

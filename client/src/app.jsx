@@ -133,7 +133,6 @@ class App extends Component {
     });
   }
   clickUserID(val) {
-    console.log('clicked', val)
     this.setState({
       clickUserID: val
     })

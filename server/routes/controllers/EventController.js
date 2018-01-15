@@ -102,15 +102,25 @@ const EventController = {
           tag: event.tag,
         }, { where: { eventID: req.body.id}, returning: true, plain: true })
         .then(() => {
+          events.findAll()
+            .then((results) => {
+              io.emit('fetchAllEvents', results)
+            })
+            .catch(() => {
+              console.log('could not fetch all events')
+            })
+          console.log('all event data')
+        })
+        .then(() => {
           console.log('Event has been updated');
           res.send('Event was updated')
         })
         .catch((e) => {
-          console.log('users event was not updated')
+          console.log('users event was not updated', e)
         })
       })
       .catch((e) => {
-        console.log('users event was not updated')
+        console.log('users event was not updated', e)
         res.send(e);
       })
   },

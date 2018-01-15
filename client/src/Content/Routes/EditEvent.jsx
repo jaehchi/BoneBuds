@@ -7,13 +7,14 @@ export default class EditEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      eventID: 'undefined',
+      eventID: '',
       title: '',
       date: '',
       time: '',
       owner: '',
       description: '',
       tag: '',
+      location: '',
       image: '',
       events: [],
       currentEvent: '',
@@ -25,6 +26,11 @@ export default class EditEvent extends Component {
     this.showToast = this.showToast.bind(this);
     this.deleteEvent = this.deleteEvent.bind(this);
     this.sweetAlert = this.sweetAlert.bind(this);
+  }
+
+  componentWillMount() {
+    // gets specific information for event
+    this.getUserEventInfo(this.props.currentEvent.eventID);
   }
 
   deleteEvent() {
@@ -135,11 +141,6 @@ export default class EditEvent extends Component {
   }
 
   render() {
-    // if no events, fetch user's events
-    // b/c of issue with componentDidMount not working as expected
-    if (this.state.eventID === 'undefined') {
-      this.getUserEventInfo(this.props.currentEvent.eventID);
-    }
     return (
       <div id="editEvent">
 

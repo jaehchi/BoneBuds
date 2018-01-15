@@ -20,7 +20,8 @@ class App extends Component {
       user: '',
       username: '',
       events: [],
-      currentEventID: "",
+      currentEventID: '',
+      currentEventOwnerInfo: '',
       currentEvent: [],
       posts: [],
       userData: '',
@@ -150,37 +151,54 @@ class App extends Component {
   }
 
   onClick(id) {
+
     const payload = {
       eventID: id
     }
 
     axios.post('/events/fetchByEventID', payload)
-      .then((eventResponse) => {
-
+      .then( (eventResponse) => {
         this.setState({
           currentEventID: id,
-          currentEvent: eventResponse.data
+          currentEvent: eventResponse.data,
         });
       })
-      .then(() => {
+      .then( () => {
         const payloadForPost = {
           eventID: this.state.currentEventID
         }
-
         axios.post('/posts/fetchAllPostsByEvent', payloadForPost)
           .then(postResponse => {
             this.setState({
               posts: postResponse.data
             })
           })
+            .then( () => {
+              const payloadForUser =  {
+                userID: this.state.currentEvent.userID
+              };
+
+              axios.post('/users/getUserData', payloadForUser)
+                .then( response => {
+                  this.setState({
+                    currentEventOwnerInfo: response.data,
+                  });
+                })
+                .catch( err => {
+                  console.log(err);
+                })
+            })
+            .catch(e => {
+              console.log(e);
+            })
           .catch(err => {
             console.log(err);
           })
-      })
-      .catch(error => {
-        console.log(error);
-      })
-      .catch(err => {
+        })
+        .catch( error => {
+          console.log(error);
+        })
+      .catch( err => {
         console.log(err);
       })
   }
@@ -236,6 +254,8 @@ class App extends Component {
                       events={this.state.events}
                       currentEvent={this.state.currentEvent}
                       identifyEvent={this.onClick}
+                      click={this.onClick}
+                      currentEventOwnerInfo={this.state.currentEventOwnerInfo}
                     />
                   </div>
                 </div>

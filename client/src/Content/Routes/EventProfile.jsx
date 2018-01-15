@@ -21,19 +21,19 @@ class EventProfile extends Component {
   }
 
   componentDidMount () {
-    const payload =  {
-      userID: this.props.event.userID
-    };
-    axios.post('/users/getUserData', payload)
-      .then( response => {
-        console.log(response.data)
-        this.setState({
-          owner: response.data
-        })
-      })
-      .catch( err => {
-        console.log(err);
-      })
+    // const payload =  {
+    //   userID: this.props.event.userID
+    // };
+    // axios.post('/users/getUserData', payload)
+    //   .then( response => {
+    //     console.log(response.data)
+    //     this.setState({
+    //       owner: response.data
+    //     })
+    //   })
+    //   .catch( err => {
+    //     console.log(err);
+    //   })
   }
 
   onChange(e) {
@@ -73,7 +73,7 @@ class EventProfile extends Component {
                   <div className="row">
                     <div className="col s1">
                       <img
-                        src={this.state.owner.profileUrl || '/logo.svg'}
+                        src={this.props.owner.profileUrl || '/logo.svg'}
                         alt=""
                         className="circle responsive-img valign profile-post-uer-image"
                       />

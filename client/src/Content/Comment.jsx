@@ -53,6 +53,7 @@ class Comment extends Component {
       pic = this.state.comment.profileUrl;
     }
     return (
+      console.log('hi');
       <div id="profile-page-wall-post" className="card">
         <div className="card-profile-title">
           <div className="row">

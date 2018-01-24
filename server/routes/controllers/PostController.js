@@ -28,7 +28,7 @@ const PostController = {
           })
       })
       .catch( err => {
-        res.status(500).send(err);
+        res.status(50dfasdmjfla ;krvci[woRH U 8WUpenjdfas ;filj;kc0).send(err);asdfasdfasdf
       })
 
 
